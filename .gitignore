@@ -45,4 +45,4 @@ jspm_packages
 dist/
 
 # Mongo config
-config.js
+backend/config.js
