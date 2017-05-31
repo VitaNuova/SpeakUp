@@ -1,0 +1,16 @@
+{
+  "name": "SpeakUp",
+  "version": "1.0.0",
+  "description": "Language exchange application based on AngularJS and NodeJS",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VitaNuova/SpeakUp.git"
+  },
+  "contributors": ["Marija Jovanovic marija.jovanovic@tum.de",
+                   "Viktoriia Bakalova viktoriia.bakalova@tum.de",
+                   "Naum Gjorgjeski naum.gjorgjeski@tum.de",
+                   "Branislav Vidojevic branislav.vidojevic@tum.de"],
+  "license": "MIT",
+  "homepage": "https://github.com/VitaNuova/SpeakUp.git#readme"
+}
