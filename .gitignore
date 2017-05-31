@@ -43,3 +43,6 @@ jspm_packages
 
 # Distribution files
 dist/
+
+# Mongo config
+config.js
