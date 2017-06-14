@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Offer = new mongoose.Schema({
     restaurant: {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Restaurant',
         required: true
     },

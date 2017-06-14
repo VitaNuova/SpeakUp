@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Restaurant = new mongoose.Schema({
     name: String,
-    location: mongoose.Schema.Objectid,
+    location: mongoose.Schema.Types.ObjectId,
     ref: 'Location'
 });
 

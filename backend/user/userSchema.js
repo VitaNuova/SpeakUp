@@ -19,17 +19,17 @@ var userSchema = mongoose.Schema({
     age: Number,
     gender: String,
     location: {
-        type: mongoose.Schema.Objectid,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Location',
         required: true
     },
     languages: {
-        type: [mongoose.Schema.Objectid],
+        type: [mongoose.Schema.Types.ObjectId],
         ref: 'Language',
         required: true
     },
     events: {
-        type: [mongoose.Schema.Objectid],
+        type: [mongoose.Schema.Types.ObjectId],
         ref: 'Event'
     }
 });
@@ -44,7 +44,7 @@ userSchema.pre('save', function(next) {
         if (err) return next(err);
 
         // hash the password using our new salt
-        bcrypt.hash(user.password, salt, null, function (err, hash) {
+        bcrypt.hash(user.password, salt, null, function(err, hash) {
             if (err) return next(err);
 
             // override the cleartext password with the hashed one
@@ -65,4 +65,3 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
-
