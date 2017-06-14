@@ -18,6 +18,7 @@ function resolveEvent($stateParams, eventsService) {
 resolveEvents.$inject = [EventsService.name];
 
 function resolveEvents(eventsService) {
+    console.log(eventsService.list());
     return eventsService.list();
 }
 

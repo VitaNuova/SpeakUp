@@ -1,15 +1,17 @@
 var Event = require('./eventSchema');
+var events = require('./eventsMock');
 
 exports.postEvent = function(req, res) {};
 
 exports.getEvents = function(req, res) {
-    Event.find(function(err, events) {
+    /*Event.find(function(err, events) {
         if(err) {
             res.status(500).send(err);
             return;
         }
         res.json(events);
-    });
+    });*/
+    res.json(events);
 };
 
 exports.getEvent = function(req, res) {

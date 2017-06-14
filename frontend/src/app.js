@@ -35,7 +35,7 @@ let app = angular.module('app', [
     ViewLogin.name
 ]);
 
-app.constant('API_URL', 'http://localhost:3000/api');
+app.constant('API_URL', 'http://localhost:3000');
 app.config(Routes);
 app.config(Middlewares);
 
