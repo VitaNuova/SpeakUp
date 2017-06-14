@@ -10,6 +10,27 @@ var userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    image: Buffer,
+    age: Number,
+    gender: String,
+    location: {
+        type: mongoose.Schema.Objectid,
+        ref: 'Location',
+        required: true
+    },
+    languages: {
+        type: [mongoose.Schema.Objectid],
+        ref: 'Language',
+        required: true
+    },
+    events: {
+        type: [mongoose.Schema.Objectid],
+        ref: 'Event'
     }
 });
 
