@@ -16,7 +16,7 @@ exports.postRestaurant = function(req, res) {
 
 exports.getRestaurants = function(req, res) {
     Restaurant.find(function(err, restaurants) {
-        if(err) {
+        if (err) {
             res.status(500).send(err);
             return;
         }
@@ -24,9 +24,9 @@ exports.getRestaurants = function(req, res) {
     });
 };
 
-exports.getRestaurants = function(req, res) {
+exports.getRestaurant = function(req, res) {
     Restaurant.findById(req.params.restaurant_id, function(err, restaurant) {
-        if(err) {
+        if (err) {
             res.status(500).send(err);
             return;
         }
@@ -38,13 +38,13 @@ exports.putRestaurant = function(req, res) {
     // Use the Movie model to find a specific movie and update it
     Restaurant.findByIdAndUpdate(
         req.params.restaurant_id,
-        req.body,
-        {
+        req.body, {
             //pass the new object to cb function
             new: true,
             //run validations
             runValidators: true
-        }, function (err, restaurant) {
+        },
+        function(err, restaurant) {
             if (err) {
                 res.status(500).send(err);
                 return;
@@ -55,7 +55,7 @@ exports.putRestaurant = function(req, res) {
 
 exports.deleteRestaurant = function(req, res) {
     Location.findById(req.params.restaurant_id, function(err, restaurant) {
-        if(err) {
+        if (err) {
             res.status(500).send(err);
             return;
         }

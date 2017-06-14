@@ -16,17 +16,17 @@ exports.postLocation = function(req, res) {
 
 exports.getLocations = function(req, res) {
     Location.find(function(err, locations) {
-        if(err) {
-           res.status(500).send(err);
-           return;
+        if (err) {
+            res.status(500).send(err);
+            return;
         }
         res.json(locations);
-     });
+    });
 };
 
 exports.getLocation = function(req, res) {
     Location.findById(req.params.location_id, function(err, location) {
-        if(err) {
+        if (err) {
             res.status(500).send(err);
             return;
         }
@@ -38,13 +38,13 @@ exports.putLocation = function(req, res) {
     // Use the Movie model to find a specific movie and update it
     Location.findByIdAndUpdate(
         req.params.location_id,
-        req.body,
-        {
+        req.body, {
             //pass the new object to cb function
             new: true,
             //run validations
             runValidators: true
-        }, function (err, location) {
+        },
+        function(err, location) {
             if (err) {
                 res.status(500).send(err);
                 return;
@@ -55,7 +55,7 @@ exports.putLocation = function(req, res) {
 
 exports.deleteLocation = function(req, res) {
     Location.findById(req.params.location_id, function(err, location) {
-        if(err) {
+        if (err) {
             res.status(500).send(err);
             return;
         }

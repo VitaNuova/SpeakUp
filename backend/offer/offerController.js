@@ -16,7 +16,7 @@ exports.postOffer = function(req, res) {
 
 exports.getOffers = function(req, res) {
     Offer.find(function(err, offers) {
-        if(err) {
+        if (err) {
             res.status(500).send(err);
             return;
         }
@@ -26,7 +26,7 @@ exports.getOffers = function(req, res) {
 
 exports.getOffer = function(req, res) {
     Offer.findById(req.params.offer_id, function(err, offer) {
-        if(err) {
+        if (err) {
             res.status(500).send(err);
             return;
         }
@@ -38,13 +38,13 @@ exports.putOffer = function(req, res) {
     // Use the Movie model to find a specific movie and update it
     Offer.findByIdAndUpdate(
         req.params.offer_id,
-        req.body,
-        {
+        req.body, {
             //pass the new object to cb function
             new: true,
             //run validations
             runValidators: true
-        }, function (err, offer) {
+        },
+        function(err, offer) {
             if (err) {
                 res.status(500).send(err);
                 return;
@@ -55,7 +55,7 @@ exports.putOffer = function(req, res) {
 
 exports.deleteOffer = function(req, res) {
     Offer.findById(req.params.offer_id, function(err, offer) {
-        if(err) {
+        if (err) {
             res.status(500).send(err);
             return;
         }
