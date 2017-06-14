@@ -46,3 +46,5 @@ dist/
 
 # Mongo config
 backend/config/config.js
+backend/package-lock.json
+frontend/package-lock.json
