@@ -50,5 +50,16 @@ export default class UserService {
         return true;
     }
 
+    get(id) {
+        let url = `${ this.API_URL }/user${ id }`;
+        return this.$http.get(url).then(response => {
+
+            return new Promise((resolve, reject) => {
+                resolve(response.data);
+            });
+
+        })
+    }
+
 
 }
