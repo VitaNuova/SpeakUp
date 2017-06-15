@@ -1,8 +1,14 @@
 var mongoose = require('mongoose');
 
 var Language = new mongoose.Schema({
-    name: String,
-    image: String
+    name: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Language', Language);

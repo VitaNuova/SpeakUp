@@ -2,9 +2,6 @@ var Language = require('./languageSchema');
 
 exports.postLanguage = function(req, res) {
     var language = new Language(req.body);
-    if (!req.user.equals(language.user)) {
-        res.sendStatus(401);
-    }
     language.save(function(err, language) {
         if (err) {
             res.status(500).send(err);

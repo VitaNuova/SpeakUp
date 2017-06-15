@@ -6,7 +6,7 @@ var jwtConfig = require('./passport/jwtConfig');
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-//var morgan = require('morgan');
+var morgan = require('morgan');
 
 var dbURI = 'mongodb://' + config.db.host + "/" + config.db.name;
 
@@ -33,9 +33,10 @@ process.on('SIGINT', function() {
 
 var app = express();
 
-//app.use(morgan('combined'));
+app.use(morgan('combined'));
 
 app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true

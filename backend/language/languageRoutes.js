@@ -9,9 +9,6 @@ function languageRoutes() {
         .post(languageController.postLanguage)
         .get(languageController.getLanguages);
 
-    router.route('/api/languages')
-        .get(languageController.getLanguages);
-
     router.route('/:language_id')
         .get(languageController.getLanguage)
         .put(languageController.putLanguage)
