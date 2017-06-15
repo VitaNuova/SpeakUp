@@ -1,7 +1,17 @@
 var LanguageLevel = require('./languageLevelSchema');
 
 exports.postLanguageLevel = function(req, res) {
-
+    var languageLevel = new LanguageLevel(req.body);
+    if (!req.user.equals(languageLevel.user)) {
+        res.sendStatus(401);
+    }
+    languageLevel.save(function(err, languageLevel) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.status(201).json(languageLevel);
+    });
 };
 
 exports.getLanguageLevels = function(req, res) {
@@ -25,7 +35,21 @@ exports.getLanguageLevel = function(req, res) {
 };
 
 exports.putLanguageLevel = function(req, res) {
-
+    LanguageLevel.findByIdAndUpdate(
+        req.params.languageLevel_id,
+        req.body,
+        {
+            //pass the new object to cb function
+            new: true,
+            //run validations
+            runValidators: true
+        }, function (err, languageLevel) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            res.json(languageLevel);
+        });
 };
 
 exports.deleteLanguageLevel = function(req, res) {

@@ -1,7 +1,17 @@
 var Event = require('./eventSchema');
 
 exports.postEvent = function(req, res) {
-
+    var event = new Event(req.body);
+    if (!req.user.equals(event.user)) {
+        res.sendStatus(401);
+    }
+    event.save(function(err, event) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.status(201).json(event);
+    });
 };
 
 exports.getEvents = function(req, res) {
@@ -25,7 +35,21 @@ exports.getEvent = function(req, res) {
 };
 
 exports.putEvent = function(req, res) {
-
+     Event.findByIdAndUpdate(
+        req.params.event_id,
+        req.body,
+        {
+            //pass the new object to cb function
+            new: true,
+            //run validations
+            runValidators: true
+        }, function (err, event) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            res.json(event);
+        });
 };
 
 exports.deleteEvent = function(req, res) {

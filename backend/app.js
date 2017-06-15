@@ -6,7 +6,7 @@ var jwtConfig = require('./passport/jwtConfig');
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var morgan = require('morgan')
+//var morgan = require('morgan');
 
 var dbURI = 'mongodb://' + config.db.host + "/" + config.db.name;
 
@@ -33,7 +33,7 @@ process.on('SIGINT', function() {
 
 var app = express();
 
-app.use(morgan('combined'))
+//app.use(morgan('combined'));
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -52,6 +52,8 @@ var languageLevelRoutes = require("./languageLevel/languageLevelRoutes");
 var offerRoutes = require("./offer/offerRoutes");
 var restaurantRoutes = require("./restaurant/restaurantRoutes");
 var topicRoutes = require("./topic/topicRoutes");
+var locationRoutes = require("./location/locationRoutes");
+var userLanguage = require("./userLanguage/userLanguageRoutes");
 
 app.use('/api/events', eventRoutes());
 app.use('/api/languages', languageRoutes());
@@ -60,5 +62,7 @@ app.use('/api/language-levels', languageLevelRoutes());
 app.use('/api/offers', offerRoutes());
 app.use('/api/restaurants', restaurantRoutes());
 app.use('/api/topics', topicRoutes());
+app.use('/api/locations', locationRoutes());
+app.use('/api/user-languages', userLanguageRoutes());
 
 module.exports = app;

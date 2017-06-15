@@ -1,7 +1,17 @@
 var Topic = require('./topicSchema');
 
 exports.postTopic = function(req, res) {
-
+    var topic = new Topic(req.body);
+    if (!req.user.equals(topic.user)) {
+        res.sendStatus(401);
+    }
+    event.save(function(err, topic) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.status(201).json(topic);
+    });
 };
 
 exports.getTopics = function(req, res) {
@@ -25,7 +35,21 @@ exports.getTopic = function(req, res) {
 };
 
 exports.putTopic = function(req, res) {
-
+    Topic.findByIdAndUpdate(
+        req.params.topic_id,
+        req.body,
+        {
+            //pass the new object to cb function
+            new: true,
+            //run validations
+            runValidators: true
+        }, function (err, topic) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            res.json(topic);
+        });
 };
 
 exports.deleteTopic = function(req, res) {

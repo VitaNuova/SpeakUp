@@ -1,21 +1,19 @@
-module.exports = eventRoutes;
+module.exports = userLanguageRoutes;
 
-function eventRoutes() {
+function userLanguageRoutes() {
 
-    var eventController = require('./eventController');
+    var userLanguageController = require('./userLanguageController');
     var router = require('express').Router();
 
     router.route('/')
-        .post(eventController.postEvent)
-        .get(eventController.getEvents);
+        .post(userLanguageController.postUserLanguage)
+        .get(userLanguageController.getUserLanguage);
 
-    router.route('/api/events')
-        .get(eventController.getEvents);
 
-    router.route('/:event_id')
-        .get(eventController.getEvent)
-        .put(eventController.putEvent)
-        .delete(eventController.deleteEvent);
+    router.route('/:userLanguage_id')
+        .get(userLanguageController.getUserLanguage)
+        .put(userLanguageController.putUserLanguage)
+        .delete(userLanguageController.deleteUserLanguage);
 
     return router;
 }

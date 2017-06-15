@@ -1,40 +1,62 @@
-var Event = require('./eventSchema');
-var events = require('./eventsMock');
+var UserLanguage = require('./userLanguageSchema');
 
-exports.postEvent = function(req, res) {};
+exports.postUserLanguage = function(req, res) {
+    var userLanguage = new UserLanguage(req.body);
+    if (!req.user.equals(userLanguage.user)) {
+        res.sendStatus(401);
+    }
+    userLanguage.save(function(err, userLanguage) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.status(201).json(userLanguage);
+    });
+};
 
-exports.getEvents = function(req, res) {
-    /*Event.find(function(err, events) {
+exports.getUserLanguages = function(req, res) {
+    UserLanguage.find(function(err, userLanguages) {
         if(err) {
             res.status(500).send(err);
             return;
         }
-        res.json(events);
-    });*/
-    res.json(events);
+        res.json(userLanguages);
+    });
 };
 
-exports.getEvent = function(req, res) {
-    Event.findById(req.params.event_id, function(err, event) {
+exports.getUserLanguage = function(req, res) {
+    UserLanguage.findById(req.params.userLanguage_id, function(err, userLanguage) {
        if(err) {
            res.status(500).send(err);
            return;
        }
-       res.json(event);
+       res.json(userLanguage);
     });
 };
 
-exports.putEvent = function(req, res) {
-
+exports.putUserLanguage = function(req, res) {
+    UserLanguage.findByIdAndUpdate(
+        req.params.userLanguage_id,
+        req.body,
+        {
+           new: true,
+           runValidators: true
+        }, function (err, userLanguage) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            res.json(userLanguage);
+        });
 };
 
-exports.deleteEvent = function(req, res) {
-    Event.findById(req.params.event_id, function(err, event) {
+exports.deleteUserLanguage = function(req, res) {
+    UserLanguage.findById(req.params.userLanguage_id, function(err, userLanguage) {
         if(err) {
             res.status(500).send(err);
             return;
         }
-        event.remove();
+        userLanguage.remove();
         res.sendStatus(200);
     })
 };
