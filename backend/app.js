@@ -53,7 +53,7 @@ var offerRoutes = require("./offer/offerRoutes");
 var restaurantRoutes = require("./restaurant/restaurantRoutes");
 var topicRoutes = require("./topic/topicRoutes");
 var locationRoutes = require("./location/locationRoutes");
-var userLanguage = require("./userLanguage/userLanguageRoutes");
+var userLanguageRoutes = require("./userLanguage/userLanguageRoutes");
 
 app.use('/api/events', eventRoutes());
 app.use('/api/languages', languageRoutes());
