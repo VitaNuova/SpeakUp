@@ -2,10 +2,7 @@ var Topic = require('./topicSchema');
 
 exports.postTopic = function(req, res) {
     var topic = new Topic(req.body);
-    if (!req.user.equals(topic.user)) {
-        res.sendStatus(401);
-    }
-    event.save(function(err, topic) {
+    topic.save(function(err, topic) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -39,9 +36,7 @@ exports.putTopic = function(req, res) {
         req.params.topic_id,
         req.body,
         {
-            //pass the new object to cb function
             new: true,
-            //run validations
             runValidators: true
         }, function (err, topic) {
             if (err) {
