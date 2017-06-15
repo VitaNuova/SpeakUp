@@ -2,9 +2,6 @@ var LanguageLevel = require('./languageLevelSchema');
 
 exports.postLanguageLevel = function(req, res) {
     var languageLevel = new LanguageLevel(req.body);
-    if (!req.user.equals(languageLevel.user)) {
-        res.sendStatus(401);
-    }
     languageLevel.save(function(err, languageLevel) {
         if (err) {
             res.status(500).send(err);
@@ -39,9 +36,7 @@ exports.putLanguageLevel = function(req, res) {
         req.params.languageLevel_id,
         req.body,
         {
-            //pass the new object to cb function
             new: true,
-            //run validations
             runValidators: true
         }, function (err, languageLevel) {
             if (err) {
