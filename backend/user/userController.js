@@ -16,7 +16,7 @@ module.exports.login = function(req, res) {
     User.findOne({ username: req.body.username }, function(err, user) {
         if (err) {
             res.status(500).send(err);
-            return
+            return;
         }
 
         if (!user) {
