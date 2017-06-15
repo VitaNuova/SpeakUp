@@ -1,6 +1,8 @@
 'use strict';
 
 import template from './view-single-event.template.html';
+import './view-single-event.style.css';
+
 import EventsService from './../../services/events/events.service';
 import UserService from './../../services/user/user.service';
 
