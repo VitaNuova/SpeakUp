@@ -2,9 +2,6 @@ var Location = require('./locationSchema');
 
 exports.postLocation = function(req, res) {
     var location = new Location(req.body);
-    if (!req.user.equals(location.user)) {
-        res.sendStatus(401);
-    }
     location.save(function(err, location) {
         if (err) {
             res.status(500).send(err);
@@ -35,13 +32,10 @@ exports.getLocation = function(req, res) {
 };
 
 exports.putLocation = function(req, res) {
-    // Use the Movie model to find a specific movie and update it
     Location.findByIdAndUpdate(
         req.params.location_id,
         req.body, {
-            //pass the new object to cb function
             new: true,
-            //run validations
             runValidators: true
         },
         function(err, location) {
