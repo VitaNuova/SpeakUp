@@ -20,6 +20,7 @@ import ViewEvent from './components/view-event/view-event';
 import ViewEventEdit from './components/view-event-edit/view-event-edit';
 import ViewEventCreate from './components/view-event-create/view-event-create';
 import ViewLogin from './components/view-login/view-login';
+import ViewSingleEvent from './components/view-single-event/view-single-event';
 
 let app = angular.module('app', [
     uiRouter,
@@ -32,7 +33,8 @@ let app = angular.module('app', [
     ViewEvent.name,
     ViewEventEdit.name,
     ViewEventCreate.name,
-    ViewLogin.name
+    ViewLogin.name,
+    ViewSingleEvent.name
 ]);
 
 app.constant('API_URL', 'http://localhost:3000');

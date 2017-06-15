@@ -5,6 +5,7 @@ import EventComponent from './../components/view-event/view-event.component';
 import EventEditComponent from './../components/view-event-edit/view-event-edit.component';
 import EventCreateComponent from './../components/view-event-create/view-event-create.component';
 import LoginComponent from './../components/view-login/view-login.component';
+import ViewSingleEventComponent from './../components/view-single-event/view-single-event.component'
 
 import EventsService from './../services/events/events.service';
 
