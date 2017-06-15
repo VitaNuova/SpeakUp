@@ -7,7 +7,7 @@ function userLanguageRoutes() {
 
     router.route('/')
         .post(userLanguageController.postUserLanguage)
-        .get(userLanguageController.getUserLanguage);
+        .get(userLanguageController.getUserLanguages);
 
 
     router.route('/:userLanguage_id')

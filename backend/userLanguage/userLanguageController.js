@@ -2,9 +2,6 @@ var UserLanguage = require('./userLanguageSchema');
 
 exports.postUserLanguage = function(req, res) {
     var userLanguage = new UserLanguage(req.body);
-    if (!req.user.equals(userLanguage.user)) {
-        res.sendStatus(401);
-    }
     userLanguage.save(function(err, userLanguage) {
         if (err) {
             res.status(500).send(err);
@@ -20,6 +17,12 @@ exports.getUserLanguages = function(req, res) {
             res.status(500).send(err);
             return;
         }
+    }).populate('language').populate('languageLevel').
+     populate('topics').exec(function(err, userLanguages) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
         res.json(userLanguages);
     });
 };
@@ -30,7 +33,13 @@ exports.getUserLanguage = function(req, res) {
            res.status(500).send(err);
            return;
        }
-       res.json(userLanguage);
+    }).populate('language').populate('languageLevel').
+    populate('topics').exec(function(err, userLanguages) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        res.json(userLanguages);
     });
 };
 
