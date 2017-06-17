@@ -13,21 +13,20 @@ import events from './events-mock'
 resolveEvent.$inject = ['$stateParams', EventsService.name];
 
 function resolveEvent($stateParams, eventsService) {
-    // return eventsService.get($stateParams.eventId);
-    for (var i = 0; i < events.length; i++) {
-        if (events[i]._id == $stateParams.eventId) {
-            console.log("inside resolveevent ");
-            return events[i];
-        }
-    }
+    return eventsService.get($stateParams.eventId);
+    // for (var i = 0; i < events.length; i++) {
+    //     if (events[i]._id == $stateParams.eventId) {
+    //         console.log("inside resolveevent");
+    //         return events[i];
+    //     }
+    // }
 }
 
 resolveEvents.$inject = [EventsService.name];
 
 function resolveEvents(eventsService) {
-    //return eventsService.list();
     console.log("inside resolveevents" + events[0]);
-    return events;
+    return eventsService.list();
 }
 
 

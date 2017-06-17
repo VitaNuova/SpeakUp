@@ -253,6 +253,9 @@ user3.image.data = fs.readFileSync(userImagePath);
 user3.image.contentType = "image/jpg";
 user3.save(function(err) { if (err) return console.error(err); });
 
+
+var event1ImagePath = "./migrations/assets/pictures/events/event1.jpg";
+
 var event1 = new Event({
     name: "Let's speak English",
     language: language1,
@@ -260,7 +263,11 @@ var event1 = new Event({
     topics: [t1, t2],
     users: [user1, user2]
 });
+event1.image.data = fs.readFileSync(event1ImagePath);
+event1.image.contentType = "image/jpg";
 event1.save(function(err) { if (err) return console.error(err); });
+
+var event2ImagePath = "./migrations/assets/pictures/events/event2.jpg";
 
 var event2 = new Event({
     name: "Let's speak French",
@@ -269,7 +276,11 @@ var event2 = new Event({
     topics: [t2, t3],
     users: [user2, user3]
 });
+event2.image.data = fs.readFileSync(event2ImagePath);
+event2.image.contentType = "image/jpg";
 event2.save(function(err) { if (err) return console.error(err); });
+
+var event3ImagePath = "./migrations/assets/pictures/events/event3.jpg";
 
 var event3 = new Event({
     name: "Let's speak advanced English",
@@ -278,6 +289,8 @@ var event3 = new Event({
     topics: [t1, t3],
     users: [user2, user3]
 });
+event3.image.data = fs.readFileSync(event3ImagePath);
+event3.image.contentType = "image/jpg";
 event3.save(function(err) { if (err) return console.error(err); });
 
 mongoose.connection.close();

@@ -3,7 +3,7 @@
   <div layout="row" layout-align="center space-around" layout-padding>
 
     <div layout="column" layout-align="start center" layout-padding>
-      <img ng-src="{{$ctrl.getRestaurantLogo()}}" alt="Restaurant Logo">
+      <img ng-src="data:{{$ctrl.singleEvent.image.contentType}};base64,{{$ctrl.arrayBufferToBase64()}}" alt="Restaurant Logo">
     </div>
 
     <div layout="column" layout-align="start center" layout-padding>

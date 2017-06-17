@@ -37,7 +37,7 @@ let app = angular.module('app', [
     ViewAboutUs.name
 ]);
 
-app.constant('API_URL', 'http://localhost:3000');
+app.constant('API_URL', 'http://localhost:3000/api');
 app.config(Routes);
 app.config(Middlewares);
 app.config(['$mdThemingProvider', function($mdThemingProvider) {

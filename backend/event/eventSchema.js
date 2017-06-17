@@ -4,6 +4,10 @@ var Event = new mongoose.Schema({
     name: String,
     language: { type: mongoose.Schema.Types.ObjectId, ref: 'Language' },
     offer: { type: mongoose.Schema.Types.ObjectId, ref: 'Offer' },
+    image: {
+        data: Buffer,
+        contentType: String
+    },
     topics: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Topic'
