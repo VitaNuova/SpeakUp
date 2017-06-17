@@ -20,21 +20,15 @@
                                 <div ng-message="required">Please enter your password.</div>
                             </div>
                         </md-input-container>
-                        <md-button ng-disabled="!LoginForm.$valid" ng-click="$ctrl.submit()" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
+                        <div layout="row" layout-align="center center">
+                            <md-button ng-disabled="!LoginForm.$valid" ng-click="$ctrl.submit()" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
+                        </div>
                     </form>
-                    <!--<span flex="20"></span>-->
-                    <!--<md-divider></md-divider>-->
-                    <!--<span flex="10"></span>-->
-                    <!--<div flex="20">-->
-                        <!--<div class="register">Don't have an account? Register now.</div>-->
-                        <!--<md-button class="md-raised md-primary">&nbsp Register &nbsp</md-button>-->
-                    <!--</div>-->
-                    <!--<span flex></span>-->
                 </md-card-content>
             </md-card>
             <md-card flex="30" class="half-transparent">
-                <md-card-content layout="column">
-                    <div>Don't have an account? Register now.</div>
+                <md-card-content layout="column" layout-align="center center">
+                    <md-text-float>Don't have an account? Register now.</md-text-float>
                     <md-button class="md-raised md-primary">&nbsp Register &nbsp</md-button>
                 </md-card-content>
             </md-card>
