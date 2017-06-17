@@ -27,10 +27,6 @@ var userSchema = mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'Language',
         required: true
-    },
-    events: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Event'
     }
 });
 
