@@ -35,7 +35,11 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-            }
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader?name=/styles/[name].[ext]'
+            } // inline base64 URLs for <=8k images, direct URLs for the rest
         ]
     },
 

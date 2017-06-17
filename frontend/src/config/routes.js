@@ -72,7 +72,7 @@ export default function config($stateProvider, $urlRouterProvider) {
         // })
         .state('login', {
             url: '/login',
-            component: LoginComponent.name,
+            component: LoginComponent.name
         })
         .state('profile', {
             url: '/profile',

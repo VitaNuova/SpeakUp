@@ -40,6 +40,12 @@ let app = angular.module('app', [
 app.constant('API_URL', 'http://localhost:3000');
 app.config(Routes);
 app.config(Middlewares);
+app.config(['$mdThemingProvider', function($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+        .primaryPalette('amber', {
+            'default': '300'
+        });
+}]);
 
 
 angular.element(document).ready(function() {
