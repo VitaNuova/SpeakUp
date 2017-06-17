@@ -2,8 +2,7 @@
 
 import angular from 'angular';
 
-//import EventsService from './events.service';
-import EventsService from './events.service';
+import OffersService from './offers.service';
 
 
 export default angular.module('OffersServiceDefinition', [])
