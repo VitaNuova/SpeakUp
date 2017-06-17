@@ -31,7 +31,9 @@ class ViewEventsComponentController {
     }
 
     details(event) {
+        console.log("inside details " + JSON.stringify(event));
         let _id = event['_id'];
+        console.log(_id);
         this.$state.go('event', { eventId: _id });
     };
 
