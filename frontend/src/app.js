@@ -30,11 +30,11 @@ let app = angular.module('app', [
     EventsService.name,
     AppContent.name,
     ViewEvents.name,
-    ViewEvent.name,
-    ViewEventEdit.name,
-    ViewEventCreate.name,
+    ViewCreateEvent.name,
     ViewLogin.name,
-    ViewSingleEvent.name
+    ViewSingleEvent.name,
+    ViewProfile.name,
+    ViewAboutUs.name
 ]);
 
 app.constant('API_URL', 'http://localhost:3000');
