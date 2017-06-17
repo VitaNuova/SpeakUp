@@ -15,7 +15,10 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    image: Buffer,
+    image: {
+        data: Buffer,
+        contentType: String
+    },
     age: Number,
     gender: String,
     location: {
@@ -25,29 +28,19 @@ var userSchema = mongoose.Schema({
     },
     languages: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Language',
+        ref: 'UserLanguage',
         required: true
-    },
-    events: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Event'
     }
 });
 
 userSchema.pre('save', function(next) {
     var user = this;
 
-    // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();
-
     bcrypt.genSalt(10, function(err, salt) {
         if (err) return next(err);
-
-        // hash the password using our new salt
         bcrypt.hash(user.password, salt, null, function(err, hash) {
             if (err) return next(err);
-
-            // override the cleartext password with the hashed one
             user.password = hash;
             next();
         });

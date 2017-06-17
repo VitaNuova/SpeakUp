@@ -1,16 +1,17 @@
 <md-toolbar>
-    <div class="md-toolbar-tools">
+    <div layout="row" layout-align="center space-around" layout-padding class="md-toolbar-tools">
 
-        <a ui-sref="events" layout="row">
-            <md-icon>
-                <ng-md-icon icon="grain"></ng-md-icon>
-            </md-icon>
-            <h2>Event Application</h2>
-        </a>
+        <md-nav-bar md-selected-nav-item="events">
+            <md-nav-item md-nav-sref="events" name="events">All Events</md-nav-item>
+            <md-nav-item md-nav-sref="eventAdd" name="eventAdd">Create Event</md-nav-item>
+            <md-nav-item md-nav-sref="profile" name="profile">Profile</md-nav-item>
+            <md-nav-item md-nav-sref="aboutUs" name="aboutUs">About us</md-nav-item>
+        </md-nav-bar>
 
         <span flex></span>
 
         <span flex="5"></span>
+
         <md-menu>
             <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.openMenu($mdMenu, $event)">
                 <md-icon>
@@ -47,4 +48,5 @@
         </md-menu>
 
     </div>
+
 </md-toolbar>

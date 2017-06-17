@@ -2,9 +2,6 @@ var Event = require('./eventSchema');
 
 exports.postEvent = function(req, res) {
     var event = new Event(req.body);
-    if (!req.user.equals(event.user)) {
-        res.sendStatus(401);
-    }
     event.save(function(err, event) {
         if (err) {
             res.status(500).send(err);
@@ -20,12 +17,24 @@ exports.getEvents = function(req, res) {
             res.status(500).send(err);
             return;
         }
+    }).populate('language').populate('offer').populate('topics')
+        .populate('users').exec(function(err, events) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
         res.json(events);
     });
 };
 
 exports.getEvent = function(req, res) {
     Event.findById(req.params.event_id, function(err, event) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+    }).populate('language').populate('offer').populate('topics')
+        .populate('users').exec(function(err, event) {
         if (err) {
             res.status(500).send(err);
             return;
@@ -39,9 +48,7 @@ exports.putEvent = function(req, res) {
         req.params.event_id,
         req.body,
         {
-            //pass the new object to cb function
             new: true,
-            //run validations
             runValidators: true
         }, function (err, event) {
             if (err) {

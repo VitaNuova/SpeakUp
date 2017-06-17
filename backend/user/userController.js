@@ -44,11 +44,7 @@ module.exports.signup = function(req, res) {
         return;
     }
 
-    var user = new User();
-
-    user.username = req.body.username;
-    user.password = req.body.password;
-
+    var user = new User(req.body);
     user.save(function(err) {
         if (err) {
             res.status(500).send(err);

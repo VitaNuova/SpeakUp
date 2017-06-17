@@ -1,0 +1,27 @@
+<md-content class="md-no-momentum">
+
+  <div layout="row" layout-align="center space-around" layout-padding>
+
+    <div layout="column" layout-align="start center" layout-padding>
+      <img ng-src="{{$ctrl.getRestaurantLogo()}}" alt="Restaurant Logo">
+    </div>
+
+    <div layout="column" layout-align="start center" layout-padding>
+      <span class="md-headline">Name: {{$ctrl.singleEvent.name}}</span>
+      <!--span class="md-subhead">Description: {{$ctrl.singleEvent.description}}</span-->
+      <md-progress-linear md-mode="determinate" value="100*{{$ctrl.singleEvent.users.length}}/{{$ctrl.singleEvent.offer.numOfPeople}}"></md-progress-linear>
+      <span class="md-subhead">
+        {{$ctrl.singleEvent.users.length}}/{{$ctrl.singleEvent.offer.numOfPeople}} people joined
+      </span>
+    </div>
+
+    <div layout="column" layout-align="end center" layout-padding>
+      <span class="md-subhead">
+        Language: {{$ctrl.singleEvent.language.name}}
+      </span>
+      <md-button class="md-primary md-raised" ng-click="$ctrl.join()">Join</md-button>
+    </div>
+
+  </div>
+
+</md-content>
