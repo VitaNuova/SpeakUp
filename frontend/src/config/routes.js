@@ -67,12 +67,12 @@ export default function config($stateProvider, $urlRouterProvider) {
             url: '/createEvent',
             component: CreateEventComponent.name,
         })
-        // .state('profile', {
-        //     url: '/profile',
-        //     component: ProfileComponent.name,
-        // })
-        // .state('aboutUs', {
-        //     url: '/aboutUs',
-        //     component: AboutUsComponent.name,
-        // })
+        .state('profile', {
+            url: '/profile',
+            component: ProfileComponent.name,
+        })
+        .state('aboutUs', {
+            url: '/aboutUs',
+            component: AboutUsComponent.name,
+        })
 }
