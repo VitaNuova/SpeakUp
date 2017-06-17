@@ -15,7 +15,10 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    image: String,
+    image: {
+        data: Buffer,
+        contentType: String
+    },
     age: Number,
     gender: String,
     location: {
@@ -25,7 +28,7 @@ var userSchema = mongoose.Schema({
     },
     languages: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Language',
+        ref: 'UserLanguage',
         required: true
     }
 });
