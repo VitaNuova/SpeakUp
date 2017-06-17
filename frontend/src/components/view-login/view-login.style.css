@@ -1,7 +1,16 @@
-.login-form md-card {
-    padding: 0 !important;
-}
+/*.login-form md-card {*/
+    /*padding: 0 !important;*/
+/*}*/
 
 .login-form md-card md-card-title {
     background-color: blue;
+}
+
+.background-img {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-image: url("../../../assets/carousel-image.jpg");
+    background-size: cover;
 }
