@@ -16,11 +16,11 @@ import Middlewares from './config/middlewares';
 
 import AppContent from './components/app-content/app-content';
 import ViewEvents from './components/view-events/view-events';
-import ViewEvent from './components/view-event/view-event';
-import ViewEventEdit from './components/view-event-edit/view-event-edit';
-import ViewEventCreate from './components/view-event-create/view-event-create';
+import ViewCreateEvent from './components/view-create-event/view-create-event';
 import ViewLogin from './components/view-login/view-login';
 import ViewSingleEvent from './components/view-single-event/view-single-event';
+import ViewProfile from './components/view-profile/view-profile';
+import ViewAboutUs from './components/view-about-us/view-about-us';
 
 let app = angular.module('app', [
     uiRouter,

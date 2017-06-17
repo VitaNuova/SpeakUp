@@ -9,8 +9,6 @@ function eventRoutes() {
         .post(eventController.postEvent)
         .get(eventController.getEvents);
 
-    router.route('/api/events')
-        .get(eventController.getEvents);
 
     router.route('/:event_id')
         .get(eventController.getEvent)
