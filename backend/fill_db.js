@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var User = require('./user/userSchema');
+var Topic = require('./topic/topicSchema');
 var UserLanguage = require('./userLanguage/userLanguageSchema');
 var Event = require('./event/eventSchema');
 var Language = require('./language/languageSchema');
@@ -7,7 +8,7 @@ var LanguageLevel = require('./languageLevel/languageLevelSchema');
 var Location = require('./location/locationSchema');
 var Offer = require('./offer/offerSchema');
 var Restaurant = require('./restaurant/restaurantSchema');
-var Topic = require('./topic/topicSchema');
+
 
 var config = require('./config/config');
 var fs = require('fs');
@@ -18,7 +19,7 @@ mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function() {
     console.log('Mongoose default connection open to ' + dbURI);
-    mongoose.connection.db.dropDatabase(function(err, result) {
+        mongoose.connection.db.dropDatabase(function(err, result) {
         console.log('Database at ' + dbURI + ' is dropped.');
     });
 });
@@ -38,32 +39,70 @@ process.on('SIGINT', function() {
     });
 });
 
-var location = new Location({
+var location1 = new Location({
     x: 48.1894672,
     y: 11.6215395
 });
+location1.save(function(err) { if (err) return console.error(err); });
+
+var location2 = new Location({
+    x: 48.25606990000001,
+    y: 11.551696600000014
+});
+location2.save(function(err) { if (err) return console.error(err); });
+
+var location3 = new Location({
+    x: 48.1673385,
+    y: 11.573782499999993
+});
+location3.save(function(err) { if (err) return console.error(err); });
 
 var englishImagePath = "./migrations/assets/pictures/languages/english.png";
 
-var language = new Language({
+var language1 = new Language({
     name: "english"
 });
+language1.image.data = fs.readFileSync(englishImagePath);
+language1.image.contentType = "image/png";
+language1.save(function(err) { if (err) return console.error(err); });
 
-language.image.data = fs.readFileSync(englishImagePath);
-language.image.contentType = "image/png";
+var frenchImagePath = "./migrations/assets/pictures/languages/french.jpeg";
 
-language.save(function(err) { if (err) return console.error(err); });
+var language2 = new Language({
+    name: "french"
+});
+language2.image.data = fs.readFileSync(frenchImagePath);
+language2.image.contentType = "image/jpeg";
+language2.save(function(err) { if (err) return console.error(err); });
+
 
 var swimmingImagePath = "./migrations/assets/pictures/topics/swimming.jpg";
+var foodImagePath = "./migrations/assets/pictures/topics/food.jpeg";
+var environmentImagePath = "./migrations/assets/pictures/topics/environment.jpeg";
 
 var t1 = new Topic({
-    name: "swimming"
+    name: "Swimming"
 });
 
 t1.image.data = fs.readFileSync(swimmingImagePath);
 t1.image.contentType = "image/jpg";
-
 t1.save(function(err) { if (err) return console.error(err); });
+
+var t2 = new Topic({
+    name: "Environment"
+});
+
+t2.image.data = fs.readFileSync(foodImagePath);
+t2.image.contentType = "image/jpeg";
+t2.save(function(err) { if (err) return console.error(err); });
+
+var t3 = new Topic({
+    name: "Food"
+});
+
+t3.image.data = fs.readFileSync(environmentImagePath);
+t3.image.contentType = "image/jpeg";
+t3.save(function(err) { if (err) return console.error(err); });
 
 var l1 = new LanguageLevel({
     name: "A1",
@@ -72,27 +111,27 @@ var l1 = new LanguageLevel({
 
 var l2 = new LanguageLevel({
     name: "A2",
-    description: "Advavnced intro course"
+    description: "Advanced intro course"
 });
 
 var l3 = new LanguageLevel({
     name: "B1",
-    description: "Basic medium course"
+    description: "Pre-intermediate course"
 });
 
 var l4 = new LanguageLevel({
     name: "B2",
-    description: "Advanced medium course"
+    description: "Intermediate course"
 });
 
 var l5 = new LanguageLevel({
     name: "C1",
-    description: "Basic advanced course"
+    description: "Upper-intermediate course"
 });
 
 var l6 = new LanguageLevel({
     name: "C2",
-    description: "Advanced super course"
+    description: "Advanced course"
 });
 
 l1.save(function(err) { if (err) return console.error(err); });
@@ -102,59 +141,143 @@ l4.save(function(err) { if (err) return console.error(err); });
 l5.save(function(err) { if (err) return console.error(err); });
 l6.save(function(err) { if (err) return console.error(err); });
 
-var restaurantLocation = new Location({
-    x: 48.19,
-    y: 11.5
+var restaurant1 = new Restaurant({
+    name: "That Mexican Place",
+    location: location1
 });
+restaurant1.save(function(err) { if (err) return console.error(err); });
 
-var restaurant = new Restaurant({
-    name: "Special Corso",
-    location: restaurantLocation
+var restaurant2 = new Restaurant({
+    name: "That Thai Place",
+    location: location2
 });
+restaurant2.save(function(err) { if (err) return console.error(err); });
 
-var userLanguage = new UserLanguage({
-    language: language,
+var restaurant3 = new Restaurant({
+    name: "That Japanese Place",
+    location: location3
+});
+restaurant3.save(function(err) { if (err) return console.error(err); });
+
+var userLanguage1 = new UserLanguage({
+    language: language1,
     languageLevel: l1,
-    topics: [t1]
+    topics: [t1, t2]
 });
 
-userLanguage.save(function(err) { if (err) return console.error(err); });
+userLanguage1.save(function(err) { if (err) return console.error(err); });
 
-var offer = new Offer({
-    restaurant: restaurant,
+var userLanguage2 = new UserLanguage({
+    language: language2,
+    languageLevel: l4,
+    topics: [t2, t3]
+});
+
+userLanguage2.save(function(err) { if (err) return console.error(err); });
+
+var userLanguage3 = new UserLanguage({
+    language: language1,
+    languageLevel: l6,
+    topics: [t1, t3]
+});
+
+userLanguage3.save(function(err) { if (err) return console.error(err); });
+
+var offer1 = new Offer({
+    restaurant: restaurant1,
     from: new Date("2017-06-15T07:00:00.123Z"),
     to: new Date("2017-06-23T07:00:00.123Z"),
     numOfPeople: 5,
     discount: 25
 });
 
-offer.save(function(err) { if (err) return console.error(err); });
+offer1.save(function(err) { if (err) return console.error(err); });
+
+var offer2 = new Offer({
+    restaurant: restaurant2,
+    from: new Date("2017-06-17T07:00:00.123Z"),
+    to: new Date("2017-06-21T07:00:00.123Z"),
+    numOfPeople: 5,
+    discount: 20
+});
+
+offer2.save(function(err) { if (err) return console.error(err); });
+
+var offer3 = new Offer({
+    restaurant: restaurant3,
+    from: new Date("2017-06-17T07:00:00.123Z"),
+    to: new Date("2017-06-25T07:00:00.123Z"),
+    numOfPeople: 3,
+    discount: 10
+});
+
+offer3.save(function(err) { if (err) return console.error(err); });
 
 var userImagePath = "./migrations/assets/pictures/users/user-1.jpg";
 
-var user = new User({
+var user1 = new User({
     username: "johndoe",
     password: "password",
     email: "john@doe.com",
     age: 23,
     gender: "male",
-    location: location,
-    languages: [userLanguage],
+    location: location1,
+    languages: [userLanguage1, userLanguage2],
 });
 
-user.image.data = fs.readFileSync(swimmingImagePath);
-user.image.contentType = "image/jpg";
+user1.image.data = fs.readFileSync(userImagePath);
+user1.image.contentType = "image/jpg";
+user1.save(function(err) { if (err) return console.error(err); });
 
-user.save(function(err) { if (err) return console.error(err); });
-
-var event = new Event({
-    name: "Our special event",
-    language: l1,
-    offer: offer,
-    topics: [t1],
-    users: [user]
+var user2 = new User({
+    username: "miki",
+    password: "pass",
+    email: "miki@bla.com",
+    location: location2,
+    languages: [userLanguage2, userLanguage3]
 });
 
-event.save(function(err) { if (err) return console.error(err); });
+user2.image.data = fs.readFileSync(userImagePath);
+user2.image.contentType = "image/jpg";
+user2.save(function(err) { if (err) return console.error(err); });
+
+var user3 = new User({
+    username: "janedoe",
+    password: "pass",
+    email: "janedoe@bla.com",
+    location: location3,
+    languages: [userLanguage2, userLanguage3]
+});
+
+user3.image.data = fs.readFileSync(userImagePath);
+user3.image.contentType = "image/jpg";
+user3.save(function(err) { if (err) return console.error(err); });
+
+var event1 = new Event({
+    name: "Let's speak English",
+    language: language1,
+    offer: offer1,
+    topics: [t1, t2],
+    users: [user1, user2]
+});
+event1.save(function(err) { if (err) return console.error(err); });
+
+var event2 = new Event({
+    name: "Let's speak French",
+    language: language2,
+    offer: offer2,
+    topics: [t2, t3],
+    users: [user2, user3]
+});
+event2.save(function(err) { if (err) return console.error(err); });
+
+var event3 = new Event({
+    name: "Let's speak advanced English",
+    language: language1,
+    offer: offer3,
+    topics: [t1, t3],
+    users: [user2, user3]
+});
+event3.save(function(err) { if (err) return console.error(err); });
 
 mongoose.connection.close();
