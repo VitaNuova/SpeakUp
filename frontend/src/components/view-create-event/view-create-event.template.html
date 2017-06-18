@@ -48,24 +48,27 @@
 
         <div layout="column" flex="50" md-virtual-repeat-container>
             <md-list>
-                <md-list-item ng-repeat="offer in $ctrl.offers" class="list-element">
+                <md-list-item ng-repeat="offer in $ctrl.offers" ng-class="{selected: offer.selected}">
                     <img ng-src="data:{{offer.restaurant.logo.contentType}};base64,{{$ctrl.arrayBufferToBase64(offer)}}" alt="Offer Logo" class="md-avatar">
-                    <div class="md-list-item-text" layout="column">
-                        <div><md-checkbox class="black" ng-model="offer.selected" ng-click ="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"></md-checkbox>
-                        {{offer.restaurant.name}}, -{{offer.discount}}%</div>
+                    <div class="md-list-item-text padding" layout="column">
                         <div>
-                            <md-icon><ng-md-icon icon="date_range" ></ng-md-icon></md-icon>
-                            {{$ctrl.getFullDate(offer)}}
+                            <md-checkbox class="black" ng-model="offer.selected" ng-click ="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"></md-checkbox>
+                            <span>{{offer.restaurant.name}}, -{{offer.discount}}%</span>
                         </div>
                         <div>
-                            <md-icon><ng-md-icon icon="schedule" ></ng-md-icon></md-icon>
-                            {{$ctrl.getTime(offer.from)}} - {{$ctrl.getTime(offer.to)}}
+                            <md-icon><ng-md-icon icon="date_range"></ng-md-icon></md-icon>
+                            <span>{{$ctrl.getFullDate(offer)}}</span>
+                        </div>
+                        <div>
+                            <md-icon><ng-md-icon icon="schedule"></ng-md-icon></md-icon>
+                            <span>{{$ctrl.getTime(offer.from)}} - {{$ctrl.getTime(offer.to)}}</span>
                         </div>
                         <div>
                             <md-icon><ng-md-icon icon="info" ></ng-md-icon></md-icon>
-                            discount valid for a group of {{offer.numOfPeople}}
+                            <span>discount valid for a group of {{offer.numOfPeople}}</span>
                         </div>
                     </div>
+                    <md-divider ng-if="!$last"></md-divider>
                 </md-list-item>
             </md-list>
         </div>

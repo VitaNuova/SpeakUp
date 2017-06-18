@@ -97,7 +97,10 @@ class ViewCreateEventComponentController {
 
     getFullDate(offer) {
         var date = new Date(offer.from);
-        return date.getDate().toString() + "." + (date.getMonth() + 1).toString() + "." + date.getFullYear();
+        var day = date.getDate().toString();
+        var month = ((date.getMonth() + 1) < 10 ? "0" : "") + (date.getMonth() + 1).toString();
+        var year = date.getFullYear();
+        return day + "." + month + "." + year;
     }
 
     getTime(time) {
