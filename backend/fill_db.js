@@ -19,7 +19,7 @@ mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function() {
     console.log('Mongoose default connection open to ' + dbURI);
-        mongoose.connection.db.dropDatabase(function(err, result) {
+    mongoose.connection.db.dropDatabase(function(err, result) {
         console.log('Database at ' + dbURI + ' is dropped.');
     });
 });
@@ -57,51 +57,34 @@ var location3 = new Location({
 });
 location3.save(function(err) { if (err) return console.error(err); });
 
-var englishImagePath = "./migrations/assets/pictures/languages/english.png";
-
 var language1 = new Language({
-    name: "english"
+    name: "english",
+    imagePath: config.app.apiUrl + "assets/pictures/languages/english.png"
 });
-language1.image.data = fs.readFileSync(englishImagePath);
-language1.image.contentType = "image/png";
 language1.save(function(err) { if (err) return console.error(err); });
 
-var frenchImagePath = "./migrations/assets/pictures/languages/french.jpeg";
-
 var language2 = new Language({
-    name: "french"
+    name: "french",
+    imagePath: config.app.apiUrl + "assets/pictures/languages/french.jpeg"
 });
-language2.image.data = fs.readFileSync(frenchImagePath);
-language2.image.contentType = "image/jpeg";
 language2.save(function(err) { if (err) return console.error(err); });
 
-
-var swimmingImagePath = "./migrations/assets/pictures/topics/swimming.jpg";
-var foodImagePath = "./migrations/assets/pictures/topics/food.jpeg";
-var environmentImagePath = "./migrations/assets/pictures/topics/environment.jpeg";
-
 var t1 = new Topic({
-    name: "Swimming"
+    name: "Swimming",
+    imagePath: config.app.apiUrl + "assets/pictures/topics/swimming.jpg"
 });
-
-t1.image.data = fs.readFileSync(swimmingImagePath);
-t1.image.contentType = "image/jpg";
 t1.save(function(err) { if (err) return console.error(err); });
 
 var t2 = new Topic({
-    name: "Environment"
+    name: "Environment",
+    imagePath: config.app.apiUrl + "assets/pictures/topics/food.jpeg"
 });
-
-t2.image.data = fs.readFileSync(foodImagePath);
-t2.image.contentType = "image/jpeg";
 t2.save(function(err) { if (err) return console.error(err); });
 
 var t3 = new Topic({
-    name: "Food"
+    name: "Food",
+    imagePath: config.app.apiUrl + "assets/pictures/topics/environment.jpeg"
 });
-
-t3.image.data = fs.readFileSync(environmentImagePath);
-t3.image.contentType = "image/jpeg";
 t3.save(function(err) { if (err) return console.error(err); });
 
 var l1 = new LanguageLevel({
@@ -213,8 +196,6 @@ var offer3 = new Offer({
 
 offer3.save(function(err) { if (err) return console.error(err); });
 
-var userImagePath = "./migrations/assets/pictures/users/user-1.jpg";
-
 var user1 = new User({
     username: "johndoe",
     password: "password",
@@ -223,10 +204,9 @@ var user1 = new User({
     gender: "male",
     location: location1,
     languages: [userLanguage1, userLanguage2],
+    imagePath: config.app.apiUrl + "assets/pictures/users/user-1.jpg"
 });
 
-user1.image.data = fs.readFileSync(userImagePath);
-user1.image.contentType = "image/jpg";
 user1.save(function(err) { if (err) return console.error(err); });
 
 var user2 = new User({
@@ -237,8 +217,6 @@ var user2 = new User({
     languages: [userLanguage2, userLanguage3]
 });
 
-user2.image.data = fs.readFileSync(userImagePath);
-user2.image.contentType = "image/jpg";
 user2.save(function(err) { if (err) return console.error(err); });
 
 var user3 = new User({
@@ -249,48 +227,39 @@ var user3 = new User({
     languages: [userLanguage2, userLanguage3]
 });
 
-user3.image.data = fs.readFileSync(userImagePath);
-user3.image.contentType = "image/jpg";
 user3.save(function(err) { if (err) return console.error(err); });
-
-
-var event1ImagePath = "./migrations/assets/pictures/events/event1.jpg";
 
 var event1 = new Event({
     name: "Let's speak English",
     language: language1,
     offer: offer1,
     topics: [t1, t2],
-    users: [user1, user2]
+    users: [user1, user2],
+    imagePath: config.app.apiUrl + "assets/pictures/events/event1.jpg"
 });
-event1.image.data = fs.readFileSync(event1ImagePath);
-event1.image.contentType = "image/jpg";
-event1.save(function(err) { if (err) return console.error(err); });
 
-var event2ImagePath = "./migrations/assets/pictures/events/event2.jpg";
+event1.save(function(err) { if (err) return console.error(err); });
 
 var event2 = new Event({
     name: "Let's speak French",
     language: language2,
     offer: offer2,
     topics: [t2, t3],
-    users: [user2, user3]
+    users: [user2, user3],
+    imagePath: config.app.apiUrl + "assets/pictures/events/event2.jpg"
 });
-event2.image.data = fs.readFileSync(event2ImagePath);
-event2.image.contentType = "image/jpg";
-event2.save(function(err) { if (err) return console.error(err); });
 
-var event3ImagePath = "./migrations/assets/pictures/events/event3.jpg";
+event2.save(function(err) { if (err) return console.error(err); });
 
 var event3 = new Event({
     name: "Let's speak advanced English",
     language: language1,
     offer: offer3,
     topics: [t1, t3],
-    users: [user2, user3]
+    users: [user2, user3],
+    imagePath: config.app.apiUrl + "assets/pictures/events/event3.jpg"
 });
-event3.image.data = fs.readFileSync(event3ImagePath);
-event3.image.contentType = "image/jpg";
+
 event3.save(function(err) { if (err) return console.error(err); });
 
 mongoose.connection.close();

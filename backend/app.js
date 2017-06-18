@@ -45,6 +45,8 @@ app.use(bodyParser.urlencoded({
 app.use(passport.initialize());
 jwtConfig(passport);
 
+app.use('/api', express.static(__dirname + '/public'));
+
 //Root routes
 var eventRoutes = require("./event/eventRoutes");
 var languageRoutes = require("./language/languageRoutes");

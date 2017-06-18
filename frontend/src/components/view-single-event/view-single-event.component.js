@@ -42,21 +42,21 @@ class ViewSingleEventComponentController {
 
     };
 
-    getRestaurantLogo(event) {
-        console.log(this.singleEvent.image.data);
-        let restaurantLogoURL = 'http://www.almanac.com/sites/default/files/users/Almanac%20Staff/violet-292367_1920_0_full_width.jpg';
-        return restaurantLogoURL;
-    }
+    // getRestaurantLogo(event) {
+    //     console.log(this.singleEvent.image.data);
+    //     let restaurantLogoURL = 'http://www.almanac.com/sites/default/files/users/Almanac%20Staff/violet-292367_1920_0_full_width.jpg';
+    //     return restaurantLogoURL;
+    // }
 
-    arrayBufferToBase64() {
-        var binary = '';
-        var bytes = new Uint8Array(this.singleEvent.image.data.data);
-        var len = bytes.byteLength;
-        for (var i = 0; i < len; i++) {
-            binary += String.fromCharCode( bytes[ i ] );
-        }
-        return window.btoa( binary );
-    }
+    // arrayBufferToBase64() {
+    //     var binary = '';
+    //     var bytes = new Uint8Array(this.singleEvent.image.data.data);
+    //     var len = bytes.byteLength;
+    //     for (var i = 0; i < len; i++) {
+    //         binary += String.fromCharCode( bytes[ i ] );
+    //     }
+    //     return window.btoa( binary );
+    // }
 
     static get $inject() {
         return ['$state', EventsService.name, UserService.name];
