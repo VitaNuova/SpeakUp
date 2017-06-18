@@ -54,10 +54,10 @@ class ViewCreateEventComponentController {
 
     createEvent() {
         this.model.topics = [this.topic1._id];
-        if(this.topic2) {
+        if (this.topic2) {
             this.model.topics.push(this.topic2._id);
         }
-        if(this.topic3) {
+        if (this.topic3) {
             this.model.topics.push(this.topic3._id);
         }
         var postedModel = {
@@ -82,23 +82,11 @@ class ViewCreateEventComponentController {
     };
 
     uncheckOthers($index) {
-        for(var i = 0; i < this.offers.length; i++) {
-            if(i != $index) {
+        for (var i = 0; i < this.offers.length; i++) {
+            if (i != $index) {
                 this.offers[i].selected = false;
             }
         }
-    }
-
-    arrayBufferToBase64(offer) {
-        console.log("OFFER");
-        console.log(offer);
-        var binary = '';
-        var bytes = new Uint8Array(offer.restaurant.logo.data.data);
-        var len = bytes.byteLength;
-        for (var i = 0; i < len; i++) {
-            binary += String.fromCharCode( bytes[ i ] );
-        }
-        return window.btoa( binary );
     }
 
     getFullDate(offer) {
