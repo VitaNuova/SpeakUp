@@ -8,6 +8,7 @@ import AboutUsComponent from './../components/view-about-us/view-about-us.compon
 import ViewSingleEventComponent from './../components/view-single-event/view-single-event.component';
 
 import EventsService from './../services/events/events.service';
+import OffersService from './../services/offers/offers.service';
 
 resolveEvent.$inject = ['$stateParams', EventsService.name];
 
@@ -15,136 +16,13 @@ function resolveEvent($stateParams, eventsService) {
     return eventsService.get($stateParams.eventId);
 }
 
-resolveEvents.$inject = [EventsService.name];
+resolveOffers.$inject = [OffersService.name];
 
-function resolveOffers() {
-    return [
-        {
-            restaurant: {
-                name: "That Mexican Place",
-                location:
-                    {
-                        x: 48.1894672,
-                        y: 11.6215395
-                    }
-            },
-            from: 2017-6-15,
-            to: 2017-6-23,
-            numOfPeople: 5,
-            discount: 25
-        },
-        {
-            restaurant: {
-                name: "That Thai Place",
-                location: {
-                    x: 48.25606990000001,
-                    y: 11.551696600000014
-                }
-            },
-            from: "2017-06-17T07:00:00.123Z",
-            to: "2017-06-21T07:00:00.123Z",
-            numOfPeople: 5,
-            discount: 20
-        },
-        {
-            restaurant: {
-                name: "That Thai Place",
-                location: {
-                    x: 48.25606990000001,
-                    y: 11.551696600000014
-                }
-            },
-            from: "2017-06-17T07:00:00.123Z",
-            to: "2017-06-21T07:00:00.123Z",
-            numOfPeople: 5,
-            discount: 20
-        },
-        {
-            restaurant: {
-                name: "That Mexican Place",
-                location:
-                    {
-                        x: 48.1894672,
-                        y: 11.6215395
-                    }
-            },
-            from: 2017-6-15,
-            to: 2017-6-23,
-            numOfPeople: 5,
-            discount: 25
-        },
-        {
-            restaurant: {
-                name: "That Mexican Place",
-                location:
-                    {
-                        x: 48.1894672,
-                        y: 11.6215395
-                    }
-            },
-            from: 2017-6-15,
-            to: 2017-6-23,
-            numOfPeople: 5,
-            discount: 25
-        },
-        {
-            restaurant: {
-                name: "That Mexican Place",
-                location:
-                    {
-                        x: 48.1894672,
-                        y: 11.6215395
-                    }
-            },
-            from: 2017-6-15,
-            to: 2017-6-23,
-            numOfPeople: 5,
-            discount: 25
-        },
-        {
-            restaurant: {
-                name: "That Mexican Place",
-                location:
-                    {
-                        x: 48.1894672,
-                        y: 11.6215395
-                    }
-            },
-            from: 2017-6-15,
-            to: 2017-6-23,
-            numOfPeople: 5,
-            discount: 25
-        },
-        {
-            restaurant: {
-                name: "That Mexican Place",
-                location:
-                    {
-                        x: 48.1894672,
-                        y: 11.6215395
-                    }
-            },
-            from: 2017-6-15,
-            to: 2017-6-23,
-            numOfPeople: 5,
-            discount: 25
-        },
-        {
-            restaurant: {
-                name: "That Mexican Place",
-                location:
-                    {
-                        x: 48.1894672,
-                        y: 11.6215395
-                    }
-            },
-            from: 2017-6-15,
-            to: 2017-6-23,
-            numOfPeople: 5,
-            discount: 25
-        }
-    ];
+function resolveOffers(offersService) {
+    return offersService.list();
 }
+
+resolveEvents.$inject = [EventsService.name];
 
 function resolveEvents(eventsService) {
     return eventsService.list();
