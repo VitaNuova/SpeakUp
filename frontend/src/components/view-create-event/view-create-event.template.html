@@ -1,9 +1,10 @@
 <md-content class="md-no-momentum">
-    <h1>Create event page</h1>
-    <br/>
-    <form name="EventForm">
-        <div layout="row">
-            <div layout="column" flex="50">
+    <div layout="row" layout-margin>
+        <h1>Create event page</h1>
+    </div>
+    <div layout="row" layout-margin layout-padding>
+        <div layout="column" flex="50">
+            <form name="EventForm">
                 <md-input-container class="md-block">
                     <label>Name</label>
                     <input ng-model="$ctrl.model.name" type="text" class="small-width" required>
@@ -40,25 +41,25 @@
                         </md-select>
                     </div>
                 </md-input-container>
-            </div>
-
-            <div layout="column" flex="50" md-virtual-repeat-container>
-                <h3>Venue</h3>
-                <md-list>
-                    <md-list-item ng-repeat="offer in $ctrl.offers">
-                        <img src="../../../assets/rest.png" class="md-avatar">
-                        <div class="md-list-item-text" layout="column">
-                            <p><md-checkbox ng-model="offer.selected" ng-click ="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"></md-checkbox>
-                                {{offer.restaurant.name}}, -{{offer.discount}}%</p>
-                            <p>* discount valid for a group of {{offer.numOfPeople}}</p>
-                        </div>
-                    </md-list-item>
-                </md-list>
-            </div>
+            </form>
         </div>
 
-        <div layout="row" layout-align="center center">
-            <md-button ng-disabled="!EventForm.$valid || !$ctrl.model.offer" class="md-raised md-primary" type="submit" ng-click="$ctrl.createEvent()">Create event</md-button>
+        <md-divider></md-divider>
+
+        <div layout="column" flex="50" md-virtual-repeat-container>
+            <md-list>
+                <md-list-item ng-repeat="offer in $ctrl.offers">
+                    <img src="../../../assets/rest.png" class="md-avatar">
+                    <div class="md-list-item-text" layout="column">
+                        <p><md-checkbox class="black" ng-model="offer.selected" ng-click ="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"></md-checkbox>
+                            {{offer.restaurant.name}}, -{{offer.discount}}%</p>
+                        <p>* discount valid for a group of {{offer.numOfPeople}}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
         </div>
-    </form>
+    </div>
+    <div layout="row" layout-margin layout-align="center center">
+        <md-button ng-disabled="!EventForm.$valid || !$ctrl.model.offer" class="md-raised md-primary" type="submit" ng-click="$ctrl.createEvent()">Create event</md-button>
+    </div>
 </md-content>

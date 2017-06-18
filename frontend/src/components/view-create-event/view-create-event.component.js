@@ -64,6 +64,7 @@ class ViewCreateEventComponentController {
             name: this.model.name,
             language: this.model.language._id,
             topics: this.model.topics,
+            offer: this.model.offer._id,
             users: []
         }
         console.log(postedModel);
@@ -80,9 +81,6 @@ class ViewCreateEventComponentController {
                 this.offers[i].selected = false;
             }
         }
-        console.log("HERE");
-        console.log(this.smt);
-        // console.log(this.model.offer);
     }
 
 }
