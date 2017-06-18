@@ -1,10 +1,13 @@
 <div class="background-img" layout="column" layout-padding="">
-    <span flex="15"></span>
-    <md-content class="login-form transparent" layout="row" flex="70">
-        <span flex="25"></span>
-        <div flex="50" layout="column">
-            <md-card flex="70" class="half-transparent">
-                <md-card-content layout="column">
+    <md-content class="login-form transparent" layout="row">
+        <md-card class="mission-text transparent" layout-align="end left">
+            <h1>Connect, improve, explore</h1>
+            <h2>Speak Up to the challenge</h2>
+        </md-card>
+        <span flex></span>
+        <md-card class="half-transparent">
+            <md-card-content layout="row">
+                <md-card class="transparent" layout-padding>
                     <form name="LoginForm">
                         <md-input-container class="md-block">
                             <label>Login</label>
@@ -15,25 +18,66 @@
                         </md-input-container>
                         <md-input-container class="md-block">
                             <label>Password</label>
-                            <input type="password" name="password" ng-model="$ctrl.login.password" placeholder="Password" required=""/>
+                            <input type="password" name="password" ng-model="$ctrl.login.password" placeholder="Password" required="" />
                             <div ng-messages="LoginForm.password.$error" role="alert" multiple="">
                                 <div ng-message="required">Please enter your password.</div>
                             </div>
                         </md-input-container>
-                        <div layout="row" layout-align="center center">
+                        <div layout="row" layout-align="center">
                             <md-button ng-disabled="!LoginForm.$valid" ng-click="$ctrl.submit()" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
                         </div>
                     </form>
-                </md-card-content>
-            </md-card>
-            <md-card flex="30" class="half-transparent">
-                <md-card-content layout="column" layout-align="center center">
-                    <md-text-float>Don't have an account? Register now.</md-text-float>
-                    <md-button class="md-raised md-primary">&nbsp Register &nbsp</md-button>
-                </md-card-content>
-            </md-card>
-        </div>
-        <span flex></span>
+                </md-card>
+                <md-card class="transparent" layout-padding flex="nogrow">
+                    <md-card-content layout="column" layout-align="center center">
+                        <span flex="15" layout-padding>Don't have an account?</span>
+                        <span flex="15" layout-padding>Register now!</span>
+                        <md-button class="md-raised md-primary">Register</md-button>
+                    </md-card-content>
+                </md-card>
+            </md-card-content>
+        </md-card>
     </md-content>
+</div>
+<div layout="row" layout-padding>
+    <span flex="10"></span>
+    <md-card layout-padding flex="25">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline text-center">Connect</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="column">
+            <md-icon md-font-library="material-icons md-48" layout-align="center">cached</md-icon>
+            <p class="text-center">Meet with fellow students
+            </p>
+        </md-card-content>
+    </md-card>
     <span flex></span>
+    <md-card layout-padding flex="25">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline text-center">Improve</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="column">
+            <md-icon md-font-library="material-icons md-48" layout-align="center">trending_up</md-icon>
+            <p class="text-center">Learn new languages
+            </p>
+        </md-card-content>
+    </md-card>
+    <span flex></span>
+    <md-card layout-padding flex="25">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline text-center">Explore</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="column">
+            <md-icon md-font-library="material-icons md-48" layout-align="center">search</md-icon>
+            <p class="text-center">Find best place offers in the city
+            </p>
+        </md-card-content>
+    </md-card>
+    <span flex="10"></span>
 </div>

@@ -43,7 +43,7 @@ app.config(Middlewares);
 app.config(['$mdThemingProvider', function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('amber', {
-            'default': '300'
+            'default': '400'
         });
 }]);
 

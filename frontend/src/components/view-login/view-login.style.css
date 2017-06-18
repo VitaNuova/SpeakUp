@@ -1,9 +1,9 @@
-.login-form md-card{
-    padding: 0 !important;
+.login-form {
+    overflow: hidden;
 }
 
-.login-form md-card md-card-title {
-    background-color: blue;
+.login-form md-card {
+    padding: 0 !important;
 }
 
 .background-img {
@@ -11,7 +11,7 @@
     height: 100%;
     width: 100%;
     top: 0;
-    background-image: url("../../../assets/carousel-image.jpg");
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../../assets/carousel-image.jpg");
     background-size: cover;
 }
 
@@ -24,5 +24,23 @@
 }
 
 .register {
-    color: rgba(0,0,0,0.38);
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.mission-text {
+    box-shadow: none;
+    color: white;
+}
+
+.mission-text>h1 {
+    font-size: 5.1vw;
+    margin: 0;
+}
+
+.mission-text>h2 {
+    font-size: 3.0vh;
+}
+
+.text-center {
+    text-align: center;
 }

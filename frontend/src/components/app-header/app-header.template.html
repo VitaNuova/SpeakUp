@@ -1,17 +1,12 @@
-<md-toolbar>
-    <div layout="row" layout-align="center space-around" layout-padding class="md-toolbar-tools">
-
-        <md-nav-bar md-selected-nav-item="events">
+<md-toolbar md-scroll-shrink>
+    <div layout="row" layout-padding class="md-toolbar-tools">
+        <md-nav-bar md-selected-nav-item="events" aria-label="menu">
             <md-nav-item md-nav-sref="events" name="events">All Events</md-nav-item>
             <md-nav-item md-nav-sref="eventAdd" name="eventAdd">Create Event</md-nav-item>
             <md-nav-item md-nav-sref="profile" name="profile">Profile</md-nav-item>
             <md-nav-item md-nav-sref="aboutUs" name="aboutUs">About us</md-nav-item>
         </md-nav-bar>
-
         <span flex></span>
-
-        <span flex="5"></span>
-
         <md-menu>
             <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.openMenu($mdMenu, $event)">
                 <md-icon>
@@ -21,7 +16,7 @@
             <md-menu-content width="4">
                 <md-menu-item ng-if="$ctrl.isAuthenticated()">
                     <md-button>
-                        <md-icon md-menu-align-target>
+                        <md-icon md-menu-align-target aria-label="">
                             <ng-md-icon icon="account_circle"></ng-md-icon>
                         </md-icon>
                         {{$ctrl.getCurrentUser()}}
@@ -30,7 +25,7 @@
                 <md-menu-divider ng-if="$ctrl.isAuthenticated()"></md-menu-divider>
                 <md-menu-item ng-if="$ctrl.isAuthenticated()">
                     <md-button ng-click="$ctrl.logout($event)">
-                        <md-icon md-menu-align-target>
+                        <md-icon md-menu-align-target aria-label="logut">
                             <ng-md-icon icon="logout"></ng-md-icon>
                         </md-icon>
                         Logout
@@ -38,7 +33,7 @@
                 </md-menu-item>
                 <md-menu-item ng-if="!$ctrl.isAuthenticated()">
                     <md-button ng-click="$ctrl.login($event)">
-                        <md-icon md-menu-align-target>
+                        <md-icon md-menu-align-target aria-label="login">
                             <ng-md-icon icon="login"></ng-md-icon>
                         </md-icon>
                         Login
@@ -46,7 +41,5 @@
                 </md-menu-item>
             </md-menu-content>
         </md-menu>
-
     </div>
-
 </md-toolbar>

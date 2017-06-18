@@ -33,7 +33,7 @@ function resolveEvents(eventsService) {
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 export default function config($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise("/events");
+    $urlRouterProvider.otherwise("/");
 
     $stateProvider
         .state('events', {
@@ -70,7 +70,7 @@ export default function config($stateProvider, $urlRouterProvider) {
         //     }
         // })
         .state('login', {
-            url: '/login',
+            url: '/',
             component: LoginComponent.name
         })
         .state('profile', {
