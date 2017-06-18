@@ -171,7 +171,8 @@ var offer1 = new Offer({
     from: new Date("2017-06-15T07:00:00.123Z"),
     to: new Date("2017-06-23T07:00:00.123Z"),
     numOfPeople: 5,
-    discount: 25
+    discount: 25,
+    imagePath: config.app.apiUrl + "assets/pictures/events/event1.jpg"
 });
 
 offer1.save(function(err) { if (err) return console.error(err); });
@@ -181,7 +182,8 @@ var offer2 = new Offer({
     from: new Date("2017-06-17T07:00:00.123Z"),
     to: new Date("2017-06-21T07:00:00.123Z"),
     numOfPeople: 5,
-    discount: 20
+    discount: 20,
+    imagePath: config.app.apiUrl + "assets/pictures/events/event2.jpg"
 });
 
 offer2.save(function(err) { if (err) return console.error(err); });
@@ -191,7 +193,8 @@ var offer3 = new Offer({
     from: new Date("2017-06-17T07:00:00.123Z"),
     to: new Date("2017-06-25T07:00:00.123Z"),
     numOfPeople: 3,
-    discount: 10
+    discount: 10,
+    imagePath: config.app.apiUrl + "assets/pictures/events/event3.jpg"
 });
 
 offer3.save(function(err) { if (err) return console.error(err); });
@@ -234,8 +237,7 @@ var event1 = new Event({
     language: language1,
     offer: offer1,
     topics: [t1, t2],
-    users: [user1, user2],
-    imagePath: config.app.apiUrl + "assets/pictures/events/event1.jpg"
+    users: [user1, user2]
 });
 
 event1.save(function(err) { if (err) return console.error(err); });
@@ -245,8 +247,7 @@ var event2 = new Event({
     language: language2,
     offer: offer2,
     topics: [t2, t3],
-    users: [user2, user3],
-    imagePath: config.app.apiUrl + "assets/pictures/events/event2.jpg"
+    users: [user2, user3]
 });
 
 event2.save(function(err) { if (err) return console.error(err); });
@@ -256,8 +257,7 @@ var event3 = new Event({
     language: language1,
     offer: offer3,
     topics: [t1, t3],
-    users: [user2, user3],
-    imagePath: config.app.apiUrl + "assets/pictures/events/event3.jpg"
+    users: [user2, user3]
 });
 
 event3.save(function(err) { if (err) return console.error(err); });

@@ -21,7 +21,8 @@ var Offer = new mongoose.Schema({
     discount: {
         type: Number,
         required: true
-    }
+    },
+    imagePath: String
 });
 
 module.exports = mongoose.model('Offer', Offer);
