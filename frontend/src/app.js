@@ -50,6 +50,9 @@ app.config(['$mdThemingProvider', function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('amber', {
             'default': '400'
+        })
+        .accentPalette('green', {
+            'default': '400'
         });
 }]);
 
