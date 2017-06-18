@@ -24,8 +24,9 @@ class ViewCreateEventComponent {
 }
 
 class ViewCreateEventComponentController {
-    constructor($state, EventsService, UserService, TopicsService, LanguagesService) {
+    constructor($state, $mdToast, EventsService, UserService, TopicsService, LanguagesService) {
         this.$state = $state;
+        this.$mdToast = $mdToast;
         this.EventsService = EventsService;
         this.UserService = UserService;
         this.TopicsService = TopicsService;
@@ -37,14 +38,12 @@ class ViewCreateEventComponentController {
     }
 
     getLanguages() {
-        console.log(this.language);
         this.LanguagesService.list().then(response => {
             this.languages = response;
         });
     }
 
     getTopics() {
-        console.log(this.topics);
         if (!this.topics) {
             this.TopicsService.list().then(response => {
                 this.topics = response;
@@ -70,9 +69,9 @@ class ViewCreateEventComponentController {
         console.log(postedModel);
 
         this.EventsService.create(postedModel).then(data => {
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent('Simple Toast!')
+            this.$mdToast.show(
+                this.$mdToast.simple()
+                    .textContent('The event has been successfully created!')
                     .hideDelay(3000)
             );
 
