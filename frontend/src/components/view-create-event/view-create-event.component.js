@@ -12,6 +12,9 @@ class ViewCreateEventComponent {
     constructor() {
         this.controller = ViewCreateEventComponentController;
         this.template = template;
+        this.bindings = {
+            offers: '<'
+        }
     }
 
     static get name() {
@@ -64,28 +67,21 @@ class ViewCreateEventComponentController {
             users: []
         }
         console.log(postedModel);
-        // delete this.model.language.image
-        // delete this.topic1.image;
-
-        // console.log(this.model);
-        // console.log(JSON.stringify(this.model));
 
         this.EventsService.create(postedModel).then(data => {
-            // this. = JSON.parse(JSON.stringify(data));
-            console.log("POSTED");
-            console.log(data);
             this.$state.go('events');
         });
 
-        // let _id = this.movie['_id'];
-        //
-        // this.MoviesService.update(this.model).then(data => {
-        //     this.movie = JSON.parse(JSON.stringify(data));
-        //
-        //     this.$state.go('movie',{ movieId:_id});
-        // });
-
     };
+
+    uncheckOthers($index) {
+        for(var i = 0; i < this.offers.length; i++) {
+            if(i != $index) {
+                this.offers[i].selected = false;
+            }
+        }
+        console.log(this.model.offer);
+    }
 
 }
 

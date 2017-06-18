@@ -1,86 +1,152 @@
-<div layout="column" layout-padding>
-    <md-content class="md-no-momentum">
-        <h1>Create event page</h1>
-        <br/>
-        <form name="EventForm">
-            <div layout="row">
-                <div layout="column" flex="50">
+<!--<<<<<<< HEAD-->
+<!--<div layout="column" layout-padding>-->
+    <!--<md-content class="md-no-momentum">-->
+        <!--<h1>Create event page</h1>-->
+        <!--<br/>-->
+        <!--<form name="EventForm">-->
+            <!--<div layout="row">-->
+                <!--<div layout="column" flex="50">-->
 
-                    <md-input-container class="md-block">
-                        <label>Name</label>
-                        <input ng-model="$ctrl.model.name" type="text" class="small-width" required>
-                    </md-input-container>
+                    <!--<md-input-container class="md-block">-->
+                        <!--<label>Name</label>-->
+                        <!--<input ng-model="$ctrl.model.name" type="text" class="small-width" required>-->
+                    <!--</md-input-container>-->
 
-                    <md-input-container class="md-block">
-                        <div layout="column" ng-cloak>
-                            <md-select placeholder="Language" ng-model="$ctrl.model.language" md-on-open="$ctrl.getLanguages()" class="small-width" required="">
-                                <md-option ng-value="language" ng-repeat="language in $ctrl.languages">{{language.name}}</md-option>
-                            </md-select>
-                        </div>
-                    </md-input-container>
-
-                    <md-input-container class="md-block">
-                        <div layout="column" ng-cloak>
-                            <md-select placeholder="Topic of the event #1" ng-model="$ctrl.topic1" md-on-open="$ctrl.getTopics()" class="small-width" required="">
-                                <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
-                            </md-select>
-                        </div>
-                    </md-input-container>
-
-                    <md-input-container class="md-block">
-                        <div layout="column" ng-cloak>
-                            <md-select placeholder="Topic of the event #2 (optional)" ng-model="$ctrl.topic2" md-on-open="$ctrl.getTopics()" class="small-width">
-                                <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
-                            </md-select>
-                        </div>
-                    </md-input-container>
-
-                    <md-input-container class="md-block">
-                        <div layout="column" ng-cloak>
-                            <md-select placeholder="Topic of the event #3 (optional)" ng-model="$ctrl.topic3" md-on-open="$ctrl.getTopics()" class="small-width">
-                                <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
-                            </md-select>
-                        </div>
-                    </md-input-container>
-
-
-
-                    <!--<md-input-container>-->
-                        <!--<label>Date</label>-->
-                        <!--<md-datepicker ng-model="ctrl.model.date" name="dateField" md-min-date="ctrl.minDate" required=""></md-datepicker>-->
-
-                        <!--<div ng-messages="myForm.dateField.$error">-->
-                            <!--<div ng-message="valid">The entered value is not a date!</div>-->
-                            <!--<div ng-message="required">This date is required!</div>-->
-                            <!--<div ng-message="mindate">Date is too early!</div>-->
+                    <!--<md-input-container class="md-block">-->
+                        <!--<div layout="column" ng-cloak>-->
+                            <!--<md-select placeholder="Language" ng-model="$ctrl.model.language" md-on-open="$ctrl.getLanguages()" class="small-width" required="">-->
+                                <!--<md-option ng-value="language" ng-repeat="language in $ctrl.languages">{{language.name}}</md-option>-->
+                            <!--</md-select>-->
                         <!--</div>-->
                     <!--</md-input-container>-->
 
-                    <!--<md-input-container class="md-icon-float md-block">-->
-                        <!--<label>Year</label>-->
-                        <!--<md-icon><ng-md-icon icon="date_range" ></ng-md-icon></md-icon>-->
-                        <!--<input ng-model="$ctrl.model.year" type="text">-->
-                    <!--</md-input-container>-->
-
-                </div>
-                <div layout="column" flex="50">
-                    <div>HERE IS THE BIG LIST OF OFFERS</div>
-                    <!--<md-input-container class="md-icon-float md-block">-->
-                        <!--<label>MPAA Rating</label>-->
-                        <!--<md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>-->
-                        <!--<input ng-model="$ctrl.model.mpaa_rating" type="text">-->
-                    <!--</md-input-container>-->
                     <!--<md-input-container class="md-block">-->
-                        <!--<label>Synopsis</label>-->
-                        <!--<textacrea ng-model="$ctrl.model.synopsis" md-maxlength="1000" rows="8" md-select-on-focus></textarea>-->
+                        <!--<div layout="column" ng-cloak>-->
+                            <!--<md-select placeholder="Topic of the event #1" ng-model="$ctrl.topic1" md-on-open="$ctrl.getTopics()" class="small-width" required="">-->
+                                <!--<md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>-->
+                            <!--</md-select>-->
+                        <!--</div>-->
                     <!--</md-input-container>-->
-                </div>
-            </div>
-            <div layout="row" layout-align="center center">
-                <md-button ng-disabled="!EventForm.$valid" class="md-raised md-primary" type="submit" ng-click="$ctrl.createEvent()">Create event</md-button>
+
+                    <!--<md-input-container class="md-block">-->
+                        <!--<div layout="column" ng-cloak>-->
+                            <!--<md-select placeholder="Topic of the event #2 (optional)" ng-model="$ctrl.topic2" md-on-open="$ctrl.getTopics()" class="small-width">-->
+                                <!--<md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>-->
+                            <!--</md-select>-->
+                        <!--</div>-->
+                    <!--</md-input-container>-->
+
+                    <!--<md-input-container class="md-block">-->
+                        <!--<div layout="column" ng-cloak>-->
+                            <!--<md-select placeholder="Topic of the event #3 (optional)" ng-model="$ctrl.topic3" md-on-open="$ctrl.getTopics()" class="small-width">-->
+                                <!--<md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>-->
+                            <!--</md-select>-->
+                        <!--</div>-->
+                    <!--</md-input-container>-->
+
+
+
+                    <!--&lt;!&ndash;<md-input-container>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label>Date</label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-datepicker ng-model="ctrl.model.date" name="dateField" md-min-date="ctrl.minDate" required=""></md-datepicker>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<div ng-messages="myForm.dateField.$error">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div ng-message="valid">The entered value is not a date!</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div ng-message="required">This date is required!</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div ng-message="mindate">Date is too early!</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</md-input-container>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<md-input-container class="md-icon-float md-block">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label>Year</label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-icon><ng-md-icon icon="date_range" ></ng-md-icon></md-icon>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input ng-model="$ctrl.model.year" type="text">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</md-input-container>&ndash;&gt;-->
+
+                <!--</div>-->
+                <!--<div layout="column" flex="50">-->
+                    <!--<div>HERE IS THE BIG LIST OF OFFERS</div>-->
+                    <!--&lt;!&ndash;<md-input-container class="md-icon-float md-block">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label>MPAA Rating</label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input ng-model="$ctrl.model.mpaa_rating" type="text">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</md-input-container>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<md-input-container class="md-block">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label>Synopsis</label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<textacrea ng-model="$ctrl.model.synopsis" md-maxlength="1000" rows="8" md-select-on-focus></textarea>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</md-input-container>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div layout="row" layout-align="center center">-->
+                <!--<md-button ng-disabled="!EventForm.$valid" class="md-raised md-primary" type="submit" ng-click="$ctrl.createEvent()">Create event</md-button>-->
+            <!--</div>-->
+
+        <!--</form>-->
+    <!--</md-content>-->
+
+<!--</div>-->
+<!--=======-->
+<md-content class="md-no-momentum">
+    <h1>Create event page</h1>
+    <br/>
+    <form name="EventForm">
+        <div layout="row">
+            <div layout="column" flex="50">
+                <md-input-container class="md-block">
+                    <label>Name</label>
+                    <input ng-model="$ctrl.model.name" type="text" class="small-width" required>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <div layout="column" ng-cloak>
+                        <md-select placeholder="Language" ng-model="$ctrl.model.language" md-on-open="$ctrl.getLanguages()" class="small-width" required="">
+                            <md-option ng-value="language" ng-repeat="language in $ctrl.languages">{{language.name}}</md-option>
+                        </md-select>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <div layout="column" ng-cloak>
+                        <md-select placeholder="Topic of the event #1" ng-model="$ctrl.topic1" md-on-open="$ctrl.getTopics()" class="small-width" required="">
+                            <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
+                        </md-select>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <div layout="column" ng-cloak>
+                        <md-select placeholder="Topic of the event #2 (optional)" ng-model="$ctrl.topic2" md-on-open="$ctrl.getTopics()" class="small-width">
+                            <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
+                        </md-select>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <div layout="column" ng-cloak>
+                        <md-select placeholder="Topic of the event #3 (optional)" ng-model="$ctrl.topic3" md-on-open="$ctrl.getTopics()" class="small-width">
+                            <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
+                        </md-select>
+                    </div>
+                </md-input-container>
             </div>
 
-        </form>
-    </md-content>
+            <div layout="column" flex="50" md-virtual-repeat-container>
+                <h3>Venue</h3>
+                    <md-list>
+                        <md-list-item ng-repeat="offer in $ctrl.offers">
+                            <img src="../../../assets/rest.png" class="md-avatar">
+                            <div class="md-list-item-text" layout="column">
+                                <p><md-checkbox ng-model="offer.selected" ng-click ="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"></md-checkbox>
+                                    {{offer.restaurant.name}}, -{{offer.discount}}%</p>
+                                <p>* discount valid for a group of {{offer.numOfPeople}}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+            </div>
+        </div>
 
-</div>
+        <div layout="row" layout-align="center center">
+            <md-button ng-disabled="!EventForm.$valid" class="md-raised md-primary" type="submit" ng-click="$ctrl.createEvent()">Create event</md-button>
+        </div>
+    </form>
+</md-content>
