@@ -1,19 +1,21 @@
-<md-grid-list layout-fill flex md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5" md-row-height-sm="50vh" md-row-height="33vh" md-gutter="8px">
-    <md-grid-tile ng-repeat="event in $ctrl.events" ng-click="$ctrl.details(event)" class="event-card">
-        <md-card layout-fill layout-padding>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline text-center">{{event.name}}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content layout="column">
-                <div layout="column" layout-align="center center">
-                    <img ng-src="{{event.offer.imagePath}}" alt="Restaurant Logo">
-                </div>
-            </md-card-content>
-        </md-card>
-    </md-grid-tile>
-</md-grid-list>
+<div class="list-padding">
+    <md-grid-list layout-fill flex md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5" md-row-height-sm="50vh" md-row-height="33vh" md-gutter="8px" layout-padding>
+        <md-grid-tile ng-repeat="event in $ctrl.events" ng-click="$ctrl.details(event)" class="event-card">
+            <md-card layout-fill layout-padding>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline text-center">{{event.name}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content layout="column">
+                    <div layout="column" layout-align="center center">
+                        <img ng-src="{{event.offer.imagePath}}" alt="Restaurant Logo">
+                    </div>
+                </md-card-content>
+            </md-card>
+        </md-grid-tile>
+    </md-grid-list>
+</div>
 
 <md-button class="md-fab md-fab-bottom-right md-ink-ripple" aria-label="New Event" ng-click="$ctrl.newEvent()">
     <md-icon>

@@ -4,6 +4,8 @@ import template from './view-events.template.html';
 import EventsService from './../../services/events/events.service';
 import UserService from './../../services/user/user.service';
 
+import './view-events.style.css';
+
 
 class ViewEventsComponent {
     constructor() {

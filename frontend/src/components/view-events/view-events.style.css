@@ -1,3 +1,9 @@
 .event-card {
     cursor: pointer;
 }
+
+.list-padding {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+}
