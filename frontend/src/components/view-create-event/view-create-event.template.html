@@ -27,7 +27,7 @@
 
                 <md-input-container class="md-block">
                     <div layout="column" ng-cloak>
-                        <md-select placeholder="Topic of the event #2 (optional)" ng-model="$ctrl.topic2" md-on-open="$ctrl.getTopics()" class="small-width">
+                        <md-select placeholder="Topic of the event #2 (optional)" ng-model="$ctrl.topic2" md-on-open="$ctrl.getTopics()" class="small-width" ng-required="$ctrl.topic3">
                             <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
                         </md-select>
                     </div>
@@ -58,7 +58,7 @@
         </div>
 
         <div layout="row" layout-align="center center">
-            <md-button ng-disabled="!EventForm.$valid" class="md-raised md-primary" type="submit" ng-click="$ctrl.createEvent()">Create event</md-button>
+            <md-button ng-disabled="!EventForm.$valid || !$ctrl.model.offer" class="md-raised md-primary" type="submit" ng-click="$ctrl.createEvent()">Create event</md-button>
         </div>
     </form>
 </md-content>

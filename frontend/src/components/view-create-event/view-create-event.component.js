@@ -80,7 +80,9 @@ class ViewCreateEventComponentController {
                 this.offers[i].selected = false;
             }
         }
-        console.log(this.model.offer);
+        console.log("HERE");
+        console.log(this.smt);
+        // console.log(this.model.offer);
     }
 
 }
