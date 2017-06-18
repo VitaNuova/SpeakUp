@@ -83,6 +83,30 @@ class ViewCreateEventComponentController {
         }
     }
 
+    arrayBufferToBase64(offer) {
+        console.log("OFFER");
+        console.log(offer);
+        var binary = '';
+        var bytes = new Uint8Array(offer.restaurant.logo.data.data);
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode( bytes[ i ] );
+        }
+        return window.btoa( binary );
+    }
+
+    getFullDate(offer) {
+        var date = new Date(offer.from);
+        return date.getDate().toString() + "." + (date.getMonth() + 1).toString() + "." + date.getFullYear();
+    }
+
+    getTime(time) {
+        var date = new Date(time);
+        var hours = (date.getHours() < 10 ? "0" : "") + date.getHours().toString();
+        var minutes = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes().toString();
+        return hours + ":" + minutes;
+    }
+
 }
 
 

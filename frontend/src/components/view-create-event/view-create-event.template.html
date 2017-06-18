@@ -48,12 +48,23 @@
 
         <div layout="column" flex="50" md-virtual-repeat-container>
             <md-list>
-                <md-list-item ng-repeat="offer in $ctrl.offers">
-                    <img src="../../../assets/rest.png" class="md-avatar">
+                <md-list-item ng-repeat="offer in $ctrl.offers" class="list-element">
+                    <img ng-src="data:{{offer.restaurant.logo.contentType}};base64,{{$ctrl.arrayBufferToBase64(offer)}}" alt="Offer Logo" class="md-avatar">
                     <div class="md-list-item-text" layout="column">
-                        <p><md-checkbox class="black" ng-model="offer.selected" ng-click ="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"></md-checkbox>
-                            {{offer.restaurant.name}}, -{{offer.discount}}%</p>
-                        <p>* discount valid for a group of {{offer.numOfPeople}}</p>
+                        <div><md-checkbox class="black" ng-model="offer.selected" ng-click ="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"></md-checkbox>
+                        {{offer.restaurant.name}}, -{{offer.discount}}%</div>
+                        <div>
+                            <md-icon><ng-md-icon icon="date_range" ></ng-md-icon></md-icon>
+                            {{$ctrl.getFullDate(offer)}}
+                        </div>
+                        <div>
+                            <md-icon><ng-md-icon icon="schedule" ></ng-md-icon></md-icon>
+                            {{$ctrl.getTime(offer.from)}} - {{$ctrl.getTime(offer.to)}}
+                        </div>
+                        <div>
+                            <md-icon><ng-md-icon icon="info" ></ng-md-icon></md-icon>
+                            discount valid for a group of {{offer.numOfPeople}}
+                        </div>
                     </div>
                 </md-list-item>
             </md-list>
