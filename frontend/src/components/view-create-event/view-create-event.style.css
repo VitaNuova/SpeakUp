@@ -1,3 +1,7 @@
 .small-width {
     max-width: 60%;
 }
+
+md-list {
+    background-color: gainsboro;
+}
