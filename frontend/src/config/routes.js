@@ -8,24 +8,23 @@ import AboutUsComponent from './../components/view-about-us/view-about-us.compon
 import ViewSingleEventComponent from './../components/view-single-event/view-single-event.component';
 
 import EventsService from './../services/events/events.service';
-import events from './events-mock'
+import OffersService from './../services/offers/offers.service';
 
 resolveEvent.$inject = ['$stateParams', EventsService.name];
 
 function resolveEvent($stateParams, eventsService) {
     return eventsService.get($stateParams.eventId);
-    // for (var i = 0; i < events.length; i++) {
-    //     if (events[i]._id == $stateParams.eventId) {
-    //         console.log("inside resolveevent");
-    //         return events[i];
-    //     }
-    // }
+}
+
+resolveOffers.$inject = [OffersService.name];
+
+function resolveOffers(offersService) {
+    return offersService.list();
 }
 
 resolveEvents.$inject = [EventsService.name];
 
 function resolveEvents(eventsService) {
-    console.log("inside resolveevents" + events[0]);
     return eventsService.list();
 }
 
@@ -45,7 +44,10 @@ export default function config($stateProvider, $urlRouterProvider) {
         })
         .state('eventAdd', {
             url: '/events/new',
-            component: ViewCreateEventComponent.name
+            component: ViewCreateEventComponent.name,
+            resolve: {
+                offers: resolveOffers
+            }
         })
         /* .state('event', {
              url: '/events/:eventId',

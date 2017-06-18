@@ -10,6 +10,9 @@ import ngMdIcons from 'angular-material-icons';
 
 import EventsService from './services/events/events';
 import UserService from './services/user/user';
+import TopicsService from './services/topics/topics';
+import LanguagesService from './services/languages/languages';
+import OffersService from './services/offers/offers';
 
 import Routes from './config/routes';
 import Middlewares from './config/middlewares';
@@ -28,6 +31,9 @@ let app = angular.module('app', [
     ngMdIcons,
     UserService.name,
     EventsService.name,
+    TopicsService.name,
+    LanguagesService.name,
+    OffersService.name,
     AppContent.name,
     ViewEvents.name,
     ViewCreateEvent.name,

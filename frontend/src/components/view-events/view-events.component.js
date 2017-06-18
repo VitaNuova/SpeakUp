@@ -27,7 +27,6 @@ class ViewEventsComponentController {
         this.$scope = $scope;
         this.EventsService = EventsService;
         this.UserService = UserService;
-
     }
 
     details(event) {
