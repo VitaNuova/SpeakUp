@@ -24,6 +24,16 @@ function resolveEvent($stateParams, eventsService) {
 
 resolveEvents.$inject = [EventsService.name];
 
+function resolveLanguages() {
+    return [
+            { id: 1, name: 'Scooby Doo' },
+            { id: 2, name: 'Shaggy Rodgers' },
+            { id: 3, name: 'Fred Jones' },
+            { id: 4, name: 'Daphne Blake' },
+            { id: 5, name: 'Velma Dinkley' }
+        ];
+}
+
 function resolveEvents(eventsService) {
     console.log("inside resolveevents" + events[0]);
     return eventsService.list();
@@ -45,7 +55,10 @@ export default function config($stateProvider, $urlRouterProvider) {
         })
         .state('eventAdd', {
             url: '/events/new',
-            component: ViewCreateEventComponent.name
+            component: ViewCreateEventComponent.name,
+            resolve: {
+                languages: resolveLanguages
+            }
         })
         /* .state('event', {
              url: '/events/:eventId',

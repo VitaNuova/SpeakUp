@@ -4,12 +4,14 @@ import template from './view-create-event.template.html';
 import EventsService from './../../services/events/events.service';
 import UserService from './../../services/user/user.service';
 
+import './view-create-event.style.css';
+
 class ViewCreateEventComponent {
     constructor() {
         this.controller = ViewCreateEventComponentController;
         this.template = template;
         this.bindings = {
-            event: '<',
+            languages: '<',
         }
 
     }
@@ -17,7 +19,6 @@ class ViewCreateEventComponent {
     static get name() {
         return 'viewCreateEvent';
     }
-
 
 }
 
@@ -31,6 +32,11 @@ class ViewCreateEventComponentController {
 
     static get $inject() {
         return ['$state', EventsService.name, UserService.name];
+    }
+
+    getLanguages(){
+        console.log(this.language);
+        return this.languages;
     }
 
 }

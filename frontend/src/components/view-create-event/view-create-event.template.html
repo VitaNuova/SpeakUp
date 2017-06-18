@@ -1,1 +1,62 @@
-<h1>Create event page</h1>
+<div layout="column" layout-padding>
+    <md-content class="md-no-momentum">
+        <h1>Create event page</h1>
+        <br/>
+        <form name="eventForm">
+            <div layout="row">
+                <div layout="column" flex="50">
+
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input ng-model="$ctrl.model.title" type="text" class="small-width" required>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <div layout="column" ng-cloak>
+                            <md-select placeholder="Language" ng-model="$ctrl.model.language" md-on-open="$ctrl.getLanguages()" class="small-width" required="">
+                                <md-option ng-value="language" ng-repeat="language in $ctrl.languages">{{language.name}}</md-option>
+                            </md-select>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Date</label>
+                        <md-datepicker ng-model="ctrl.model.date" name="dateField" md-min-date="ctrl.minDate" required=""></md-datepicker>
+
+                        <div ng-messages="myForm.dateField.$error">
+                            <div ng-message="valid">The entered value is not a date!</div>
+                            <div ng-message="required">This date is required!</div>
+                            <div ng-message="mindate">Date is too early!</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-icon-float md-block">
+                        <label>Year</label>
+                        <md-icon><ng-md-icon icon="date_range" ></ng-md-icon></md-icon>
+                        <input ng-model="$ctrl.model.year" type="text">
+                    </md-input-container>
+
+                </div>
+                <div layout="column" flex="50">
+                    <div>HERE IS THE BIG LIST OF OFFERS</div>
+                    <!--<md-input-container class="md-icon-float md-block">-->
+                        <!--<label>MPAA Rating</label>-->
+                        <!--<md-icon><ng-md-icon icon="title" ></ng-md-icon></md-icon>-->
+                        <!--<input ng-model="$ctrl.model.mpaa_rating" type="text">-->
+                    <!--</md-input-container>-->
+                    <!--<md-input-container class="md-block">-->
+                        <!--<label>Synopsis</label>-->
+                        <!--<textarea ng-model="$ctrl.model.synopsis" md-maxlength="1000" rows="8" md-select-on-focus></textarea>-->
+                    <!--</md-input-container>-->
+                </div>
+            </div>
+            <!--<div layout="row">-->
+                <!--<span flex></span>-->
+                <!--<md-button class="md-raised md-primary" type="submit" ng-click="$ctrl.save()">Save</md-button>-->
+                <!--<md-button class="md-raised" ng-click="$ctrl.cancel()">Cancel</md-button>-->
+            <!--</div>-->
+
+        </form>
+    </md-content>
+
+</div>
