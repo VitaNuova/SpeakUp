@@ -2,13 +2,13 @@
     <md-content class="md-no-momentum">
         <h1>Create event page</h1>
         <br/>
-        <form name="eventForm">
+        <form name="EventForm">
             <div layout="row">
                 <div layout="column" flex="50">
 
                     <md-input-container class="md-block">
                         <label>Name</label>
-                        <input ng-model="$ctrl.model.title" type="text" class="small-width" required>
+                        <input ng-model="$ctrl.model.name" type="text" class="small-width" required>
                     </md-input-container>
 
                     <md-input-container class="md-block">
@@ -19,22 +19,48 @@
                         </div>
                     </md-input-container>
 
-                    <md-input-container>
-                        <label>Date</label>
-                        <md-datepicker ng-model="ctrl.model.date" name="dateField" md-min-date="ctrl.minDate" required=""></md-datepicker>
-
-                        <div ng-messages="myForm.dateField.$error">
-                            <div ng-message="valid">The entered value is not a date!</div>
-                            <div ng-message="required">This date is required!</div>
-                            <div ng-message="mindate">Date is too early!</div>
+                    <md-input-container class="md-block">
+                        <div layout="column" ng-cloak>
+                            <md-select placeholder="Topic of the event #1" ng-model="$ctrl.topic1" md-on-open="$ctrl.getTopics()" class="small-width" required="">
+                                <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
+                            </md-select>
                         </div>
                     </md-input-container>
 
-                    <md-input-container class="md-icon-float md-block">
-                        <label>Year</label>
-                        <md-icon><ng-md-icon icon="date_range" ></ng-md-icon></md-icon>
-                        <input ng-model="$ctrl.model.year" type="text">
+                    <md-input-container class="md-block">
+                        <div layout="column" ng-cloak>
+                            <md-select placeholder="Topic of the event #2 (optional)" ng-model="$ctrl.topic2" md-on-open="$ctrl.getTopics()" class="small-width">
+                                <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
+                            </md-select>
+                        </div>
                     </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <div layout="column" ng-cloak>
+                            <md-select placeholder="Topic of the event #3 (optional)" ng-model="$ctrl.topic3" md-on-open="$ctrl.getTopics()" class="small-width">
+                                <md-option ng-value="topic" ng-repeat="topic in $ctrl.topics">{{topic.name}}</md-option>
+                            </md-select>
+                        </div>
+                    </md-input-container>
+
+
+
+                    <!--<md-input-container>-->
+                        <!--<label>Date</label>-->
+                        <!--<md-datepicker ng-model="ctrl.model.date" name="dateField" md-min-date="ctrl.minDate" required=""></md-datepicker>-->
+
+                        <!--<div ng-messages="myForm.dateField.$error">-->
+                            <!--<div ng-message="valid">The entered value is not a date!</div>-->
+                            <!--<div ng-message="required">This date is required!</div>-->
+                            <!--<div ng-message="mindate">Date is too early!</div>-->
+                        <!--</div>-->
+                    <!--</md-input-container>-->
+
+                    <!--<md-input-container class="md-icon-float md-block">-->
+                        <!--<label>Year</label>-->
+                        <!--<md-icon><ng-md-icon icon="date_range" ></ng-md-icon></md-icon>-->
+                        <!--<input ng-model="$ctrl.model.year" type="text">-->
+                    <!--</md-input-container>-->
 
                 </div>
                 <div layout="column" flex="50">
@@ -46,15 +72,13 @@
                     <!--</md-input-container>-->
                     <!--<md-input-container class="md-block">-->
                         <!--<label>Synopsis</label>-->
-                        <!--<textarea ng-model="$ctrl.model.synopsis" md-maxlength="1000" rows="8" md-select-on-focus></textarea>-->
+                        <!--<textacrea ng-model="$ctrl.model.synopsis" md-maxlength="1000" rows="8" md-select-on-focus></textarea>-->
                     <!--</md-input-container>-->
                 </div>
             </div>
-            <!--<div layout="row">-->
-                <!--<span flex></span>-->
-                <!--<md-button class="md-raised md-primary" type="submit" ng-click="$ctrl.save()">Save</md-button>-->
-                <!--<md-button class="md-raised" ng-click="$ctrl.cancel()">Cancel</md-button>-->
-            <!--</div>-->
+            <div layout="row" layout-align="center center">
+                <md-button ng-disabled="!EventForm.$valid" class="md-raised md-primary" type="submit" ng-click="$ctrl.createEvent()">Create event</md-button>
+            </div>
 
         </form>
     </md-content>
