@@ -33,7 +33,7 @@ class ViewCreateEventComponentController {
     }
 
     static get $inject() {
-        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name];
+        return ['$state', '$mdToast', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name];
     }
 
     getLanguages() {
@@ -70,6 +70,12 @@ class ViewCreateEventComponentController {
         console.log(postedModel);
 
         this.EventsService.create(postedModel).then(data => {
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Simple Toast!')
+                    .hideDelay(3000)
+            );
+
             this.$state.go('events');
         });
 
