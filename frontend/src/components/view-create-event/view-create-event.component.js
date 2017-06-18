@@ -12,6 +12,7 @@ class ViewCreateEventComponent {
         this.template = template;
         this.bindings = {
             languages: '<',
+            offers: '<'
         }
 
     }
@@ -38,6 +39,16 @@ class ViewCreateEventComponentController {
         console.log(this.language);
         return this.languages;
     }
+
+    uncheckOthers($index) {
+        for(var i = 0; i < this.offers.length; i++) {
+            if(i != $index) {
+                this.offers[i].selected = false;
+            }
+        }
+        console.log(this.model.offer);
+    }
+
 
 }
 
