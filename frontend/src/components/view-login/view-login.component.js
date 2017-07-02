@@ -40,6 +40,10 @@ class ViewLoginComponentController {
         });
     }
 
+    register() {
+        this.$state.go('registerName', {});
+    }
+
     static get $inject() {
         return ['$state', UserService.name];
     }
