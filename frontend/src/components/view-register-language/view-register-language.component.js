@@ -21,10 +21,11 @@ class ViewRegisterLanguageComponent {
 class ViewRegisterLanguageComponentController {
     constructor($state, $stateParams, LanguagesService, LanguageLevelsService) {
         this.$state = $state;
-        this.$stateParams = $stateParams;
+        //this.$stateParams = $stateParams;
         this.LanguagesService = LanguagesService;
         this.LanguageLevelsService = LanguageLevelsService;
-        this.user = this.$stateParams.user;
+       // this.user = this.$stateParams.user;
+        this.user = $stateParams.user;
         this.chosen_languages = [];
         this.choices = [0];
     }

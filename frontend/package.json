@@ -38,7 +38,11 @@
     "angular-material": "^1.1.0",
     "angular-material-icons": "^0.7.1",
     "angular-messages": "^1.5.8",
-    "material-design-icons": "^3.0.1"
+    "material-design-icons": "^3.0.1",
+    "angular-google-maps": "^2.4.1",
+    "lodash": "^4.17.4",
+    "angular-simple-logger": "^0.1.7",
+    "ngmap": "^1.18.4"
   },
   "engines": {
     "node": ">=4.3"

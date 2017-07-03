@@ -3,7 +3,7 @@ var User = require('./userSchema');
 var jwt = require('jwt-simple');
 
 module.exports.login = function(req, res) {
-
+    console.log("in backend login");
     if (!req.body.username) {
         res.status(400).send('username required');
         return;

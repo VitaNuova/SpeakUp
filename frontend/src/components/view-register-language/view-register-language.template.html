@@ -8,7 +8,7 @@
     <div class="row spaced">
         <ol class="breadcrumb">
             <li><a href="javascript:;">Name</a></li>
-            <li class="active">Languages</a></li>
+            <li class="active">Languages</li>
             <li><a href="javascript:;">Topic</a></li>
             <li><a href="javascript:;">Location</a></li>
         </ol>
@@ -19,8 +19,8 @@
         </div>
         <div class="col-md-4 form-group">
             <label for="selectLanguage">Select language: </label>
-            <select class="form-control" id="selectLanguage" ng-model="$ctrl.chosen_languages[choice].name">
-                <option ng-repeat="language in $ctrl.languages" ng-value="language.name">{{language.name}}</option>
+            <select class="form-control" id="selectLanguage" ng-model="$ctrl.chosen_languages[choice].language">
+                <option ng-repeat="language in $ctrl.languages" ng-value="language">{{language.name}}</option>
             </select>
         </div>
         <div class="col-md-2 form-group">
@@ -29,7 +29,7 @@
         <div class="col-md-4 form-group">
             <label for="selectLevel">Select level: </label>
             <select class="form-control" id="selectLevel" ng-model="$ctrl.chosen_languages[choice].level">
-                <option ng-repeat="level in $ctrl.levels" ng-value="level.name">{{level.name}}</option>
+                <option ng-repeat="level in $ctrl.levels" ng-value="level">{{level.name}}</option>
             </select>
         </div>
     </div>
