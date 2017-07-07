@@ -1,34 +1,26 @@
 'use strict';
 
-import angular from 'angular';
-import uiRouter from '@uirouter/angularjs';
+import angular from "angular";
+import uiRouter from "@uirouter/angularjs";
 
-import angularMaterial from 'angular-material';
-import 'angular-material/angular-material.css';
+import EventsService from "./services/events/events";
+import UserService from "./services/user/user";
+import TopicsService from "./services/topics/topics";
+import LanguagesService from "./services/languages/languages";
+import OffersService from "./services/offers/offers";
 
-import ngMdIcons from 'angular-material-icons';
+import Routes from "./config/routes";
 
-import EventsService from './services/events/events';
-import UserService from './services/user/user';
-import TopicsService from './services/topics/topics';
-import LanguagesService from './services/languages/languages';
-import OffersService from './services/offers/offers';
-
-import Routes from './config/routes';
-import Middlewares from './config/middlewares';
-
-import AppContent from './components/app-content/app-content';
-import ViewEvents from './components/view-events/view-events';
-import ViewCreateEvent from './components/view-create-event/view-create-event';
-import ViewLogin from './components/view-login/view-login';
-import ViewSingleEvent from './components/view-single-event/view-single-event';
-import ViewProfile from './components/view-profile/view-profile';
-import ViewAboutUs from './components/view-about-us/view-about-us';
+import AppContent from "./components/app-content/app-content";
+import ViewEvents from "./components/view-events/view-events";
+import ViewCreateEvent from "./components/view-create-event/view-create-event";
+import ViewLogin from "./components/view-login/view-login";
+import ViewSingleEvent from "./components/view-single-event/view-single-event";
+import ViewProfile from "./components/view-profile/view-profile";
+import ViewAboutUs from "./components/view-about-us/view-about-us";
 
 let app = angular.module('app', [
     uiRouter,
-    angularMaterial,
-    ngMdIcons,
     UserService.name,
     EventsService.name,
     TopicsService.name,
@@ -45,19 +37,52 @@ let app = angular.module('app', [
 
 app.constant('API_URL', 'http://localhost:3000/api');
 app.config(Routes);
-app.config(Middlewares);
-app.config(['$mdThemingProvider', function($mdThemingProvider) {
-    $mdThemingProvider.theme('default')
-        .primaryPalette('amber', {
-            'default': '400'
-        })
-        .accentPalette('green', {
-            'default': '400'
-        });
+app.config(['$httpProvider', ($httpProvider) => {
+    $httpProvider.interceptors.push(['$q', function ($q) {
+        return {
+            'request': function (config) {
+                //Making a request to the API Server
+                // if (config.url.indexOf(API_URL) === 0) {
+                //     let token = $window.localStorage['jwtToken'];
+                //
+                //     if (token) {
+                //         config.headers.Authorization = 'JWT ' + token;
+                //     }
+                // }
+
+                return config;
+            },
+            // optional method
+            'requestError': function (rejection) {
+                return $q.reject(rejection);
+            },
+            // optional method
+            'response': function (response) {
+                //Receiving response from  the API Server
+                // if (response && response.config.url.indexOf(API_URL) === 0) {
+                //
+                //     // If a token was sent back, save it
+                //     if (response.data.hasOwnProperty('token')) {
+                //         $window.localStorage['jwtToken'] = response.data.token;
+                //     }
+                // }
+
+                return response;
+            },
+            // optional method
+            'responseError': function (rejection) {
+                // do something on error
+                // if (rejection.status == 400 || rejection.status == 401) {
+                //     $state.go('login', {});
+                // }
+
+                return $q.reject(rejection);
+            }
+        }
+    }])
 }]);
 
-
-angular.element(document).ready(function() {
+angular.element(document).ready(function () {
     return angular.bootstrap(document.body, [app.name], {
         strictDi: true
     });

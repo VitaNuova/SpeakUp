@@ -1,4 +1,3 @@
-
 'use strict';
 
 var path = require('path');
@@ -10,11 +9,11 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
 
     entry: {
-        'vendor': ['angular','angular-animate','angular-aria','angular-messages','angular-material','angular-material-icons','@uirouter/angularjs'],
-        'app': path.resolve(__dirname,'src/app.js')
+        'vendor': ['jquery', 'bootstrap/dist/js/bootstrap', 'bootstrap/dist/css/bootstrap.min.css', 'angular', '@uirouter/angularjs'],
+        'app': path.resolve(__dirname, 'src/app.js')
     },
     output: {
-        path: path.resolve(__dirname,'dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'scripts/[name].js'
     },
     module: {
@@ -39,17 +38,35 @@ module.exports = {
             {
                 test: /\.(png|jpg)$/,
                 loader: 'url-loader?name=/styles/[name].[ext]'
-            } // inline base64 URLs for <=8k images, direct URLs for the rest
+            }, // inline base64 URLs for <=8k images, direct URLs for the rest
+            {
+                test: /\.scss$/,
+                loaders: ['style', 'css', 'postcss', 'sass']
+            },
+            {
+                test: /\.(woff2?|ttf|eot|svg)$/,
+                loader: 'url?limit=10000'
+            },
+            {
+                test: /bootstrap\/dist\/js\/umd\//,
+                loader: 'imports?jQuery=jquery'
+            }
         ]
     },
 
     plugins: [
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery'
+        }),
+
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor']
         }),
 
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname,'src/index.html')
+            template: path.resolve(__dirname, 'src/index.html')
         }),
 
         new ExtractTextPlugin("styles/[name].css"),
