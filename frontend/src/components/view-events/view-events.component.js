@@ -54,7 +54,7 @@ class ViewEventsComponentController {
             this.$state.go('login', {});
         }
 
-    }
+    };
 
 
     delete(event) {
