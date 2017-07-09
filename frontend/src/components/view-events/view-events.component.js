@@ -7,7 +7,6 @@ import RestaurantService from "./../../services/restaurants/restaurants.service"
 
 import "./view-events.style.css";
 
-
 class ViewEventsComponent {
     constructor() {
         this.controller = ViewEventsComponentController;
