@@ -1,27 +1,30 @@
-<md-content class="md-no-momentum">
-
-    <div layout="row" layout-align="center space-around" layout-padding>
-
-        <div layout="column" layout-align="start center" layout-padding>
-            <img class="single-event-img" ng-src="{{$ctrl.singleEvent.offer.imagePath}}" alt="Restaurant Logo">
+<aside class="bg-dark extra-padding-top">
+    <div class="container text-center">
+        <div class="call-to-action">
+            <h2>{{$ctrl.singleEvent.name}}</h2>
         </div>
-
-        <div layout="column" layout-align="start center" layout-padding>
-            <span class="md-headline">Name: {{$ctrl.singleEvent.name}}</span>
-            <!--span class="md-subhead">Description: {{$ctrl.singleEvent.description}}</span-->
-            <md-progress-linear md-mode="determinate" value="100*{{$ctrl.singleEvent.users.length}}/{{$ctrl.singleEvent.offer.numOfPeople}}"></md-progress-linear>
-            <span class="md-subhead">
-        {{$ctrl.singleEvent.users.length}}/{{$ctrl.singleEvent.offer.numOfPeople}} people joined
-      </span>
-        </div>
-
-        <div layout="column" layout-align="end center" layout-padding>
-            <span class="md-subhead">
-        Language: {{$ctrl.singleEvent.language.name}}
-      </span>
-            <md-button class="md-primary md-raised" ng-click="$ctrl.join()">Join</md-button>
-        </div>
-
     </div>
+</aside>
 
-</md-content>
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <hr class="light">
+                <img class="single-event-img" ng-src="{{$ctrl.singleEvent.offer.imagePath}}" alt="Restaurant Logo">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+                         aria-valuenow="$ctrl.getProgress()"
+                         aria-valuemin="0" aria-valuemax="100"
+                         ng-style="{width : ( $ctrl.getProgress($ctrl.singleEvent) + '%' ) }">
+                        {{$ctrl.getProgress($ctrl.singleEvent)}}% COMPLETE
+                    </div>
+                </div>
+                <div>
+                    Language: {{$ctrl.singleEvent.language.name}}
+                </div>
+                <a class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()">Join</a>
+            </div>
+        </div>
+    </div>
+</section>

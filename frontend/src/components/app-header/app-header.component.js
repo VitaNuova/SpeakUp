@@ -37,8 +37,7 @@ class AppHeaderComponentController{
     }
 
     getCurrentUser(){
-        let user = this.UserService.getCurrentUser();
-        return user.username;
+        return this.UserService.getCurrentUser();
     }
 
 
