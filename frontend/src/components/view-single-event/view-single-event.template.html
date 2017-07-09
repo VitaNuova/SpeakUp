@@ -8,10 +8,26 @@
 
 <section id="services">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <hr class="light">
-                <img class="single-event-img" ng-src="{{$ctrl.singleEvent.offer.imagePath}}" alt="Restaurant Logo">
+        <div class="row col-lg-12 text-center">
+            <div class="col-lg-4 col-sm-6">
+                <img class="single-event-img half-screen-picture img-responsive center-block" ng-src="{{$ctrl.singleEvent.offer.imagePath}}" alt="Restaurant Logo">
+            </div>
+            <div class="col-lg-8 col-sm-6">
+                <div class="col-lg-6 pull-left">
+                    <div class="text-left">
+                        <label for="language">Language:</label>
+                        <span id="language">{{$ctrl.singleEvent.language.name}}</span>
+                    </div>
+                    <label for="topics">Topics:</label>
+                    <div id="topics" class="text-left" ng-repeat="topic in $ctrl.singleEvent.topics">
+                        <span>{{topic.name}}</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div >
+                        Topics: {{$ctrl.singleEvent.language.name}}
+                    </div>
+                </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
                          aria-valuenow="$ctrl.getProgress()"
@@ -20,11 +36,9 @@
                         {{$ctrl.getProgress($ctrl.singleEvent)}}% COMPLETE
                     </div>
                 </div>
-                <div>
-                    Language: {{$ctrl.singleEvent.language.name}}
-                </div>
-                <a class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()">Join</a>
             </div>
+
+            <a class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()">Join</a>
         </div>
     </div>
 </section>

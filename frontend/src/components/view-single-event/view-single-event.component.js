@@ -13,13 +13,11 @@ class ViewSingleEventComponent {
         this.bindings = {
             singleEvent: '<',
         }
-
     }
 
     static get name() {
         return 'viewSingleEvent';
     }
-
 
 }
 
@@ -32,7 +30,7 @@ class ViewSingleEventComponentController {
     }
 
     join() {
-
+        console.log(this.singleEvent);
         if (this.UserService.isAuthenticated()) {
             let _id = this.singleEvent['_id'];
             this.$state.go('eventJoin', { eventId: _id });
