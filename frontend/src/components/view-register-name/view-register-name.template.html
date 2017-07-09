@@ -13,16 +13,22 @@
             <li><a href="#">Location</a></li>
         </ol>
     </div>
-    <div class="row">
-        <div class="col-md-6 form-group">
-            <label for="nameInput">Name:</label>
-            <input ng-model="$ctrl.user.name" type="text" class="form-control" id="nameInput" placeholder="Your Name" required>
-        </div>
-        <div class="col-md-6 form-group">
-            <label for="photoInput">Photo:</label>
-            <input ng-model="$ctrl.user.photo" type="file" id="photoInput">
-            <p class="help-block">You can upload your photo here.</p>
-        </div>
+    <div class="row form-group">
+        <label for="nameInput">Name:</label>
+        <input ng-model="$ctrl.user.name" type="text" class="form-control" id="nameInput" placeholder="Enter your name" required>
+    </div>
+    <div class="row form-group">
+        <label for="passInput">Password:</label>
+        <input ng-model="$ctrl.user.password" type="text" class="form-control" id="passInput" placeholder="Enter password" required>
+    </div>
+    <div class="row form-group">
+        <label for="emailInput">Email:</label>
+        <input ng-model="$ctrl.user.email" type="text" class="form-control" id="emailInput" placeholder="Enter email" required>
+    </div>
+    <div class="row form-group">
+        <label for="photoInput">Photo:</label>
+        <input ng-model="$ctrl.user.photo" type="file" id="photoInput">
+        <p class="help-block">You can upload your photo here.</p>
     </div>
     <div class="row">
         <div class="col-md-4 col-md-offset-4 text-center form-group">

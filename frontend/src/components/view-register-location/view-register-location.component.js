@@ -22,14 +22,25 @@ class ViewRegisterLocationComponentController {
         this.$state = $state;
         this.$stateParams = $stateParams;
         this.user = this.$stateParams.user;
+        console.log(this.user);
         this.UserService = UserService;
     }
 
     $onInit() {
-        this.map = { center: {latitude: 45, longitude: -73}, zoom: 8};
+        this.location = 'Marienplatz';
     }
 
     submit() {
+        var geocoder = new google.maps.Geocoder();
+        var user = this.user;
+        geocoder.geocode( { "address": this.location }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
+                var location = results[0].geometry.location;
+                console.log('location ' + location);
+                user.location = location;
+            }
+        });
+
         var postedModel = {
             username: this.user.name,
             password: this.user.password,

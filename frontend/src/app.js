@@ -7,8 +7,13 @@ import EventsService from "./services/events/events";
 import UserService from "./services/user/user";
 import TopicsService from "./services/topics/topics";
 import LanguagesService from "./services/languages/languages";
+import LanguageLevelsService from "./services/language-levels/language-levels";
+import LocationService from "./services/location/location";
+import UserLanguageService from "./services/user-languages/user-languages";
 import OffersService from "./services/offers/offers";
 import Routes from "./config/routes";
+
+import ngmap from 'ngmap';
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -17,14 +22,21 @@ import ViewLogin from "./components/view-login/view-login";
 import ViewSingleEvent from "./components/view-single-event/view-single-event";
 import ViewProfile from "./components/view-profile/view-profile";
 import ViewAboutUs from "./components/view-about-us/view-about-us";
+import ViewRegisterLanguage from "./components/view-register-language/view-register-language";
+import ViewRegisterTopics from "./components/view-register-topics/view-register-topics";
+import ViewRegisterName from "./components/view-register-name/view-register-name";
+import ViewRegisterLocation from "./components/view-register-location/view-register-location";
 
 let app = angular.module('app', [
     uiRouter,
+    ngmap,
     UserService.name,
     EventsService.name,
     TopicsService.name,
     LanguagesService.name,
     LanguageLevelsService.name,
+    LocationService.name,
+    UserLanguageService.name,
     OffersService.name,
     AppContent.name,
     ViewEvents.name,

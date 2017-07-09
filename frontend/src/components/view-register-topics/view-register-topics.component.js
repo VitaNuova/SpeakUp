@@ -23,6 +23,7 @@ class ViewRegisterTopicsComponentController {
         this.$stateParams = $stateParams;
         this.TopicsService = TopicsService;
         this.user = this.$stateParams.user;
+        console.log(this.user);
     }
 
     $onInit() {
@@ -51,7 +52,7 @@ class ViewRegisterTopicsComponentController {
         for(var i = 0; i < this.user.languages.length; i++) {
             this.user.languages[i].topics = chosen_topics;
         }
-        console.log('topics ' + JSON.stringify(this.user.topics));
+
         console.log('user' + JSON.stringify(this.user));
         this.$state.go('registerLocation', {user: this.user});
     }

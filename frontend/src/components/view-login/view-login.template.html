@@ -38,12 +38,12 @@
                     </div>
                 </form>
             </div>
-            <a data-target="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            <a ng-click="$ctrl.initializeRegistration()" data-target="#register" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
         </div>
     </div>
 </header>
 
-<section class="bg-primary" id="about">
+<!--section class="bg-primary" id="about">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -55,6 +55,121 @@
                     partners will then open their doors for you to meet, talk and enjoy the best discounts in town!
                     Hurry up! The event you are looking for may be missing just one more person right now!</p>
                 <a data-target="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+            </div>
+        </div>
+    </div>
+</section-->
+
+<section class="bg-primary" id="register">
+    <div class="container"  ng-if="$ctrl.registrationStep == 1" >
+        <h3>Let us know something about you!</h3>
+        <div class="row progress">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Let us start!</div>
+        </div>
+        <div class="row form-group">
+            <label for="nameInput">Name:</label>
+            <input ng-model="$ctrl.user.name" type="text" class="form-control" id="nameInput" placeholder="Enter your name" required>
+        </div>
+        <div class="row form-group">
+            <label for="passInput">Password:</label>
+            <input ng-model="$ctrl.user.password" type="text" class="form-control" id="passInput" placeholder="Enter password" required>
+        </div>
+        <div class="row form-group">
+            <label for="emailInput">Email:</label>
+            <input ng-model="$ctrl.user.email" type="text" class="form-control" id="emailInput" placeholder="Enter email" required>
+        </div>
+        <!--div class="row form-group">
+            <label for="photoInput">Photo:</label>
+            <input ng-model="$ctrl.user.photo" type="file" id="photoInput">
+            <p class="help-block">You can upload your photo here.</p>
+        </div-->
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 text-center form-group">
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.registrationStep = 2; $ctrl.fetchLanguages();">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-if="$ctrl.registrationStep == 2">
+        <div class="row progress">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">We want to know more about you!</div>
+        </div>
+        <div class="col-md-2 form-group">
+            <p>I would like to improve: </p>
+        </div>
+        <div class="row" data-ng-repeat="choice in $ctrl.choices">
+            <div class="col-md-4 form-group">
+                <label for="selectLanguage">Select language: </label>
+                <select class="form-control" id="selectLanguage" ng-model="$ctrl.language.language">
+                    <option style="display:none;"></option>
+                    <option ng-repeat="language in $ctrl.languages" ng-value="language._id">{{language.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
+                <p>at level: </p>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="selectLevel">Select level: </label>
+                <select class="form-control" id="selectLevel" ng-model="$ctrl.language.languageLevel">
+                    <option style="display:none;"></option>
+                    <option ng-repeat="level in $ctrl.levels" ng-value="level._id">{{level.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="javascript:;" ng-click="$ctrl.moreLanguages()">More languages...</a>
+            </div>
+            <div class="col-md-6">
+                <a href="javascript:;" ng-click="$ctrl.lessLanguages()">Less languages...</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center form-group">
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.registrationStep = 3; $ctrl.pushLast(); $ctrl.fetchTopics();">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-if="$ctrl.registrationStep == 3">
+        <div class="row progress">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">We are almost there..</div>
+        </div>
+        <div class="row bar">
+            <input type="text" class="search form-control" placeholder="Search for topic.." ng-model="searchString"/>
+        </div>
+        <div class="row">
+            <div class="col-md-4"  data-ng-repeat="topic in $ctrl.topics | filter:searchString" ng-click="$ctrl.toggle(topic)" ng-class="{'selected': topic.selected}">
+                <div class="thumbnail">
+                    <div class="img-wrapper">
+                        <img class="img-responsive" ng-src="{{topic.imagePath}}" alt="No image available"/>
+                    </div>
+                    <div class="caption text-center"> {{topic.name}} </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center form-group">
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.registrationStep = 4; $ctrl.addLangsAndTopics(); $ctrl.dump(); $ctrl.initLocation()">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-if="$ctrl.registrationStep == 4">
+        <div class="row progress">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">One last step remaining..</div>
+        </div>
+        <div class="row">
+            <h5>I would like to meet others in the vicinity of</h5>
+        </div>
+        <div class="row bar">
+            <input type="text" class="search form-control" placeholder="Choose your desired location" ng-model="$ctrl.location" />
+        </div>
+        <div class="row">
+            <map center="{{$ctrl.location}}">
+                <marker position="{{$ctrl.location}}"></marker>
+            </map>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center form-group">
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.addLocationAndReg();">Finish</button>
             </div>
         </div>
     </div>
