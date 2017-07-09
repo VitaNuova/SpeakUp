@@ -8,6 +8,7 @@ import UserService from "./services/user/user";
 import TopicsService from "./services/topics/topics";
 import LanguagesService from "./services/languages/languages";
 import OffersService from "./services/offers/offers";
+import RestaurantsService from "./services/restaurants/restaurants";
 
 import Routes from "./config/routes";
 
@@ -26,6 +27,7 @@ let app = angular.module('app', [
     TopicsService.name,
     LanguagesService.name,
     OffersService.name,
+    RestaurantsService.name,
     AppContent.name,
     ViewEvents.name,
     ViewCreateEvent.name,
