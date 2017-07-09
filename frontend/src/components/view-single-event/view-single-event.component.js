@@ -42,6 +42,10 @@ class ViewSingleEventComponentController {
 
     };
 
+    getProgress(singleEvent) {
+       return 100 * singleEvent.users.length / singleEvent.offer.numOfPeople
+    };
+
     // getRestaurantLogo(event) {
     //     console.log(this.singleEvent.image.data);
     //     let restaurantLogoURL = 'http://www.almanac.com/sites/default/files/users/Almanac%20Staff/violet-292367_1920_0_full_width.jpg';

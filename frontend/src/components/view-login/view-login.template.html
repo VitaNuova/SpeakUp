@@ -1,83 +1,103 @@
-<div class="background-img" layout="column" layout-padding="">
-    <md-content class="login-form transparent" layout="row">
-        <md-card class="mission-text transparent" layout-align="end left">
-            <h1>Connect, improve, explore</h1>
-            <h2>Speak Up to the challenge</h2>
-        </md-card>
-        <span flex></span>
-        <md-card class="half-transparent">
-            <md-card-content layout="row">
-                <md-card class="transparent" layout-padding>
-                    <form name="LoginForm">
-                        <md-input-container class="md-block">
-                            <label>Login</label>
-                            <input type="text" name="username" ng-model="$ctrl.login.username" placeholder="User name" required="" />
-                            <div ng-messages="LoginForm.username.$error" role="alert" multiple="">
-                                <div ng-message="required">Please enter your username.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container class="md-block">
-                            <label>Password</label>
-                            <input type="password" name="password" ng-model="$ctrl.login.password" placeholder="Password" required="" />
-                            <div ng-messages="LoginForm.password.$error" role="alert" multiple="">
-                                <div ng-message="required">Please enter your password.</div>
-                            </div>
-                        </md-input-container>
-                        <div layout="row" layout-align="center">
-                            <md-button ng-disabled="!LoginForm.$valid" ng-click="$ctrl.submit()" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1 id="homeHeading">Connect Improve Explore</h1>
+            <hr>
+            <p>Speak Up to the challenge</p>
+            <div class="row">
+                <form name="loginForm">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <div class="form-group">
+                            <label class="text-faded">Email</label>
+                            <input type="email" name="email" ng-model="user.username" required class="form-control">
+                            <div ng-show="loginForm.email.$error.email" class="error">Invalid email!</div>
+                            <p ng-show="loginForm.email.$error.required &amp;&amp; loginForm.email.$touched"
+                                 class="error">
+                                Required!
+                            </p>
                         </div>
-                    </form>
-                </md-card>
-                <md-card class="transparent" layout-padding flex="nogrow">
-                    <md-card-content layout="column" layout-align="center center">
-                        <span flex="15" layout-padding>Don't have an account?</span>
-                        <span flex="15" layout-padding>Register now!</span>
-                        <md-button class="md-raised md-primary" ng-click="$ctrl.register()">Register</md-button>
-                    </md-card-content>
-                </md-card>
-            </md-card-content>
-        </md-card>
-    </md-content>
-</div>
-<div layout="row" layout-padding>
-    <span flex="10"></span>
-    <md-card layout-padding flex="25">
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline text-center">Connect</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="column">
-            <md-icon md-font-library="material-icons md-48" layout-align="center">cached</md-icon>
-            <p>See the events your fellow students have initiated and join them. Meet the people to talk a language you're interested in and make new friends!
-            </p>
-        </md-card-content>
-    </md-card>
-    <span flex></span>
-    <md-card layout-padding flex="25">
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline text-center">Improve</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="column">
-            <md-icon md-font-library="material-icons md-48" layout-align="center">trending_up</md-icon>
-            <p>Choose from language-speaking events that best suit your needs. Want to speak intermediate English? Basic French? Or maybe get a taste of Japanese? SpeakUp has you covered!
-            </p>
-        </md-card-content>
-    </md-card>
-    <span flex></span>
-    <md-card layout-padding flex="25">
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline text-center">Explore</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="column">
-            <md-icon md-font-library="material-icons md-48" layout-align="center">search</md-icon>
-            <p>Find best offers in the city! Our partners offer the best deals on food and drinks. Start a new event or join the one that's almost full and speak up today!
-            </p>
-        </md-card-content>
-    </md-card>
-    <span flex="10"></span>
-</div>
+                    </div>
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <div class="form-group">
+                            <label class="text-faded">Password</label>
+                            <input type="password" name="pass" ng-model="user.password" required class="form-control">
+                            <p ng-show="loginForm.pass.$error.required &amp;&amp; loginForm.pass.$touched"
+                                 class="error">
+                                Required!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <div class="form-group">
+                            <button ng-click="" ng-disabled="loginForm.$invalid"
+                                    class="btn btn-success btn-xl">
+                                Login
+                            </button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <a data-target="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+        </div>
+    </div>
+</header>
+
+<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">We've got what you need!</h2>
+                <hr class="light">
+                <p class="text-faded">Speak Up enables you to join a language-speaking event and connect with fellow
+                    students who share similar goals. Choose from the events that best suit your needs and join them.
+                    Nothing appropriate? You can create an event yourself. With a minimum number of people required, our
+                    partners will then open their doors for you to meet, talk and enjoy the best discounts in town!
+                    Hurry up! The event you are looking for may be missing just one more person right now!</p>
+                <a data-target="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">At Your Service</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                    <h3>Connect</h3>
+                    <p class="text-muted">See the events your fellow students have initiated and join them. Meet the
+                        people to talk a language
+                        you're interested in and make new friends!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                    <h3>Improve</h3>
+                    <p class="text-muted">Choose from language-speaking events that best suit your needs. Want to speak
+                        intermediate English? Basic
+                        French? Or maybe get a taste of Japanese? SpeakUp has you covered!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                    <h3>Explore</h3>
+                    <p class="text-muted">Find best offers in the city! Our partners offer the best deals on food and
+                        drinks. Start a new event or
+                        join the one that's almost full and speak up today!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

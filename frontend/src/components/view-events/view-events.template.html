@@ -1,24 +1,29 @@
-<div class="list-padding">
-    <md-grid-list layout-fill flex md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5" md-row-height-sm="50vh" md-row-height="33vh" md-gutter="8px" layout-padding>
-        <md-grid-tile ng-repeat="event in $ctrl.events" ng-click="$ctrl.details(event)" class="event-card">
-            <md-card layout-fill layout-padding>
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline text-center">{{event.name}}</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content layout="column">
-                    <div layout="column" layout-align="center center">
-                        <img ng-src="{{event.offer.imagePath}}" alt="Restaurant Logo">
-                    </div>
-                </md-card-content>
-            </md-card>
-        </md-grid-tile>
-    </md-grid-list>
-</div>
+<aside class="bg-dark extra-padding-top">
+    <div class="container text-center">
+        <div class="call-to-action">
+            <h2>Available events</h2>
+        </div>
+    </div>
+</aside>
 
-<md-button class="md-fab md-fab-bottom-right md-ink-ripple" aria-label="New Event" ng-click="$ctrl.newEvent()">
-    <md-icon>
-        <ng-md-icon icon="add"></ng-md-icon>
-    </md-icon>
-</md-button>
+<section class="no-padding" id="portfolio">
+    <div class="container-fluid">
+        <div class="row no-gutter popup-gallery">
+            <div class="col-lg-4 col-sm-6" ng-repeat="event in $ctrl.events" ng-click="$ctrl.details(event)">
+                <a ng-click="$ctrl.newEvent()" class="portfolio-box">
+                    <img ng-src="{{event.offer.imagePath}}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                Category
+                            </div>
+                            <div class="project-name">
+                                {{event.name}}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

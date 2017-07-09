@@ -33,8 +33,8 @@ function resolveEvents(eventsService) {
 }
 
 
-config.$inject = ['$stateProvider', '$urlRouterProvider'];
-export default function config($stateProvider, $urlRouterProvider) {
+config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+export default function config($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise("/");
 
@@ -47,7 +47,7 @@ export default function config($stateProvider, $urlRouterProvider) {
             }
         })
         .state('eventAdd', {
-            url: '/events/new',
+            url: '/new-event',
             component: ViewCreateEventComponent.name,
             resolve: {
                 offers: resolveOffers
@@ -111,5 +111,7 @@ export default function config($stateProvider, $urlRouterProvider) {
         .state('aboutUs', {
             url: '/about-us',
             component: AboutUsComponent.name,
-        })
+        });
+
+    $locationProvider.html5Mode(true);
 }
