@@ -11,6 +11,8 @@ import LanguageLevelsService from "./services/language-levels/language-levels";
 import LocationService from "./services/location/location";
 import UserLanguageService from "./services/user-languages/user-languages";
 import OffersService from "./services/offers/offers";
+import RestaurantsService from "./services/restaurants/restaurants";
+
 import Routes from "./config/routes";
 
 import ngmap from 'ngmap';
@@ -34,6 +36,7 @@ let app = angular.module('app', [
     LocationService.name,
     UserLanguageService.name,
     OffersService.name,
+    RestaurantsService.name,
     AppContent.name,
     ViewEvents.name,
     ViewCreateEvent.name,
