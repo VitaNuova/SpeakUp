@@ -36,10 +36,13 @@ class ViewLoginComponentController {
 
     $onInit() {
         this.login = {};
-        this.userChosenLanguages = [];
         this.registrationStep = 1;
         this.choices = [0];
+        this.user = {};
+        this.user.languages = [];
+        this.userChosenLanguages = [];
     }
+
 
     submit() {
         let user = this.login.username;
@@ -50,11 +53,6 @@ class ViewLoginComponentController {
             this.loginFailed = true;
             console.log("unauthorized");
         });
-    }
-
-    initializeRegistration() {
-        this.user = {};
-        this.language = {};
     }
 
     fetchLanguages() {
@@ -89,22 +87,29 @@ class ViewLoginComponentController {
 
     pushLast() {
         console.log('user chosen langs' + JSON.stringify(this.userChosenLanguages));
-        this.userChosenLanguages.push(this.language);
-        this.language = {};
     }
 
     moreLanguages() {
-        this.userChosenLanguages.push(this.language);
-        this.language = {};
-        this.choices.push(this.choices.length);
+        var curLang = this.userChosenLanguages[this.choices.length - 1];
+        //console.log(curLang);
+        if(curLang !== null && curLang !== undefined && curLang.languageLevel !== null
+            && Object.keys(curLang).length !== 0 && curLang.constructor === Object) {
+            this.choices.push(this.choices.length);
+        }
     }
 
     lessLanguages() {
-        this.userChosenLanguages.push(this.language);
-        this.language = {};
+        //console.log('choices length ' + this.choices.length);
+        //console.log('choices ' + JSON.stringify(this.choices));
         if(this.choices.length > 1) {
+            var curLang = this.userChosenLanguages[this.choices.length - 1];
+            if(curLang != null) {
+                //console.log('user languages before splice ' + JSON.stringify(this.userChosenLanguages));
+                this.userChosenLanguages.splice(this.userChosenLanguages.length - 1);
+                //console.log('user languages after splice ' + JSON.stringify(this.userChosenLanguages));
+            }
             this.choices.splice(this.choices.length - 1);
-            this.userChosenLanguages.splice(this.userChosenLanguages.length - 1);
+            console.log('choices after splice ' + this.choices);
         }
     }
 
@@ -121,22 +126,8 @@ class ViewLoginComponentController {
                     this.userChosenLanguages[j].topics.push(this.topics[i]._id);
                 }
             }
-
         }
 
-        /*var chosen_topics = [];
-        for (var i = 0; i < this.topics.length; i++) {
-            if (this.topics[i].selected) {
-                chosen_topics.push(this.topics[i]);
-            }
-        }*/
-        /*for (var i = 0; i < this.userChosenLanguages.length; i++) {
-            this.userChosenLanguages[i].topics = [];
-            for (var j = 0; j < chosen_topics.length; j++) {
-                this.userChosenLanguages[j].topics.push(chosen_topics[j]._id);
-            }
-        }*/
-        this.user.languages = [];
         for (var i = 0; i < this.userChosenLanguages.length; i++) {
             console.log('user language posted ' + JSON.stringify(this.userChosenLanguages[i]));
             this.UserLanguageService.create(this.userChosenLanguages[i]).then(
@@ -145,9 +136,7 @@ class ViewLoginComponentController {
                     this.user.languages.push(data._id);
                 }
             );
-
         }
-
     }
 
     dump() {
@@ -161,6 +150,7 @@ class ViewLoginComponentController {
     }
 
     addLocationAndReg() {
+        this.isDisabledRegButton = true;
         this.user.location = {};
 
         var geocoder = new google.maps.Geocoder();
@@ -197,14 +187,25 @@ class ViewLoginComponentController {
         console.log('posted model' + JSON.stringify(postedModel));
 
         this.UserService.register(postedModel).then(data => {
-           // this.$mdToast.show(
-           //     this.$mdToast.simple()
-           //         .textContent('Your account has been successfully created!')
-           //         .hideDelay(3000)
-           // );
-            console.log('data from post response ' + JSON.stringify(data));
-            this.$state.go('login');
-        });
+                console.log('data from post response ' + JSON.stringify(data));
+                this.error = false;
+                this.success = true;
+                this.message = ' Registration successful! You can login now.';
+
+            }, err => {
+                    this.success = false;
+                    this.error = true;
+                    //console.log('err ' + JSON.stringify(err));
+                    console.log('data ' + JSON.stringify(err.data));
+                    this.message = ' Registration failed!';
+                    if(err.data.code === 11000) {
+                        this.message += ' Username exists already!';
+                    }
+
+                    this.registrationStep = 1;
+                    this.isDisabledRegButton = false;
+            }
+            );
     }
 
     static get $inject() {

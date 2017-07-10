@@ -44,3 +44,45 @@
 .text-center {
     text-align: center;
 }
+
+a {
+    color: #ffffff;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #ffaaaa;
+}
+
+div.selected {
+    background-color: #da3816;
+}
+.offset {
+    margin-top: 25px;
+}
+
+.btn-info {
+    background-color: #2eae5e;
+}
+
+.btn-info:hover,
+.btn-info:active,
+.btn-info:focus,
+.btn-info:active:hover,
+.btn-info:disabled,
+.btn-info:disabled:hover {
+    background-color: #109e45;
+}
+
+.progress-bar {
+    background-color: #109e45;
+}
+
+section#register {
+    padding: 50px 0;
+}
+
+section#register hr {
+    border-color: #ffffff;
+}

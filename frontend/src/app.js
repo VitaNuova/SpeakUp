@@ -22,10 +22,6 @@ import ViewLogin from "./components/view-login/view-login";
 import ViewSingleEvent from "./components/view-single-event/view-single-event";
 import ViewProfile from "./components/view-profile/view-profile";
 import ViewAboutUs from "./components/view-about-us/view-about-us";
-import ViewRegisterLanguage from "./components/view-register-language/view-register-language";
-import ViewRegisterTopics from "./components/view-register-topics/view-register-topics";
-import ViewRegisterName from "./components/view-register-name/view-register-name";
-import ViewRegisterLocation from "./components/view-register-location/view-register-location";
 
 let app = angular.module('app', [
     uiRouter,
@@ -44,11 +40,7 @@ let app = angular.module('app', [
     ViewLogin.name,
     ViewSingleEvent.name,
     ViewProfile.name,
-    ViewAboutUs.name,
-    ViewRegisterName.name,
-    ViewRegisterLanguage.name,
-    ViewRegisterTopics.name,
-    ViewRegisterLocation.name
+    ViewAboutUs.name
 ]);
 
 app.constant('API_URL', 'http://localhost:3000/api');

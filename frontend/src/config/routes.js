@@ -6,10 +6,6 @@ import ViewCreateEventComponent from './../components/view-create-event/view-cre
 import ProfileComponent from './../components/view-profile/view-profile.component';
 import AboutUsComponent from './../components/view-about-us/view-about-us.component';
 import ViewSingleEventComponent from './../components/view-single-event/view-single-event.component';
-import ViewRegisterNameComponent from './../components/view-register-name/view-register-name.component';
-import ViewRegisterLanguageComponent from './../components/view-register-language/view-register-language.component';
-import ViewRegisterTopicsComponent from './../components/view-register-topics/view-register-topics.component';
-import ViewRegisterLocationComponent from './../components/view-register-location/view-register-location.component';
 
 import EventsService from './../services/events/events.service';
 import OffersService from './../services/offers/offers.service';
@@ -78,31 +74,6 @@ export default function config($stateProvider, $urlRouterProvider, $locationProv
         .state('login', {
             url: '/',
             component: LoginComponent.name
-        })
-        .state('registerName', {
-            url: '/register-name',
-            component: ViewRegisterNameComponent.name
-        })
-        .state('registerLanguage', {
-            url: '/register-language',
-            component: ViewRegisterLanguageComponent.name,
-            params: {
-                user: null
-            }
-        })
-        .state('registerTopics', {
-            url: '/register-topics',
-            component: ViewRegisterTopicsComponent.name,
-            params: {
-                user: null
-            }
-        })
-        .state('registerLocation', {
-            url: '/register-location',
-            component: ViewRegisterLocationComponent.name,
-            params: {
-                user: null
-            }
         })
         .state('profile', {
             url: '/profile',
