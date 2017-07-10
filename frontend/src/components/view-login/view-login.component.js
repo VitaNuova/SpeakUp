@@ -60,38 +60,29 @@ class ViewLoginComponentController {
          this.LanguagesService.list().then(
              function(data) {
                  ctrl.languages = data;
-                 //console.log('languages ' + JSON.stringify(ctrl.languages));
              }
          );
 
          this.LanguageLevelsService.list().then(
              function(data) {
                  ctrl.levels = data;
-                 //console.log('levels ' + JSON.stringify(ctrl.levels));
              }
          );
     }
 
     fetchTopics() {
-        // console.log('user after langs' + JSON.stringify(this.user));
 
          var ctrl = this;
          this.TopicsService.list().then(
              function(data) {
                  ctrl.topics = data;
-                 //console.log('topics ' + JSON.stringify(ctrl.topics));
              }
          );
-        //console.log('user after two steps ' + JSON.stringify(user));
     }
 
-    pushLast() {
-        console.log('user chosen langs' + JSON.stringify(this.userChosenLanguages));
-    }
 
     moreLanguages() {
         var curLang = this.userChosenLanguages[this.choices.length - 1];
-        //console.log(curLang);
         if(curLang !== null && curLang !== undefined && curLang.languageLevel !== null
             && Object.keys(curLang).length !== 0 && curLang.constructor === Object) {
             this.choices.push(this.choices.length);
@@ -99,14 +90,10 @@ class ViewLoginComponentController {
     }
 
     lessLanguages() {
-        //console.log('choices length ' + this.choices.length);
-        //console.log('choices ' + JSON.stringify(this.choices));
         if(this.choices.length > 1) {
             var curLang = this.userChosenLanguages[this.choices.length - 1];
             if(curLang != null) {
-                //console.log('user languages before splice ' + JSON.stringify(this.userChosenLanguages));
                 this.userChosenLanguages.splice(this.userChosenLanguages.length - 1);
-                //console.log('user languages after splice ' + JSON.stringify(this.userChosenLanguages));
             }
             this.choices.splice(this.choices.length - 1);
             console.log('choices after splice ' + this.choices);
@@ -129,21 +116,13 @@ class ViewLoginComponentController {
         }
 
         for (var i = 0; i < this.userChosenLanguages.length; i++) {
-            console.log('user language posted ' + JSON.stringify(this.userChosenLanguages[i]));
             this.UserLanguageService.create(this.userChosenLanguages[i]).then(
                 (data) => {
-                    console.log('user language created ' + JSON.stringify(data));
-                    this.user.languages.push(data._id);
+                   this.user.languages.push(data._id);
                 }
             );
         }
     }
-
-    dump() {
-        console.log('dumping chosen langs');
-        console.log(JSON.stringify(this.userChosenLanguages));
-    }
-
 
     initLocation() {
         this.location = 'Marienplatz';
@@ -170,12 +149,9 @@ class ViewLoginComponentController {
             }
         });
 
-        console.log('user ' + JSON.stringify(this.user));
     }
 
     register() {
-        console.log('user before sending to db ' + JSON.stringify(this.user));
-
         var postedModel = {
             username: this.user.name,
             password: this.user.password,
@@ -184,10 +160,8 @@ class ViewLoginComponentController {
             location: this.user.location,
             languages: this.user.languages
         };
-        console.log('posted model' + JSON.stringify(postedModel));
 
         this.UserService.register(postedModel).then(data => {
-                console.log('data from post response ' + JSON.stringify(data));
                 this.error = false;
                 this.success = true;
                 this.message = ' Registration successful! You can login now.';
@@ -195,8 +169,6 @@ class ViewLoginComponentController {
             }, err => {
                     this.success = false;
                     this.error = true;
-                    //console.log('err ' + JSON.stringify(err));
-                    console.log('data ' + JSON.stringify(err.data));
                     this.message = ' Registration failed!';
                     if(err.data.code === 11000) {
                         this.message += ' Username exists already!';
