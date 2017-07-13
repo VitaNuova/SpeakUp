@@ -11,6 +11,7 @@ import OffersService from "./services/offers/offers";
 import RestaurantsService from "./services/restaurants/restaurants";
 
 import Routes from "./config/routes";
+import Middleware from "./config/middlewares";
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -39,50 +40,7 @@ let app = angular.module('app', [
 
 app.constant('API_URL', 'http://localhost:3000/api');
 app.config(Routes);
-app.config(['$httpProvider', ($httpProvider) => {
-    $httpProvider.interceptors.push(['$q', function ($q) {
-        return {
-            'request': function (config) {
-                //Making a request to the API Server
-                // if (config.url.indexOf(API_URL) === 0) {
-                //     let token = $window.localStorage['jwtToken'];
-                //
-                //     if (token) {
-                //         config.headers.Authorization = 'JWT ' + token;
-                //     }
-                // }
-
-                return config;
-            },
-            // optional method
-            'requestError': function (rejection) {
-                return $q.reject(rejection);
-            },
-            // optional method
-            'response': function (response) {
-                //Receiving response from  the API Server
-                // if (response && response.config.url.indexOf(API_URL) === 0) {
-                //
-                //     // If a token was sent back, save it
-                //     if (response.data.hasOwnProperty('token')) {
-                //         $window.localStorage['jwtToken'] = response.data.token;
-                //     }
-                // }
-
-                return response;
-            },
-            // optional method
-            'responseError': function (rejection) {
-                // do something on error
-                // if (rejection.status == 400 || rejection.status == 401) {
-                //     $state.go('login', {});
-                // }
-
-                return $q.reject(rejection);
-            }
-        }
-    }])
-}]);
+app.config(Middleware);
 
 angular.element(document).ready(function () {
     return angular.bootstrap(document.body, [app.name], {
