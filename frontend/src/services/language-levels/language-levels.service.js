@@ -12,7 +12,7 @@ export default class LanguageLevelsService {
 
     constructor($http, API_URL) {
         this.$http = $http;
-        this.resourceUrl = `${ API_URL }/languagelevels/`;
+        this.resourceUrl = `${ API_URL }/language-levels/`;
 
     }
 

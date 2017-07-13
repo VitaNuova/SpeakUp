@@ -12,7 +12,7 @@ export default class UserLanguagesService {
 
     constructor($http, API_URL) {
         this.$http = $http;
-        this.resourceUrl = `${ API_URL }/userlanguages/`;
+        this.resourceUrl = `${ API_URL }/user-languages/`;
 
     }
 

@@ -7,11 +7,16 @@ import EventsService from "./services/events/events";
 import UserService from "./services/user/user";
 import TopicsService from "./services/topics/topics";
 import LanguagesService from "./services/languages/languages";
+import LanguageLevelsService from "./services/language-levels/language-levels";
+import LocationService from "./services/location/location";
+import UserLanguageService from "./services/user-languages/user-languages";
 import OffersService from "./services/offers/offers";
 import RestaurantsService from "./services/restaurants/restaurants";
 
 import Routes from "./config/routes";
 import Middleware from "./config/middlewares";
+
+import ngmap from 'ngmap';
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -23,10 +28,14 @@ import ViewAboutUs from "./components/view-about-us/view-about-us";
 
 let app = angular.module('app', [
     uiRouter,
+    ngmap,
     UserService.name,
     EventsService.name,
     TopicsService.name,
     LanguagesService.name,
+    LanguageLevelsService.name,
+    LocationService.name,
+    UserLanguageService.name,
     OffersService.name,
     RestaurantsService.name,
     AppContent.name,

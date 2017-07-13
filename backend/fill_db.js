@@ -77,13 +77,13 @@ t1.save(function(err) { if (err) return console.error(err); });
 
 var t2 = new Topic({
     name: "Environment",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/food.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/environment.jpeg"
 });
 t2.save(function(err) { if (err) return console.error(err); });
 
 var t3 = new Topic({
     name: "Food",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/environment.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/food.jpeg"
 });
 t3.save(function(err) { if (err) return console.error(err); });
 
