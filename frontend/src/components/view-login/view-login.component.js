@@ -1,9 +1,9 @@
 'use strict';
 
-import UserService from './../../services/user/user.service';
+import UserService from "./../../services/user/user.service";
 
-import template from './view-login.template.html';
-import './view-login.style.css';
+import template from "./view-login.template.html";
+import "./view-login.style.css";
 
 class ViewLoginComponent {
     constructor() {
@@ -16,12 +16,12 @@ class ViewLoginComponent {
         return 'viewLogin';
     }
 
-
 }
 
 class ViewLoginComponentController {
-    constructor($state, UserService) {
+    constructor($state, $window, UserService) {
         this.$state = $state;
+        this.$window = $window;
         this.UserService = UserService;
     }
 
@@ -30,16 +30,21 @@ class ViewLoginComponentController {
     }
 
     submit() {
-        let user = this.login.username;
+        let username = this.login.username;
         let password = this.login.password;
 
-        this.UserService.login(user, password).then(() => {
-            this.$state.go('movies', {});
-        });
+        let user = this.UserService.login(username, password);
+        if(user) {
+            this.$state.go('events', {});
+        }
+    }
+
+    isAuthenticated() {
+        return this.UserService.isAuthenticated();
     }
 
     static get $inject() {
-        return ['$state', UserService.name];
+        return ['$state', '$window', UserService.name];
     }
 
 }

@@ -9,21 +9,24 @@ import ViewSingleEventComponent from './../components/view-single-event/view-sin
 
 import EventsService from './../services/events/events.service';
 import OffersService from './../services/offers/offers.service';
+import UserService from './../services/user/user.service';
 
 resolveEvent.$inject = ['$stateParams', EventsService.name];
-
 function resolveEvent($stateParams, eventsService) {
     return eventsService.get($stateParams.eventId);
 }
 
-resolveOffers.$inject = [OffersService.name];
+resolveUser.$inject = ['$stateParams', UserService.name];
+function resolveUser($stateParams, userService) {
+    return userService.get($stateParams.userId);
+}
 
+resolveOffers.$inject = [OffersService.name];
 function resolveOffers(offersService) {
     return offersService.list();
 }
 
 resolveEvents.$inject = [EventsService.name];
-
 function resolveEvents(eventsService) {
     return eventsService.list();
 }
@@ -49,14 +52,6 @@ export default function config($stateProvider, $urlRouterProvider, $locationProv
                 offers: resolveOffers
             }
         })
-        /* .state('event', {
-             url: '/events/:eventId',
-             component: EventComponent.name,
-             resolve: {
-                 event: resolveEvent
-             }
-
-         })*/
         .state('event', {
             url: '/events/:eventId',
             component: ViewSingleEventComponent.name,
@@ -76,8 +71,11 @@ export default function config($stateProvider, $urlRouterProvider, $locationProv
             component: LoginComponent.name
         })
         .state('profile', {
-            url: '/profile',
+            url: '/profile/:userId',
             component: ProfileComponent.name,
+            resolve: {
+                user: resolveUser
+            }
         })
         .state('aboutUs', {
             url: '/about-us',
