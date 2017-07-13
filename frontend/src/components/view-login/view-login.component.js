@@ -1,14 +1,15 @@
 'use strict';
 
-import UserService from './../../services/user/user.service';
-import LanguagesService from './../../services/languages/languages.service';
-import LanguageLevelsService from './../../services/language-levels/language-levels.service';
-import TopicsService from './../../services/topics/topics.service';
-import LocationService from './../../services/location/location.service';
-import UserLanguageService from './../../services/user-languages/user-languages.service';
 
-import template from './view-login.template.html';
-import './view-login.style.css';
+import UserService from "./../../services/user/user.service";
+import LanguagesService from "./../../services/languages/languages.service";
+import LanguageLevelsService from "./../../services/language-levels/language-levels.service";
+import TopicsService from "./../../services/topics/topics.service";
+import LocationService from "./../../services/location/location.service";
+import UserLanguageService from "./../../services/user-languages/user-languages.service";
+
+import template from "./view-login.template.html";
+import "./view-login.style.css";
 
 class ViewLoginComponent {
     constructor() {
@@ -20,12 +21,14 @@ class ViewLoginComponent {
     static get name() {
         return 'viewLogin';
     }
+
 }
 
 class ViewLoginComponentController {
 
-    constructor($state, UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
+    constructor($state, $window, UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
         this.$state = $state;
+        this.$window = $window;
         this.UserService = UserService;
         this.LanguagesService = LanguagesService;
         this.LanguageLevelsService = LanguageLevelsService;
@@ -45,8 +48,9 @@ class ViewLoginComponentController {
 
 
     submit() {
-        let user = this.login.username;
+        let username = this.login.username;
         let password = this.login.password;
+
         this.UserService.login(user, password).then(() => {
             this.$state.go('events', {});
         }, () => {
@@ -56,43 +60,44 @@ class ViewLoginComponentController {
     }
 
     fetchLanguages() {
-         var ctrl = this;
-         this.LanguagesService.list().then(
-             function(data) {
-                 ctrl.languages = data;
-             }
-         );
+        let ctrl = this;
+        this.LanguagesService.list().then(
+            function (data) {
+                ctrl.languages = data;
+            }
+        );
 
-         this.LanguageLevelsService.list().then(
-             function(data) {
-                 ctrl.levels = data;
-             }
-         );
+        this.LanguageLevelsService.list().then(
+            function (data) {
+                ctrl.levels = data;
+            }
+        );
     }
 
     fetchTopics() {
+        let ctrl = this;
 
-         var ctrl = this;
-         this.TopicsService.list().then(
-             function(data) {
-                 ctrl.topics = data;
-             }
-         );
+        this.TopicsService.list().then(
+            function (data) {
+                ctrl.topics = data;
+            }
+        );
     }
 
 
     moreLanguages() {
-        var curLang = this.userChosenLanguages[this.choices.length - 1];
-        if(curLang !== null && curLang !== undefined && curLang.languageLevel !== null
+        let curLang = this.userChosenLanguages[this.choices.length - 1];
+
+        if (curLang !== null && curLang !== undefined && curLang.languageLevel !== null
             && Object.keys(curLang).length !== 0 && curLang.constructor === Object) {
             this.choices.push(this.choices.length);
         }
     }
 
     lessLanguages() {
-        if(this.choices.length > 1) {
-            var curLang = this.userChosenLanguages[this.choices.length - 1];
-            if(curLang != null) {
+        if (this.choices.length > 1) {
+            let curLang = this.userChosenLanguages[this.choices.length - 1];
+            if (curLang != null) {
                 this.userChosenLanguages.splice(this.userChosenLanguages.length - 1);
             }
             this.choices.splice(this.choices.length - 1);
@@ -106,19 +111,19 @@ class ViewLoginComponentController {
     }
 
     addLangsAndTopics() {
-        for (var j = 0; j < this.userChosenLanguages.length; j++) {
+        for (let j = 0; j < this.userChosenLanguages.length; j++) {
             this.userChosenLanguages[j].topics = [];
-            for (var i = 0; i < this.topics.length; i++) {
+            for (let i = 0; i < this.topics.length; i++) {
                 if (this.topics[i].selected) {
                     this.userChosenLanguages[j].topics.push(this.topics[i]._id);
                 }
             }
         }
 
-        for (var i = 0; i < this.userChosenLanguages.length; i++) {
+        for (let i = 0; i < this.userChosenLanguages.length; i++) {
             this.UserLanguageService.create(this.userChosenLanguages[i]).then(
                 (data) => {
-                   this.user.languages.push(data._id);
+                    this.user.languages.push(data._id);
                 }
             );
         }
@@ -132,10 +137,10 @@ class ViewLoginComponentController {
         this.isDisabledRegButton = true;
         this.user.location = {};
 
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode( { "address": this.location }, (results, status) => {
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode({"address": this.location}, (results, status) => {
             if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
-                var location = {};
+                let location = {};
                 location.x = results[0].geometry.location.lat();
                 location.y = results[0].geometry.location.lng();
 
@@ -148,11 +153,10 @@ class ViewLoginComponentController {
                 );
             }
         });
-
     }
 
     register() {
-        var postedModel = {
+        let postedModel = {
             username: this.user.name,
             password: this.user.password,
             email: this.user.email,
@@ -165,23 +169,22 @@ class ViewLoginComponentController {
                 this.error = false;
                 this.success = true;
                 this.message = ' Registration successful! You can login now.';
-
             }, err => {
-                    this.success = false;
-                    this.error = true;
-                    this.message = ' Registration failed!';
-                    if(err.data.code === 11000) {
-                        this.message += ' Username exists already!';
-                    }
+                this.success = false;
+                this.error = true;
+                this.message = ' Registration failed!';
+                if (err.data.code === 11000) {
+                    this.message += ' Username exists already!';
+                }
 
-                    this.registrationStep = 1;
-                    this.isDisabledRegButton = false;
+                this.registrationStep = 1;
+                this.isDisabledRegButton = false;
             }
-            );
+        );
     }
 
     static get $inject() {
-        return ['$state', UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
+        return ['$state', '#window', UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
     }
 
 }

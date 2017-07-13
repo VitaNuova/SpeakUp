@@ -4,13 +4,12 @@
             <h1 id="homeHeading">Connect Improve Explore</h1>
             <hr>
             <p>Speak Up to the challenge</p>
-            <div class="row">
+            <div class="row" ng-if="!$ctrl.isAuthenticated()">
                 <form name="loginForm">
                     <div class="col-lg-4 col-lg-offset-4">
                         <div class="form-group">
                             <label class="text-faded">Email</label>
-                            <input type="email" name="email" ng-model="user.username" required class="form-control">
-                            <div ng-show="loginForm.email.$error.email" class="error">Invalid email!</div>
+                            <input type="text" name="username" ng-model="$ctrl.login.username" required class="form-control">
                             <p ng-show="loginForm.email.$error.required &amp;&amp; loginForm.email.$touched"
                                  class="error">
                                 Required!
@@ -20,7 +19,7 @@
                     <div class="col-lg-4 col-lg-offset-4">
                         <div class="form-group">
                             <label class="text-faded">Password</label>
-                            <input type="password" name="pass" ng-model="user.password" required class="form-control">
+                            <input type="password" name="pass" ng-model="$ctrl.login.password" required class="form-control">
                             <p ng-show="loginForm.pass.$error.required &amp;&amp; loginForm.pass.$touched"
                                  class="error">
                                 Required!
@@ -29,7 +28,7 @@
                     </div>
                     <div class="col-lg-4 col-lg-offset-4">
                         <div class="form-group">
-                            <button ng-click="" ng-disabled="loginForm.$invalid"
+                            <button ng-click="$ctrl.submit()" ng-disabled="loginForm.$invalid"
                                     class="btn btn-success btn-xl">
                                 Login
                             </button>
