@@ -9,9 +9,10 @@
                     <div class="col-lg-4 col-lg-offset-4">
                         <div class="form-group">
                             <label class="text-faded">Email</label>
-                            <input type="text" name="username" ng-model="$ctrl.login.username" required class="form-control">
+                            <input type="text" name="username" ng-model="$ctrl.login.username" required
+                                   class="form-control">
                             <p ng-show="loginForm.email.$error.required &amp;&amp; loginForm.email.$touched"
-                                 class="error">
+                               class="error">
                                 Required!
                             </p>
                         </div>
@@ -19,9 +20,10 @@
                     <div class="col-lg-4 col-lg-offset-4">
                         <div class="form-group">
                             <label class="text-faded">Password</label>
-                            <input type="password" name="pass" ng-model="$ctrl.login.password" required class="form-control">
+                            <input type="password" name="pass" ng-model="$ctrl.login.password" required
+                                   class="form-control">
                             <p ng-show="loginForm.pass.$error.required &amp;&amp; loginForm.pass.$touched"
-                                 class="error">
+                               class="error">
                                 Required!
                             </p>
                         </div>
@@ -37,29 +39,32 @@
                     </div>
                 </form>
             </div>
-            <a ng-click="$ctrl.initializeRegistration()" data-target="#register" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            <a ng-if="!$ctrl.isAuthenticated()" ng-click="$ctrl.initializeRegistration()" data-target="#about"
+               class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            <a  ng-if="$ctrl.isAuthenticated()"data-target="#services"
+               class="btn btn-primary btn-xl page-scroll">Services</a>
         </div>
     </div>
 </header>
 
-<!--section class="bg-primary" id="about">
+<section id="about" ng-if="!$ctrl.isAuthenticated()">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
                 <h2 class="section-heading">We've got what you need!</h2>
-                <hr class="light">
-                <p class="text-faded">Speak Up enables you to join a language-speaking event and connect with fellow
+                <hr>
+                <p>Speak Up enables you to join a language-speaking event and connect with fellow
                     students who share similar goals. Choose from the events that best suit your needs and join them.
                     Nothing appropriate? You can create an event yourself. With a minimum number of people required, our
                     partners will then open their doors for you to meet, talk and enjoy the best discounts in town!
                     Hurry up! The event you are looking for may be missing just one more person right now!</p>
-                <a data-target="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+                <a data-target="#register"  class="btn btn-primary btn-xl page-scroll">Register!</a>
             </div>
         </div>
     </div>
-</section-->
+</section>
 
-<section class="bg-primary" id="register">
+<section class="bg-primary" id="register" ng-if="!$ctrl.isAuthenticated()">
     <div class="row" ng-if="$ctrl.error">
         <div class="col-md-8 col-md-offset-2">
             <div class="alert alert-danger alert-dismissable form-group">
@@ -76,7 +81,7 @@
             </div>
         </div>
     </div>
-    <div class="container"  ng-if="$ctrl.registrationStep == 1" >
+    <div class="container" ng-if="$ctrl.registrationStep == 1">
         <div class="row ">
             <h2 class="text-center">Create your account at SpeakUp!</h2>
             <hr class="primary"/>
@@ -84,34 +89,48 @@
         <div class="row offset">
             <form name="BasicInfoForm" novalidate>
                 <div class="col-md-6">
-                    <div class="form-group" ng-class="{'has-error': BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine }">
+                    <div class="form-group"
+                         ng-class="{'has-error': BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine }">
                         <label for="nameInput">Name:</label>
-                        <input ng-model="$ctrl.user.name" type="text" name="name" class="form-control" id="nameInput" placeholder="Enter your name" required>
-                        <p ng-show="BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine" class="help-block">Your name is required.</p>
+                        <input ng-model="$ctrl.user.name" type="text" name="name" class="form-control" id="nameInput"
+                               placeholder="Enter your name" required>
+                        <p ng-show="BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine" class="help-block">
+                            Your name is required.</p>
                     </div>
-                    <div class="form-group" ng-class="{'has-error': BasicInfoForm.password.$invalid && !BasicInfoForm.password.$pristine }">
+                    <div class="form-group"
+                         ng-class="{'has-error': BasicInfoForm.password.$invalid && !BasicInfoForm.password.$pristine }">
                         <label for="passInput">Password:</label>
-                        <input ng-model="$ctrl.user.password" type="text" name="password" ng-minlength="8" class="form-control" id="passInput" placeholder="Enter password" required>
-                        <p ng-show="BasicInfoForm.password.$invalid && !BasicInfoForm.password.$pristine" class="help-block">Password should be at least 8 characters long.</p>
+                        <input ng-model="$ctrl.user.password" type="text" name="password" ng-minlength="8"
+                               class="form-control" id="passInput" placeholder="Enter password" required>
+                        <p ng-show="BasicInfoForm.password.$invalid && !BasicInfoForm.password.$pristine"
+                           class="help-block">Password should be at least 8 characters long.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group" ng-class="{'has-error': BasicInfoForm.email.$invalid && !BasicInfoForm.password.$pristine }">
+                    <div class="form-group"
+                         ng-class="{'has-error': BasicInfoForm.email.$invalid && !BasicInfoForm.password.$pristine }">
                         <label for="emailInput">Email:</label>
-                        <input ng-model="$ctrl.user.email" type="email" name="email" class="form-control" id="emailInput" placeholder="Enter email" required>
-                        <p ng-show="BasicInfoForm.email.$invalid && !BasicInfoForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                        <input ng-model="$ctrl.user.email" type="email" name="email" class="form-control"
+                               id="emailInput" placeholder="Enter email" required>
+                        <p ng-show="BasicInfoForm.email.$invalid && !BasicInfoForm.email.$pristine" class="help-block">
+                            Enter a valid email.</p>
                     </div>
-                    <div class="form-group" ng-class="{'has-error': BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine }">
+                    <div class="form-group"
+                         ng-class="{'has-error': BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine }">
                         <label for="ageInput">Age:</label>
-                        <input ng-model="$ctrl.user.age" type="number" name="age" class="form-control" id="ageInput" placeholder="Enter your age" min="0">
-                        <p ng-show="BasicInfoForm.age.$invalid && !BasicInfoForm.age.$pristine" class="help-block">Enter number between 0 and 99.</p>
+                        <input ng-model="$ctrl.user.age" type="number" name="age" class="form-control" id="ageInput"
+                               placeholder="Enter your age" min="0">
+                        <p ng-show="BasicInfoForm.age.$invalid && !BasicInfoForm.age.$pristine" class="help-block">Enter
+                            number between 0 and 99.</p>
                     </div>
                 </div>
             </form>
         </div>
         <div class="row offset">
             <div class="col-md-4 col-md-offset-4 text-center form-group">
-                <button type="submit" class="btn btn-info btn-xl" ng-disabled="BasicInfoForm.$invalid" ng-click="$ctrl.registrationStep = 2; $ctrl.fetchLanguages();">Continue</button>
+                <button type="submit" class="btn btn-info btn-xl" ng-disabled="BasicInfoForm.$invalid"
+                        ng-click="$ctrl.registrationStep = 2; $ctrl.fetchLanguages();">Continue
+                </button>
             </div>
         </div>
     </div>
@@ -123,13 +142,16 @@
         <form name="LanguageForm" novalidate>
             <div class="row offset" data-ng-repeat="choice in $ctrl.choices">
                 <div class="col-md-6 form-group">
-                    <select class="form-control" name="selectLanguage" ng-model="$ctrl.userChosenLanguages[choice].language" required>
+                    <select class="form-control" name="selectLanguage"
+                            ng-model="$ctrl.userChosenLanguages[choice].language" required>
                         <option value="" disabled selected hidden>Select language...</option>
-                        <option ng-repeat="language in $ctrl.languages" ng-value="language._id">{{language.name}}</option>
+                        <option ng-repeat="language in $ctrl.languages" ng-value="language._id">{{language.name}}
+                        </option>
                     </select>
                 </div>
                 <div class="col-md-6 form-group">
-                    <select class="form-control" id="selectLevel" ng-model="$ctrl.userChosenLanguages[choice].languageLevel">
+                    <select class="form-control" id="selectLevel"
+                            ng-model="$ctrl.userChosenLanguages[choice].languageLevel">
                         <option value="" disabled selected hidden>Select level...</option>
                         <option ng-repeat="level in $ctrl.levels" ng-value="level._id">{{level.name}}</option>
                     </select>
@@ -145,10 +167,13 @@
             </div>
             <div class="row offset">
                 <div class="col-md-2 col-md-offset-4 form-group">
-                    <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 1;">Back</button>
+                    <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 1;">Back
+                    </button>
                 </div>
                 <div class="col-md-2 form-group">
-                    <button type="submit" class="btn btn-info btn-xl" ng-disabled="LanguageForm.$invalid" ng-click="$ctrl.registrationStep = 3; $ctrl.fetchTopics();">Continue</button>
+                    <button type="submit" class="btn btn-info btn-xl" ng-disabled="LanguageForm.$invalid"
+                            ng-click="$ctrl.registrationStep = 3; $ctrl.fetchTopics();">Continue
+                    </button>
                 </div>
             </div>
         </form>
@@ -160,16 +185,18 @@
         </div>
         <div class="row bar">
             <div class="col-md-4 col-md-offset-4">
-                <input type="text" class="search form-control" placeholder="Search for topic.." ng-model="searchString"/>
+                <input type="text" class="search form-control" placeholder="Search for topic.."
+                       ng-model="searchString"/>
             </div>
         </div>
         <div class="row offset">
-            <div class="col-md-3 top-pad"  data-ng-repeat="topic in $ctrl.topics | filter:searchString" ng-click="$ctrl.toggle(topic)" ng-class="{'selected': topic.selected}">
+            <div class="col-md-3 top-pad" data-ng-repeat="topic in $ctrl.topics | filter:searchString"
+                 ng-click="$ctrl.toggle(topic)" ng-class="{'selected': topic.selected}">
                 <div class="thumbnail">
                     <div class="img-wrapper">
                         <img class="img-responsive" ng-src="{{topic.imagePath}}" alt="No image available"/>
                     </div>
-                    <div class="caption text-center"> {{topic.name}} </div>
+                    <div class="caption text-center"> {{topic.name}}</div>
                 </div>
             </div>
         </div>
@@ -178,7 +205,9 @@
                 <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 2;">Back</button>
             </div>
             <div class="col-md-2 form-group">
-                <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 4; $ctrl.addLangsAndTopics(); $ctrl.initLocation()">Continue</button>
+                <button type="submit" class="btn btn-info btn-xl"
+                        ng-click="$ctrl.registrationStep = 4; $ctrl.addLangsAndTopics(); $ctrl.initLocation()">Continue
+                </button>
             </div>
         </div>
     </div>
@@ -189,7 +218,8 @@
         </div>
         <div class="row bar">
             <div class="col-md-4 col-md-offset-4">
-                <input type="text" class="search form-control" placeholder="Choose your desired location" ng-model="$ctrl.location" />
+                <input type="text" class="search form-control" placeholder="Choose your desired location"
+                       ng-model="$ctrl.location"/>
             </div>
             <br/>
         </div>
@@ -206,7 +236,9 @@
                 <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 3;">Back</button>
             </div>
             <div class="col-md-2 form-group">
-                <button type="submit" class="btn btn-info btn-xl" ng-disabled="$ctrl.isDisabledRegButton" ng-click="$ctrl.addLocationAndReg(); ">Finish</button>
+                <button type="submit" class="btn btn-info btn-xl" ng-disabled="$ctrl.isDisabledRegButton"
+                        ng-click="$ctrl.addLocationAndReg(); ">Finish
+                </button>
             </div>
         </div>
     </div>

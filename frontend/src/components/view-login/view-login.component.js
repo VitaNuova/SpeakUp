@@ -46,17 +46,21 @@ class ViewLoginComponentController {
         this.userChosenLanguages = [];
     }
 
+    isAuthenticated() {
+        return this.UserService.isAuthenticated();
+    }
 
     submit() {
         let username = this.login.username;
         let password = this.login.password;
 
-        this.UserService.login(user, password).then(() => {
+        this.UserService.login(username, password).then((success) => {
+            this.$window.localStorage.setItem('jwtToken', success.data.token);
             this.$state.go('events', {});
-        }, () => {
+        }, (error) => {
             this.loginFailed = true;
             console.log("unauthorized");
-        });
+        })
     }
 
     fetchLanguages() {
@@ -184,7 +188,7 @@ class ViewLoginComponentController {
     }
 
     static get $inject() {
-        return ['$state', '#window', UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
+        return ['$state', '$window', UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
     }
 
 }

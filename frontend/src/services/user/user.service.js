@@ -29,11 +29,9 @@ export default class UserService {
     }
 
     login(user, pass) {
-        this.$http.post(`${ this.API_URL }/user/login`, {
+        return this.$http.post(`${ this.API_URL }/user/login`, {
             username: user,
             password: pass
-        }).then((results) => {
-            this.$window.localStorage.setItem('jwtToken', results.data.token);
         });
     }
 
@@ -59,7 +57,7 @@ export default class UserService {
     }
 
     isAuthenticated() {
-        return this.$window.localStorage['jwtToken'];
+        return !!this.$window.localStorage['jwtToken'];
         // return true;
     }
 
