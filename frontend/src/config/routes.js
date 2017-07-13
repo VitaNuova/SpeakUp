@@ -1,15 +1,14 @@
 'use strict';
 
-import EventsComponent from './../components/view-events/view-events.component';
-import LoginComponent from './../components/view-login/view-login.component';
-import ViewCreateEventComponent from './../components/view-create-event/view-create-event.component';
-import ProfileComponent from './../components/view-profile/view-profile.component';
-import AboutUsComponent from './../components/view-about-us/view-about-us.component';
-import ViewSingleEventComponent from './../components/view-single-event/view-single-event.component';
+import EventsComponent from "./../components/view-events/view-events.component";
+import LoginComponent from "./../components/view-login/view-login.component";
+import ViewCreateEventComponent from "./../components/view-create-event/view-create-event.component";
+import ProfileComponent from "./../components/view-profile/view-profile.component";
+import ViewSingleEventComponent from "./../components/view-single-event/view-single-event.component";
 
-import EventsService from './../services/events/events.service';
-import OffersService from './../services/offers/offers.service';
-import UserService from './../services/user/user.service';
+import EventsService from "./../services/events/events.service";
+import OffersService from "./../services/offers/offers.service";
+import UserService from "./../services/user/user.service";
 
 resolveEvent.$inject = ['$stateParams', EventsService.name];
 function resolveEvent($stateParams, eventsService) {
@@ -76,10 +75,6 @@ export default function config($stateProvider, $urlRouterProvider, $locationProv
             resolve: {
                 user: resolveUser
             }
-        })
-        .state('aboutUs', {
-            url: '/about-us',
-            component: AboutUsComponent.name,
         });
 
     $locationProvider.html5Mode(true);

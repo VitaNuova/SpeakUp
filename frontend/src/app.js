@@ -16,7 +16,7 @@ import RestaurantsService from "./services/restaurants/restaurants";
 import Routes from "./config/routes";
 import Middleware from "./config/middlewares";
 
-import ngmap from 'ngmap';
+import ngmap from "ngmap";
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -24,7 +24,6 @@ import ViewCreateEvent from "./components/view-create-event/view-create-event";
 import ViewLogin from "./components/view-login/view-login";
 import ViewSingleEvent from "./components/view-single-event/view-single-event";
 import ViewProfile from "./components/view-profile/view-profile";
-import ViewAboutUs from "./components/view-about-us/view-about-us";
 
 let app = angular.module('app', [
     uiRouter,
@@ -43,8 +42,7 @@ let app = angular.module('app', [
     ViewCreateEvent.name,
     ViewLogin.name,
     ViewSingleEvent.name,
-    ViewProfile.name,
-    ViewAboutUs.name
+    ViewProfile.name
 ]);
 
 app.constant('API_URL', 'http://localhost:3000/api');

@@ -6,23 +6,32 @@
                     data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand page-scroll" data-target="#page-top">Speak Up</a>
+            <a class="navbar-brand page-scroll" ui-sref="login">Speak Up</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li ng-if="$ctrl.isAuthenticated()">
                     <a ui-sref="login">Home</a>
                 </li>
-                <li>
+                <li ng-if="$ctrl.isAuthenticated()">
                     <a ui-sref="events">Events</a>
                 </li>
-                <li>
+                <li ng-if="$ctrl.isAuthenticated()">
                     <a ui-sref="eventAdd">New Event</a>
                 </li>
-                <li>
-                    <a ui-sref="aboutUs">About Us</a>
+                <li ng-if="!$ctrl.isAuthenticated()">
+                    <a class="page-scroll" data-target="#page-top" href="">Home</a>
+                </li>
+                <li ng-if="!$ctrl.isAuthenticated()">
+                    <a class="page-scroll" data-target="#about" href="">Info</a>
+                </li>
+                <li ng-if="!$ctrl.isAuthenticated()">
+                    <a class="page-scroll" data-target="#register" href="">Register</a>
+                </li>
+                <li ng-if="!$ctrl.isAuthenticated()">
+                    <a class="page-scroll" data-target="#services" href="">Services</a>
                 </li>
                 <li class="dropdown" ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.getLoggedInUser()">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
