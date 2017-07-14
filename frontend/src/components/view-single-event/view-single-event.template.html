@@ -9,25 +9,76 @@
 <section id="services">
     <div class="container">
         <div class="row col-lg-12 text-center">
-            <div class="col-lg-4 col-sm-6">
-                <img class="single-event-img half-screen-picture img-responsive center-block" ng-src="{{$ctrl.singleEvent.offer.imagePath}}" alt="Restaurant Logo">
+            <div class="col-lg-offset-0 col-lg-4 col-sm-offset-3 col-sm-6">
+                <img class="single-event-img img-responsive center-block" ng-src="{{$ctrl.singleEvent.offer.imagePath}}" alt="Restaurant Logo">
             </div>
-            <div class="col-lg-8 col-sm-6">
-                <div class="col-lg-6 pull-left">
-                    <div class="text-left">
-                        <label for="language">Language:</label>
-                        <span id="language">{{$ctrl.singleEvent.language.name}}</span>
+            <!--<div></div>-->
+            <div class="col-lg-4 col-sm-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="glyphicon glyphicon-info-sign fa-lg pull-left"></i>
+                        General Information
                     </div>
-                    <label for="topics">Topics:</label>
-                    <div id="topics" class="text-left" ng-repeat="topic in $ctrl.singleEvent.topics">
-                        <span>{{topic.name}}</span>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group text-left">
+                                <span class="col-sm-4"><strong>Language:</strong></span>
+                                <div class="col-sm-8 text-left">
+                                    <span class="form-control-static">{{$ctrl.singleEvent.language.name}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group text-left">
+                                <span class="col-sm-4"><strong>Topics:</strong></span>
+                                <div class="col-sm-8 text-left">
+                                    <span class="form-control-static" ng-repeat="topic in $ctrl.singleEvent.topics">
+                                        <span>{{topic.name}}</span><span ng-if="!$last">, </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group text-left">
+                                <span class="col-sm-4"><strong>Discount:</strong></span>
+                                <div class="col-sm-8">
+                                    <span class="form-control-static">{{$ctrl.singleEvent.offer.discount}}%</span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div >
-                        Topics: {{$ctrl.singleEvent.language.name}}
+            </div>
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="panel panel-primary">
+                    <div class="panel-theme-heading panel-heading">
+                        <i class="glyphicon glyphicon-time fa-lg pull-left"></i>
+                        <i class="glyphicon glyphicon-map-marker fa-lg pull-left"></i>
+                        Location and time
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group text-left">
+                                <span class="col-sm-4"><strong>From:</strong></span>
+                                <div class="col-sm-8 text-left">
+                                    <span class="form-control-static">{{$ctrl.getFullDate($ctrl.singleEvent.offer)}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group text-left">
+                                <span class="col-sm-4"><strong>To:</strong></span>
+                                <div class="col-sm-8 text-left">
+                                    <span class="form-control-static">{{$ctrl.getTime($ctrl.singleEvent.offer.from)}} - {{$ctrl.getTime($ctrl.singleEvent.offer.to)}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group text-left">
+                                <span class="col-sm-4"><strong>Restaurant:</strong></span>
+                                <div class="col-sm-8">
+                                    <span class="form-control-static">{{$ctrl.restaurant}}</span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-lg-offset-4 col-lg-8 col-sm-12">
                 <div class="progress">
                     <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
                          aria-valuenow="$ctrl.getProgress()"
@@ -36,9 +87,11 @@
                         {{$ctrl.getProgress($ctrl.singleEvent)}}% COMPLETE
                     </div>
                 </div>
-            </div>
 
-            <a class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()">Join</a>
+                <div>
+                    <button class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()">Join Event</button>
+                </div>
+            </div>
         </div>
     </div>
 </section>
