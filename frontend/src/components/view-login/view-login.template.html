@@ -1,6 +1,6 @@
 <div class="row" ng-if="!$ctrl.isAuthenticated()">
     <form name="loginForm">
-        <div class="col-lg-4 col-lg-offset-4">
+        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
             <div class="form-group">
                 <label class="text-faded">Username:</label>
                 <input type="text" name="username" ng-model="$ctrl.login.username" required
@@ -11,7 +11,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-lg-4 col-lg-offset-4">
+        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
             <div class="form-group">
                 <label class="text-faded">Password</label>
                 <input type="password" name="pass" ng-model="$ctrl.login.password" required

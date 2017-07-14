@@ -11,7 +11,7 @@
     min-height: 100vh;
     width: 100%;
     top: 0;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../../assets/carousel-image.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../../assets/carousel-image.jpg");
     background-size: cover;
 }
 
@@ -32,12 +32,12 @@
     color: white;
 }
 
-.mission-text>h1 {
+.mission-text > h1 {
     font-size: 5.1vw;
     margin: 0;
 }
 
-.mission-text>h2 {
+.mission-text > h2 {
     font-size: 3.0vh;
 }
 
@@ -58,6 +58,7 @@ a:focus {
 div.selected {
     background-color: #da3816;
 }
+
 .offset {
     margin-top: 25px;
 }
@@ -93,11 +94,11 @@ section#register hr {
 
 .img-wrapper {
     width: 100%;
-    padding-bottom: 150%;
+    padding-bottom: 100%;
     position: relative;
 }
 
-.img-wrapper img{
+.img-wrapper img {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -126,4 +127,14 @@ section#register hr {
 
 .form-control:focus {
     border-color: #109e45;
+}
+
+.testimonial-group > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.testimonial-group > .row > .col-md-3, .col-xs-12 {
+    display: inline-block;
+    float: none;
 }

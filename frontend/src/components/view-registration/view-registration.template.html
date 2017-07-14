@@ -34,7 +34,7 @@
                     <div class="form-group"
                          ng-class="{'has-error': BasicInfoForm.password.$invalid && !BasicInfoForm.password.$pristine }">
                         <label for="passInput">Password:</label>
-                        <input ng-model="$ctrl.user.password" type="text" name="password" ng-minlength="8"
+                        <input ng-model="$ctrl.user.password" type="password" name="password" ng-minlength="8"
                                class="form-control" id="passInput" placeholder="Enter password" required>
                         <p ng-show="BasicInfoForm.password.$invalid && !BasicInfoForm.password.$pristine"
                            class="help-block">Password should be at least 8 characters long.</p>
@@ -123,22 +123,24 @@
                        ng-model="searchString"/>
             </div>
         </div>
-        <div class="row offset">
-            <div class="col-md-3 top-pad" data-ng-repeat="topic in $ctrl.topics | filter:searchString"
-                 ng-click="$ctrl.toggle(topic)" ng-class="{'selected': topic.selected}">
-                <div class="thumbnail">
-                    <div class="img-wrapper">
-                        <img class="img-responsive" ng-src="{{topic.imagePath}}" alt="No image available"/>
+        <div class="testimonial-group">
+            <div class="row offset">
+                <div class="col-md-3 col-xs-12 top-pad" data-ng-repeat="topic in $ctrl.topics | filter:searchString"
+                     ng-click="$ctrl.toggle(topic)" ng-class="{'selected': topic.selected}">
+                    <div class="thumbnail">
+                        <div class="img-wrapper">
+                            <img class="img-responsive" ng-src="{{topic.imagePath}}" alt="topic"/>
+                        </div>
+                        <div class="caption text-center"> {{topic.name}}</div>
                     </div>
-                    <div class="caption text-center"> {{topic.name}}</div>
                 </div>
             </div>
         </div>
         <div class="row offset">
-            <div class="col-md-2 col-md-offset-4 form-group">
+            <div class="col-md-2 col-md-offset-4 col-xs-3 form-group">
                 <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 2;">Back</button>
             </div>
-            <div class="col-md-2 form-group">
+            <div class="col-md-2 col-xs-3 form-group">
                 <button type="submit" class="btn btn-info btn-xl"
                         ng-click="$ctrl.registrationStep = 4; $ctrl.addLangsAndTopics(); $ctrl.initLocation()">Continue
                 </button>
