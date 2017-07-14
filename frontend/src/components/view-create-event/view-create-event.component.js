@@ -24,17 +24,19 @@ class ViewCreateEventComponent {
 }
 
 class ViewCreateEventComponentController {
-    constructor($state, $mdToast, EventsService, UserService, TopicsService, LanguagesService) {
+    constructor($state, EventsService, UserService, TopicsService, LanguagesService) {
         this.$state = $state;
-        this.$mdToast = $mdToast;
         this.EventsService = EventsService;
         this.UserService = UserService;
         this.TopicsService = TopicsService;
         this.LanguagesService = LanguagesService;
+
+        this.getLanguages();
+        this.getTopics();
     }
 
     static get $inject() {
-        return ['$state', '$mdToast', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name];
+        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name];
     }
 
     getLanguages() {

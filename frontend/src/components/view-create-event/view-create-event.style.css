@@ -1,13 +1,14 @@
-.small-width {
-    /*min-width: 100%;*/
-    max-width: 60%;
-}
-
-.padding {
-    padding-bottom: 15px;
-    padding-top: 10px;
-}
-
 .selected {
-    background-color: rgba(255, 194, 0, 0.5);
+    background-color: rgba(240, 95, 64, 0.5);
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.scrollable-list {
+    height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
