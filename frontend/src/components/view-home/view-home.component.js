@@ -26,9 +26,7 @@ class ViewHomeComponent {
 
 class ViewHomeComponentController {
 
-    constructor($state, $window, UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
-        this.$state = $state;
-        this.$window = $window;
+    constructor(UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
         this.UserService = UserService;
         this.LanguagesService = LanguagesService;
         this.LanguageLevelsService = LanguageLevelsService;
@@ -38,7 +36,6 @@ class ViewHomeComponentController {
     }
 
     $onInit() {
-        this.login = {};
         this.registrationStep = 1;
         this.choices = [0];
         this.user = {};
@@ -48,19 +45,6 @@ class ViewHomeComponentController {
 
     isAuthenticated() {
         return this.UserService.isAuthenticated();
-    }
-
-    submit() {
-        let username = this.login.username;
-        let password = this.login.password;
-
-        this.UserService.login(username, password).then((success) => {
-            this.$window.localStorage.setItem('jwtToken', success.data.token);
-            this.$state.go('events', {});
-        }, (error) => {
-            this.loginFailed = true;
-            console.log("unauthorized");
-        })
     }
 
     fetchLanguages() {
@@ -188,7 +172,7 @@ class ViewHomeComponentController {
     }
 
     static get $inject() {
-        return ['$state', '$window', UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
+        return [UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
     }
 
 }
