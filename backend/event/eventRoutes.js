@@ -15,5 +15,8 @@ function eventRoutes() {
         .put(eventController.putEvent)
         .delete(eventController.deleteEvent);
 
+    router.route('/:event_id/user')
+        .get(eventController.joinEvent)
+
     return router;
 }

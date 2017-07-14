@@ -77,5 +77,16 @@ export default class EventsService {
         })
     }
 
+    join(event, userId) {
+        let url = `${ this.resourceUrl }${ event['_id'] }/user?register=${ userId }`;
+        return this.$http.get(url).then(response => {
+
+            return new Promise((resolve, reject) => {
+                resolve(response.data);
+            });
+
+        })
+    }
+
 
 }
