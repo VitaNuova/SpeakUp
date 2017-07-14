@@ -1,4 +1,5 @@
 var Event = require('./eventSchema');
+var User = require('../user/userSchema');
 
 exports.postEvent = function(req, res) {
     var event = new Event(req.body);
@@ -68,4 +69,34 @@ exports.deleteEvent = function(req, res) {
         event.remove();
         res.sendStatus(200);
     })
+};
+
+exports.joinEvent = function(req, res) {
+    var userId = req.query.register;
+    console.log(userId);
+    User.findById(userId, function(err, user) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+        Event.findById(req.params.event_id, function(err, event) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            event.users.push(user);
+            Event.findByIdAndUpdate(
+                event._id,
+                event, {
+                    new: true,
+                    runValidators: true
+                }, function (err, event) {
+                    if (err) {
+                        res.status(500).send(err);
+                        return;
+                    }
+                    res.json(user);
+                });
+        });
+    });
 };

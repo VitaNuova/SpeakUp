@@ -89,7 +89,7 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()">Join Event</button>
+                    <button class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()" ng-disabled="$ctrl.hasUserAlreadyJoined()">Join Event</button>
                 </div>
             </div>
         </div>

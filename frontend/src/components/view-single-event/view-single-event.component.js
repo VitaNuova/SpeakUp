@@ -41,9 +41,18 @@ class ViewSingleEventComponentController {
 
     join() {
         console.log(this.singleEvent);
+        console.log(this.UserService.getCurrentUser());
+        // this.singleEvent.users.push();
         if (this.UserService.isAuthenticated()) {
-            let _id = this.singleEvent['_id'];
-            this.$state.go('eventJoin', { eventId: _id });
+            // add toast instead of redirecting
+
+            // let _id = this.singleEvent['_id'];
+            // this.$state.go('eventJoin', { eventId: _id });
+
+            var appendUser = (function(user) {
+                this.singleEvent.users.push(user);
+            }).bind(this);
+            this.EventsService.join(this.singleEvent, this.UserService.getCurrentUser()._id).then(appendUser);
         } else {
             this.$state.go('login', {});
         }
@@ -78,6 +87,18 @@ class ViewSingleEventComponentController {
         var hours = (date.getHours() < 10 ? "0" : "") + date.getHours().toString();
         var minutes = (date.getMinutes() < 10 ? "0" : "") + date.getMinutes().toString();
         return hours + ":" + minutes;
+    }
+
+    hasUserAlreadyJoined() {
+        var user = this.UserService.getCurrentUser();
+        console.log(this.singleEvent.users);
+        for (var i = 0; this.singleEvent.users.length; i++) {
+            var eventUser = this.singleEvent.users[i];
+            if (eventUser._id == user._id) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

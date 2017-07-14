@@ -64,7 +64,7 @@ module.exports.unregister = function (req, res) {
 };
 
 exports.getUser = function (req, res) {
-    User.findById(req.params.user_id, function(err, event) {
+    User.findById(req.params.user_id, function(err, user) {
         if (err) {
             res.status(500).send(err);
             return;

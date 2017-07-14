@@ -100,7 +100,7 @@
                     <div class="form-group"
                          ng-class="{'has-error': BasicInfoForm.password.$invalid && !BasicInfoForm.password.$pristine }">
                         <label for="passInput">Password:</label>
-                        <input ng-model="$ctrl.user.password" type="text" name="password" ng-minlength="8"
+                        <input ng-model="$ctrl.user.password" type="password" name="password" ng-minlength="8"
                                class="form-control" id="passInput" placeholder="Enter password" required>
                         <p ng-show="BasicInfoForm.password.$invalid && !BasicInfoForm.password.$pristine"
                            class="help-block">Password should be at least 8 characters long.</p>
