@@ -1,7 +1,7 @@
 'use strict';
 
 import EventsComponent from "./../components/view-events/view-events.component";
-import LoginComponent from "./../components/view-login/view-login.component";
+import ViewHomeComponent from "../components/view-home/view-home.component";
 import ViewCreateEventComponent from "./../components/view-create-event/view-create-event.component";
 import ProfileComponent from "./../components/view-profile/view-profile.component";
 import ViewSingleEventComponent from "./../components/view-single-event/view-single-event.component";
@@ -65,9 +65,9 @@ export default function config($stateProvider, $urlRouterProvider, $locationProv
         //         event: resolveEvent
         //     }
         // })
-        .state('login', {
+        .state('home', {
             url: '/',
-            component: LoginComponent.name
+            component: ViewHomeComponent.name
         })
         .state('profile', {
             url: '/profile/:userId',

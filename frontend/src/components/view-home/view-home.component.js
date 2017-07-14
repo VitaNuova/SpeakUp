@@ -8,23 +8,23 @@ import TopicsService from "./../../services/topics/topics.service";
 import LocationService from "./../../services/location/location.service";
 import UserLanguageService from "./../../services/user-languages/user-languages.service";
 
-import template from "./view-login.template.html";
-import "./view-login.style.css";
+import template from "./view-home.template.html";
+import "./view-home.style.css";
 
-class ViewLoginComponent {
+class ViewHomeComponent {
     constructor() {
-        this.controller = ViewLoginComponentController;
+        this.controller = ViewHomeComponentController;
         this.template = template;
 
     }
 
     static get name() {
-        return 'viewLogin';
+        return 'viewHome';
     }
 
 }
 
-class ViewLoginComponentController {
+class ViewHomeComponentController {
 
     constructor($state, $window, UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
         this.$state = $state;
@@ -193,4 +193,4 @@ class ViewLoginComponentController {
 
 }
 
-export default ViewLoginComponent;
+export default ViewHomeComponent;

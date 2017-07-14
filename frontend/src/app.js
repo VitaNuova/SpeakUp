@@ -21,7 +21,7 @@ import ngmap from "ngmap";
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
 import ViewCreateEvent from "./components/view-create-event/view-create-event";
-import ViewLogin from "./components/view-login/view-login";
+import ViewHome from "./components/view-home/view-home";
 import ViewSingleEvent from "./components/view-single-event/view-single-event";
 import ViewProfile from "./components/view-profile/view-profile";
 
@@ -40,7 +40,7 @@ let app = angular.module('app', [
     AppContent.name,
     ViewEvents.name,
     ViewCreateEvent.name,
-    ViewLogin.name,
+    ViewHome.name,
     ViewSingleEvent.name,
     ViewProfile.name
 ]);

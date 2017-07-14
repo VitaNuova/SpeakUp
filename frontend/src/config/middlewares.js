@@ -43,7 +43,7 @@ export default function middlewares($httpProvider, $windowProvider, $qProvider, 
             'responseError': function (rejection) {
                 // do something on error
                 if (rejection.status === 400 || rejection.status === 401) {
-                    $state.go('login', {});
+                    $state.go('home', {});
                 }
 
                 return $q.reject(rejection);
