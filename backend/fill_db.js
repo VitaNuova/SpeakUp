@@ -212,61 +212,61 @@ t1.save(function(err) { if (err) return console.error(err); });
 
 var t2 = new Topic({
     name: "Environment",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/environment.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/environment.jpg"
 });
 t2.save(function(err) { if (err) return console.error(err); });
 
 var t3 = new Topic({
     name: "Food",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/food.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/food.jpg"
 });
 t3.save(function(err) { if (err) return console.error(err); });
 
 var t4 = new Topic({
     name: "Cars",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/cars.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/cars.jpg"
 });
 t4.save(function(err) { if (err) return console.error(err); });
 
 var t5 = new Topic({
     name: "Entertainment",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/entertainment.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/entertainment.jpg"
 });
 t5.save(function(err) { if (err) return console.error(err); });
 
 var t6 = new Topic({
     name: "Movies",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/movies.png"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/movies.jpg"
 });
 t6.save(function(err) { if (err) return console.error(err); });
 
 var t7 = new Topic({
     name: "Music",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/music.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/music.jpg"
 });
 t7.save(function(err) { if (err) return console.error(err); });
 
 var t8 = new Topic({
     name: "Oktoberfest",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/oktoberfest.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/oktoberfest.jpg"
 });
 t8.save(function(err) { if (err) return console.error(err); });
 
 var t9 = new Topic({
     name: "Human relationships",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/relationships.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/relationships.jpg"
 });
 t9.save(function(err) { if (err) return console.error(err); });
 
 var t10 = new Topic({
     name: "Technology",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/technology.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/technology.jpg"
 });
 t10.save(function(err) { if (err) return console.error(err); });
 
 var t11 = new Topic({
     name: "Travel",
-    imagePath: config.app.apiUrl + "assets/pictures/topics/travel.jpeg"
+    imagePath: config.app.apiUrl + "assets/pictures/topics/travel.jpg"
 });
 t11.save(function(err) { if (err) return console.error(err); });
 

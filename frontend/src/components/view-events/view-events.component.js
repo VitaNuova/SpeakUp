@@ -42,7 +42,7 @@ class ViewEventsComponentController {
             let _id = event['_id'];
             this.$state.go('eventEdit', {eventId: _id});
         } else {
-            this.$state.go('login', {});
+            this.$state.go('home', {});
         }
     };
 
@@ -51,7 +51,7 @@ class ViewEventsComponentController {
         if (this.UserService.isAuthenticated()) {
             this.$state.go('eventAdd', {});
         } else {
-            this.$state.go('login', {});
+            this.$state.go('home', {});
         }
 
     };
@@ -68,7 +68,7 @@ class ViewEventsComponentController {
             })
 
         } else {
-            this.$state.go('login', {});
+            this.$state.go('home', {});
         }
     };
 

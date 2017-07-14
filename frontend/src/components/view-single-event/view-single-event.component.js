@@ -54,7 +54,7 @@ class ViewSingleEventComponentController {
             }).bind(this);
             this.EventsService.join(this.singleEvent, this.UserService.getCurrentUser()._id).then(appendUser);
         } else {
-            this.$state.go('login', {});
+            this.$state.go('home', {});
         }
 
     };

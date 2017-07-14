@@ -44,7 +44,7 @@ class AppHeaderComponentController {
     }
 
     goHome() {
-        this.$state.go('login', {});
+        this.$state.go('home', {});
     }
 
     profile() {
@@ -53,12 +53,12 @@ class AppHeaderComponentController {
     };
 
     login() {
-        this.$state.go('login', {});
+        this.$state.go('home', {});
     }
 
     logout() {
         this.UserService.logout();
-        this.$state.go('login', {});
+        this.$state.go('home', {});
     }
 
     static get $inject() {
