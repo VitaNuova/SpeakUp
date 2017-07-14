@@ -45,7 +45,7 @@ class ViewSingleEventComponentController {
             let _id = this.singleEvent['_id'];
             this.$state.go('eventJoin', { eventId: _id });
         } else {
-            this.$state.go('login', {});
+            this.$state.go('home', {});
         }
 
     };
