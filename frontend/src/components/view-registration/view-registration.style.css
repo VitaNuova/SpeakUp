@@ -1,0 +1,129 @@
+.login-form {
+    overflow: hidden;
+}
+
+.login-form md-card {
+    padding: 0 !important;
+}
+
+.background-img {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    top: 0;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../../assets/carousel-image.jpg");
+    background-size: cover;
+}
+
+.transparent {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.half-transparent {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.register {
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.mission-text {
+    box-shadow: none;
+    color: white;
+}
+
+.mission-text>h1 {
+    font-size: 5.1vw;
+    margin: 0;
+}
+
+.mission-text>h2 {
+    font-size: 3.0vh;
+}
+
+.text-center {
+    text-align: center;
+}
+
+a {
+    color: #ffffff;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #ffaaaa;
+}
+
+div.selected {
+    background-color: #da3816;
+}
+.offset {
+    margin-top: 25px;
+}
+
+.btn-info {
+    background-color: #2eae5e;
+}
+
+.btn-info:hover,
+.btn-info:active,
+.btn-info:focus,
+.btn-info:active:hover,
+.btn-info:disabled,
+.btn-info:disabled:hover {
+    background-color: #109e45;
+}
+
+.progress-bar {
+    background-color: #109e45;
+}
+
+section#register {
+    padding: 50px 0;
+}
+
+section#register hr {
+    border-color: #ffffff;
+}
+
+.thumbnail img {
+    max-width: 100%;
+}
+
+.img-wrapper {
+    width: 100%;
+    padding-bottom: 150%;
+    position: relative;
+}
+
+.img-wrapper img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 100%;
+}
+
+.has-error .help-block {
+    color: #aa2408
+}
+
+.alert-danger {
+    color: #da3816;
+}
+
+.alert-success {
+    color: #067b32;
+    background-color: #79d79c;
+    border-color: #79d79c;
+}
+
+.top-pad {
+    padding-top: 15px;
+}
+
+.form-control:focus {
+    border-color: #109e45;
+}

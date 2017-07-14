@@ -23,6 +23,7 @@ import ViewEvents from "./components/view-events/view-events";
 import ViewCreateEvent from "./components/view-create-event/view-create-event";
 import ViewHome from "./components/view-home/view-home";
 import ViewLogin from "./components/view-login/view-login";
+import ViewRegistration from "./components/view-registration/view-registration";
 import ViewSingleEvent from "./components/view-single-event/view-single-event";
 import ViewProfile from "./components/view-profile/view-profile";
 
@@ -43,6 +44,7 @@ let app = angular.module('app', [
     ViewCreateEvent.name,
     ViewHome.name,
     ViewLogin.name,
+    ViewRegistration.name,
     ViewSingleEvent.name,
     ViewProfile.name
 ]);
