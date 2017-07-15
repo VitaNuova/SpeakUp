@@ -49,6 +49,8 @@ class ViewCreateOfferComponentController {
         this.offer.numOfPeople = 1;
         this.chosenDate = new Date();
         this.currentDate = new Date();
+        this.chosenFrom = new Date();
+        this.chosenTo = new Date();
     }
 
     getDefaultDate() {
@@ -76,23 +78,6 @@ class ViewCreateOfferComponentController {
     createOffer() {
         this.isDisabledButton = true;
 
-        if(this.chosenDate === undefined) {
-            this.chosenDate = new Date();
-        }
-
-        var fullFrom;
-        if(this.chosenFrom === undefined) {
-            fullFrom = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), 18);
-        } else {
-            fullFrom = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), this.chosenFrom.getHours());
-        }
-        var fullTo;
-        if(this.chosenTo === undefined) {
-            fullTo = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), 20);
-        } else {
-            fullTo = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), this.chosenTo.getHours());
-        }
-
         let geocoder = new google.maps.Geocoder();
         geocoder.geocode({"address": this.venueLocation}, (results, status) => {
             if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
@@ -106,10 +91,12 @@ class ViewCreateOfferComponentController {
                         this.RestaurantService.create(this.restaurant).then(
                             (data) => {
                                 this.offer.restaurant = data._id;
-                                this.offer.from = fullFrom;
-                                this.offer.to = fullTo;
+
+                                this.offer.from = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), this.chosenFrom.getHours());
+                                this.offer.to = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), this.chosenTo.getHours());
                                 this.OfferService.create(this.offer).then(
                                     (data) => {
+                                        console.log("offer posted " + JSON.stringify(data));
                                         this.$state.go('offerAdd');
                                     }
                                 );
