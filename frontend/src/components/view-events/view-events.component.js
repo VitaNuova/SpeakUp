@@ -74,6 +74,8 @@ class ViewEventsComponentController {
 
     myMap() {
 
+        let ctrl = this;
+
         this.showMap = !this.showMap;
 
         if (this.showMap) {
@@ -94,7 +96,10 @@ class ViewEventsComponentController {
 
                     bounds.extend(marker.position);
 
-                    let infoWindowContent = '<h4>' + restaurant.name + '</h4>';
+                    let infoWindowContent =
+                        '<h3 class="text-center"><a href="/events/' + ctrl.events[i]._id + '" class="red-text">' + ctrl.events[i].name + '</a></h3>'
+                        + '<h4>Restaurant: ' + restaurant.name + '</h4>'
+                        + '<h4>Language: ' + ctrl.events[i].language.name + '</h4>';
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
