@@ -1,0 +1,15 @@
+.single-event-img {
+    display: block;
+    width: auto;
+    height: auto;
+    padding-bottom: 15px;
+}
+
+.panel-heading {
+    background-color: #F05F40 !important;
+    border-style: hidden !important;
+}
+
+.panel-primary {
+    border-color: #F05F40 !important;
+}

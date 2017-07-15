@@ -1,46 +1,61 @@
 'use strict';
 
-import angular from 'angular';
-import uiRouter from '@uirouter/angularjs';
+import angular from "angular";
+import uiRouter from "@uirouter/angularjs";
 
-import angularMaterial from 'angular-material';
-import 'angular-material/angular-material.css';
+import EventsService from "./services/events/events";
+import UserService from "./services/user/user";
+import TopicsService from "./services/topics/topics";
+import LanguagesService from "./services/languages/languages";
+import LanguageLevelsService from "./services/language-levels/language-levels";
+import LocationService from "./services/location/location";
+import UserLanguageService from "./services/user-languages/user-languages";
+import OffersService from "./services/offers/offers";
+import RestaurantsService from "./services/restaurants/restaurants";
 
-import ngMdIcons from 'angular-material-icons';
+import Routes from "./config/routes";
+import Middleware from "./config/middlewares";
 
-import EventsService from './services/events/events';
-import UserService from './services/user/user';
+import ngmap from "ngmap";
 
-import Routes from './config/routes';
-import Middlewares from './config/middlewares';
-
-import AppContent from './components/app-content/app-content';
-import ViewEvents from './components/view-events/view-events';
-import ViewEvent from './components/view-event/view-event';
-import ViewEventEdit from './components/view-event-edit/view-event-edit';
-import ViewEventCreate from './components/view-event-create/view-event-create';
-import ViewLogin from './components/view-login/view-login';
+import AppContent from "./components/app-content/app-content";
+import ViewEvents from "./components/view-events/view-events";
+import ViewCreateEvent from "./components/view-create-event/view-create-event";
+import ViewHome from "./components/view-home/view-home";
+import ViewLogin from "./components/view-login/view-login";
+import ViewRegistration from "./components/view-registration/view-registration";
+import ViewOffer from "./components/view-create-offer/view-create-offer";
+import ViewSingleEvent from "./components/view-single-event/view-single-event";
+import ViewProfile from "./components/view-profile/view-profile";
 
 let app = angular.module('app', [
     uiRouter,
-    angularMaterial,
-    ngMdIcons,
+    ngmap,
     UserService.name,
     EventsService.name,
+    TopicsService.name,
+    LanguagesService.name,
+    LanguageLevelsService.name,
+    LocationService.name,
+    UserLanguageService.name,
+    OffersService.name,
+    RestaurantsService.name,
     AppContent.name,
     ViewEvents.name,
-    ViewEvent.name,
-    ViewEventEdit.name,
-    ViewEventCreate.name,
-    ViewLogin.name
+    ViewCreateEvent.name,
+    ViewHome.name,
+    ViewLogin.name,
+    ViewRegistration.name,
+    ViewOffer.name,
+    ViewSingleEvent.name,
+    ViewProfile.name
 ]);
 
-app.constant('API_URL', 'http://localhost:3000');
+app.constant('API_URL', 'http://localhost:3000/api');
 app.config(Routes);
-app.config(Middlewares);
+app.config(Middleware);
 
-
-angular.element(document).ready(function() {
+angular.element(document).ready(function () {
     return angular.bootstrap(document.body, [app.name], {
         strictDi: true
     });

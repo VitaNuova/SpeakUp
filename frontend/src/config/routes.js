@@ -1,33 +1,41 @@
 'use strict';
 
-import EventsComponent from './../components/view-events/view-events.component';
-import EventComponent from './../components/view-event/view-event.component';
-import EventEditComponent from './../components/view-event-edit/view-event-edit.component';
-import EventCreateComponent from './../components/view-event-create/view-event-create.component';
-import LoginComponent from './../components/view-login/view-login.component';
+import EventsComponent from "./../components/view-events/view-events.component";
+import ViewHomeComponent from "../components/view-home/view-home.component";
+import ViewCreateEventComponent from "./../components/view-create-event/view-create-event.component";
+import ViewCreateOfferComponent from "./../components/view-create-offer/view-create-offer.component";
+import ProfileComponent from "./../components/view-profile/view-profile.component";
+import ViewSingleEventComponent from "./../components/view-single-event/view-single-event.component";
 
-import EventsService from './../services/events/events.service';
-
+import EventsService from "./../services/events/events.service";
+import OffersService from "./../services/offers/offers.service";
+import UserService from "./../services/user/user.service";
 
 resolveEvent.$inject = ['$stateParams', EventsService.name];
-
 function resolveEvent($stateParams, eventsService) {
     return eventsService.get($stateParams.eventId);
 }
 
-resolveEvents.$inject = [EventsService.name];
+resolveUser.$inject = ['$stateParams', UserService.name];
+function resolveUser($stateParams, userService) {
+    return userService.get($stateParams.userId);
+}
 
+resolveOffers.$inject = [OffersService.name];
+function resolveOffers(offersService) {
+    return offersService.list();
+}
+
+resolveEvents.$inject = [EventsService.name];
 function resolveEvents(eventsService) {
-    console.log(eventsService.list());
     return eventsService.list();
 }
 
 
-config.$inject = ['$stateProvider', '$urlRouterProvider'];
-export default function config($stateProvider, $urlRouterProvider) {
+config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+export default function config($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    // For any unmatched url, redirect to /home
-    $urlRouterProvider.otherwise("/events");
+    $urlRouterProvider.otherwise("/");
 
     $stateProvider
         .state('events', {
@@ -38,28 +46,34 @@ export default function config($stateProvider, $urlRouterProvider) {
             }
         })
         .state('eventAdd', {
-            url: '/events/new',
-            component: EventCreateComponent.name
+            url: '/new-event',
+            component: ViewCreateEventComponent.name,
+            resolve: {
+                offers: resolveOffers
+            }
+        })
+        .state('offerAdd', {
+            url: '/new-offer',
+            component: ViewCreateOfferComponent.name
         })
         .state('event', {
             url: '/events/:eventId',
-            component: EventComponent.name,
+            component: ViewSingleEventComponent.name,
             resolve: {
-                event: resolveEvent
-            }
-
-        })
-        .state('eventEdit', {
-            url: '/events/:eventId/edit',
-            component: EventEditComponent.name,
-            resolve: {
-                event: resolveEvent
+                singleEvent: resolveEvent
             }
         })
-        .state('login', {
-            url: '/login',
-            component: LoginComponent.name,
+        .state('home', {
+            url: '/',
+            component: ViewHomeComponent.name
         })
+        .state('profile', {
+            url: '/profile/:userId',
+            component: ProfileComponent.name,
+            resolve: {
+                user: resolveUser
+            }
+        });
 
-
+    $locationProvider.html5Mode(true);
 }

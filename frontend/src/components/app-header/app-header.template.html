@@ -1,50 +1,74 @@
-<md-toolbar>
-    <div class="md-toolbar-tools">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" ui-sref="home">Speak Up</a>
+        </div>
 
-        <a ui-sref="events" layout="row">
-            <md-icon>
-                <ng-md-icon icon="grain"></ng-md-icon>
-            </md-icon>
-            <h2>Event Application</h2>
-        </a>
-
-        <span flex></span>
-
-        <span flex="5"></span>
-        <md-menu>
-            <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.openMenu($mdMenu, $event)">
-                <md-icon>
-                    <ng-md-icon icon="more_vert"></ng-md-icon>
-                </md-icon>
-            </md-button>
-            <md-menu-content width="4">
-                <md-menu-item ng-if="$ctrl.isAuthenticated()">
-                    <md-button>
-                        <md-icon md-menu-align-target>
-                            <ng-md-icon icon="account_circle"></ng-md-icon>
-                        </md-icon>
-                        {{$ctrl.getCurrentUser()}}
-                    </md-button>
-                </md-menu-item>
-                <md-menu-divider ng-if="$ctrl.isAuthenticated()"></md-menu-divider>
-                <md-menu-item ng-if="$ctrl.isAuthenticated()">
-                    <md-button ng-click="$ctrl.logout($event)">
-                        <md-icon md-menu-align-target>
-                            <ng-md-icon icon="logout"></ng-md-icon>
-                        </md-icon>
-                        Logout
-                    </md-button>
-                </md-menu-item>
-                <md-menu-item ng-if="!$ctrl.isAuthenticated()">
-                    <md-button ng-click="$ctrl.login($event)">
-                        <md-icon md-menu-align-target>
-                            <ng-md-icon icon="login"></ng-md-icon>
-                        </md-icon>
-                        Login
-                    </md-button>
-                </md-menu-item>
-            </md-menu-content>
-        </md-menu>
-
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="$ctrl.isAuthenticated()">
+                    <a ui-sref="home">Home</a>
+                </li>
+                <li ng-if="$ctrl.isAuthenticated()">
+                    <a ui-sref="events">Events</a>
+                </li>
+                <li ng-if="$ctrl.isAuthenticated()">
+                    <a ui-sref="eventAdd">New Event</a>
+                </li>
+                <li ng-if="!$ctrl.isAuthenticated()">
+                    <a class="page-scroll" data-target="#page-top" href="">Home</a>
+                </li>
+                <li ng-if="!$ctrl.isAuthenticated()">
+                    <a class="page-scroll" data-target="#about" href="">Info</a>
+                </li>
+                <li ng-if="!$ctrl.isAuthenticated()">
+                    <a class="page-scroll" data-target="#register" href="">Register</a>
+                </li>
+                <li ng-if="!$ctrl.isAuthenticated()">
+                    <a class="page-scroll" data-target="#services" href="">Services</a>
+                </li>
+                <li class="dropdown" ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.getLoggedInUser()">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        <strong>{{$ctrl.getCurrentUser().username}}</strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-xs-4">
+                                        <img ng-src="{{$ctrl.user.imagePath}}" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-xs-8">
+                                        <strong class="text-left">{{$ctrl.user.username}}</strong>
+                                        <p class="text-left small">{{$ctrl.user.email}}</p>
+                                        <a class="btn btn-primary btn-block btn-md"
+                                           ng-click="$ctrl.profile()">Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="row">
+                                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-8 col-xs-offset-2">
+                                    <a href="#" ng-click="$ctrl.logout()"
+                                       class="btn btn-danger btn-block btn-md">Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-</md-toolbar>
+    <!-- /.container-fluid -->
+</nav>

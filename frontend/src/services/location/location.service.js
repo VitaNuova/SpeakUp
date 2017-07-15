@@ -12,7 +12,7 @@ export default class LocationService {
 
     constructor($http, API_URL) {
         this.$http = $http;
-        this.resourceUrl = `${ API_URL }/location/`;
+        this.resourceUrl = `${ API_URL }/locations/`;
 
     }
 

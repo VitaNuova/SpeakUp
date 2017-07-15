@@ -11,14 +11,12 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    isAdmin: Boolean,
     email: {
         type: String,
         required: true
     },
-    image: {
-        data: Buffer,
-        contentType: String
-    },
+    imagePath: String,
     age: Number,
     gender: String,
     location: {
@@ -26,11 +24,11 @@ var userSchema = mongoose.Schema({
         ref: 'Location',
         required: true
     },
-    languages: {
+    languages: [{
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'UserLanguage',
         required: true
-    }
+    }]
 });
 
 userSchema.pre('save', function(next) {

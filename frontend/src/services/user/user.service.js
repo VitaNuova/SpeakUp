@@ -3,25 +3,28 @@
 
 export default class UserService {
 
-    static get $inject(){
-        return ['$http', '$window','API_URL'];
+    static get $inject() {
+        return ['$http', '$window', 'API_URL'];
     }
 
-    constructor($http,$window,API_URL) {
+    constructor($http, $window, API_URL) {
         this.$http = $http;
         this.$window = $window;
         this.API_URL = API_URL;
-
     }
 
-    static get name(){
+    static get name() {
         return 'UserService';
     }
 
-    register(user, pass) {
+    register(postedModel) {
         return this.$http.post(`${ this.API_URL }/user/signup`, {
-            username: user,
-            password: pass
+            username: postedModel.username,
+            password: postedModel.password,
+            email: postedModel.email,
+            imagePath: postedModel.image,
+            location: postedModel.location,
+            languages: postedModel.languages
         });
     }
 
@@ -32,7 +35,7 @@ export default class UserService {
         });
     }
 
-    logout(){
+    logout() {
         this.$window.localStorage.removeItem('jwtToken');
     }
 
@@ -45,13 +48,21 @@ export default class UserService {
         return JSON.parse(this.$window.atob(base64)).user;
     }
 
+    getLoggedInUser() {
+        if (this.isAuthenticated()) {
+            return this.get(this.getCurrentUser()._id);
+        } else {
+            return {};
+        }
+    }
+
     isAuthenticated() {
-        //return !!this.$window.localStorage['jwtToken'];
-        return true;
+        return !!this.$window.localStorage['jwtToken'];
+        // return true;
     }
 
     get(id) {
-        let url = `${ this.API_URL }/user${ id }`;
+        let url = `${ this.API_URL }/user/${ id }`;
         return this.$http.get(url).then(response => {
 
             return new Promise((resolve, reject) => {

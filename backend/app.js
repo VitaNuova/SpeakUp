@@ -45,6 +45,8 @@ app.use(bodyParser.urlencoded({
 app.use(passport.initialize());
 jwtConfig(passport);
 
+app.use('/api', express.static(__dirname + '/public'));
+
 //Root routes
 var eventRoutes = require("./event/eventRoutes");
 var languageRoutes = require("./language/languageRoutes");
@@ -56,14 +58,14 @@ var topicRoutes = require("./topic/topicRoutes");
 var locationRoutes = require("./location/locationRoutes");
 var userLanguageRoutes = require("./userLanguage/userLanguageRoutes");
 
-app.use('/api/events', eventRoutes());
-app.use('/api/languages', languageRoutes());
-app.use('/api/user', userRoutes());
-app.use('/api/language-levels', languageLevelRoutes());
-app.use('/api/offers', offerRoutes());
-app.use('/api/restaurants', restaurantRoutes());
-app.use('/api/topics', topicRoutes());
-app.use('/api/locations', locationRoutes());
-app.use('/api/user-languages', userLanguageRoutes());
+app.use('/api/events', eventRoutes(passport));
+app.use('/api/languages', languageRoutes(passport));
+app.use('/api/user', userRoutes(passport));
+app.use('/api/language-levels', languageLevelRoutes(passport));
+app.use('/api/offers', offerRoutes(passport));
+app.use('/api/restaurants', restaurantRoutes(passport));
+app.use('/api/topics', topicRoutes(passport));
+app.use('/api/locations', locationRoutes(passport));
+app.use('/api/user-languages', userLanguageRoutes(passport));
 
 module.exports = app;

@@ -1,0 +1,96 @@
+<aside class="bg-dark extra-padding-top">
+    <div class="container text-center">
+        <div class="call-to-action">
+            <h2>Create New Event</h2>
+        </div>
+    </div>
+</aside>
+
+<section id="create-event">
+    <div class="create-event-section">
+        <div class="container">
+            <form name="EventForm">
+                <div class="col-lg-5 form-group">
+                    <div class="form-group">
+                        <label for="eventName">Name</label>
+                        <input ng-model="$ctrl.model.name" type="text" class="form-control" id="eventName" placeholder="Enter Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventLanguage">Language</label>
+                        <select id="eventLanguage" ng-model="$ctrl.model.language" class="form-control"
+                                ng-options="language.name for language in $ctrl.languages" required="">
+                            <option style="display:none" value="">Select a language</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventTopic1">Event Topic 1</label>
+                        <select id="eventTopic1" ng-model="$ctrl.topic1" class="form-control"
+                                ng-options="topic.name for topic in $ctrl.topics" required="">
+                            <option style="display:none" value="">Select topic 1</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventTopic2">Event Topic 2</label>
+                        <select id="eventTopic2" ng-model="$ctrl.topic2" class="form-control"
+                                ng-options="topic.name for topic in $ctrl.topics" ng-required="$ctrl.topic3">
+                            <option style="display:none" value="">Select topic 2 (optional)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventTopic3">Event Topic 3</label>
+                        <select id="eventTopic3" ng-model="$ctrl.topic3" class="form-control"
+                                ng-options="topic.name for topic in $ctrl.topics">
+                            <option style="display:none" value="">Select topic 3 (optional)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lg-offset-1 scrollable-list">
+                    <div class="form-group">
+                        <label for="eventPlace">Event place</label>
+                        <div id="eventPlace" class="row" ng-repeat="offer in $ctrl.offers">
+                            <div class="row vertical-align" ng-class="{selected: offer.selected}">
+                                <div class="col-lg-4 col-md-1 col-xs-4 pull-left">
+                                    <div class="padded-image">
+                                        <img ng-src="{{offer.imagePath}}" alt="Offer Logo"
+                                            class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="checkbox">
+                                        <label><input ng-model="offer.selected" type="checkbox"
+                                                      ng-click="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"
+                                                      value="">{{offer.restaurant.name}}, -{{offer.discount}}%</label>
+                                    </div>
+                                    <div>
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                        <span>{{$ctrl.getFullDate(offer)}}</span>
+                                    </div>
+                                    <div>
+                                        <span class="glyphicon glyphicon-time"></span>
+                                        <span>{{$ctrl.getTime(offer.from)}} - {{$ctrl.getTime(offer.to)}}</span>
+                                    </div>
+                                    <div>
+                                        <span class="glyphicon glyphicon-info-sign fa-lg"></span>
+                                        <span>discount valid for a group of {{offer.numOfPeople}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr ng-if="!$last">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary btn-xl submit" ng-disabled="!EventForm.$valid || !$ctrl.model.offer" ng-click="$ctrl.createEvent()"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    Create event
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

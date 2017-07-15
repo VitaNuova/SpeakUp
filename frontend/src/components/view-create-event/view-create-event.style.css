@@ -1,0 +1,20 @@
+.selected {
+    background-color: rgba(240, 95, 64, 0.5);
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.scrollable-list {
+    height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.padded-image {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

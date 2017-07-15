@@ -1,9 +1,10 @@
 'use strict';
 
-import UserService from './../../services/user/user.service';
 
-import template from './view-login.template.html';
-import './view-login.style.css';
+import UserService from "./../../services/user/user.service";
+
+import template from "./view-login.template.html";
+import "./view-login.style.css";
 
 class ViewLoginComponent {
     constructor() {
@@ -16,33 +17,53 @@ class ViewLoginComponent {
         return 'viewLogin';
     }
 
-
 }
 
 class ViewLoginComponentController {
-    constructor($state, UserService) {
-        this.$state = $state;
+
+    constructor(UserService, $window, $state) {
         this.UserService = UserService;
+        this.$window = $window;
+        this.$state = $state;
     }
 
     $onInit() {
         this.login = {};
     }
 
-    submit() {
-        let user = this.login.username;
-        let password = this.login.password;
-
-        this.UserService.login(user, password).then(() => {
-            this.$state.go('movies', {});
-        });
+    isAuthenticated() {
+        return this.UserService.isAuthenticated();
     }
 
+    submit() {
+        let username = this.login.username;
+        let password = this.login.password;
+
+        this.UserService.login(username, password).then((success) => {
+            this.$window.localStorage.setItem('jwtToken', success.data.token);
+
+            this.UserService.get(this.UserService.getCurrentUser()._id).then((user) => {
+                    if (user.isAdmin) {
+                        this.$state.go('offerAdd', {});
+                    } else {
+                        this.$state.go('events', {});
+                    }
+                }, (error) => {
+                    this.$state.go('home', {});
+                }
+            );
+
+        }, (error) => {
+            this.loginFailed = true;
+            console.log("unauthorized");
+        })
+    }
+
+
     static get $inject() {
-        return ['$state', UserService.name];
+        return [UserService.name, '$window', '$state'];
     }
 
 }
-
 
 export default ViewLoginComponent;
