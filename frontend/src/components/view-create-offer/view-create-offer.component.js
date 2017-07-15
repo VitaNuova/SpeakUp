@@ -45,7 +45,7 @@ class ViewCreateOfferComponentController {
         this.defaultDate = this.getDefaultDate();
         this.defaultFrom = "18:00:00";
         this.defaultTo = "20:00:00";
-        this.offer.discount = 0;
+        this.offer.discount = 1;
         this.offer.numOfPeople = 1;
         this.chosenDate = new Date();
         this.currentDate = new Date();
@@ -92,13 +92,12 @@ class ViewCreateOfferComponentController {
                         this.RestaurantService.create(this.restaurant).then(
                             (data) => {
                                 this.offer.restaurant = data._id;
-
                                 this.offer.from = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), this.chosenFrom.getHours());
                                 this.offer.to = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), this.chosenTo.getHours());
                                 this.OfferService.create(this.offer).then(
                                     (data) => {
-                                        console.log("offer posted " + JSON.stringify(data));
-                                        this.$state.go('offerAdd');
+                                        this.$onInit();
+                                        this.isDisabledButton = false;
                                     }
                                 );
                             }

@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="discount">Discount (%): </label>
-                    <input type="number" id="discount" class="form-control" ng-model="$ctrl.offer.discount" min="0"/>
+                    <input type="number" id="discount" class="form-control" ng-model="$ctrl.offer.discount" min="1" max="100"/>
                 </div>
                 <div class="form-group row">
                     <label for="numberOfPeople">Minimum number of people to get discount: </label>
@@ -63,7 +63,7 @@
         </div>
     </div>
     <div class="row text-center">
-        <button type="button" class="btn btn-primary btn-xl submit" ng-disabled="!CreateOfferForm.$valid || $ctrl.isDisabledButton" ng-click="$ctrl.createOffer()">
+        <button type="button" class="btn btn-primary btn-xl submit" ng-disabled="!CreateOfferForm.$valid || $ctrl.isDisabledButton" ng-click="$ctrl.createOffer();">
             Create offer
         </button>
     </div>
