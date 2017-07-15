@@ -6,3 +6,21 @@
 .red-text {
     color: #F05F40;
 }
+
+.center-vertical {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.padding-top {
+    padding-top: 25px;
+}
+
+.inline-search {
+    display: inline-table !important;
+}
+
+#search-icon {
+    width: 20px;
+}
