@@ -23,7 +23,7 @@
                     <p ng-show="$ctrl.chosenDate < $ctrl.currentDate" class="help-block">
                         Please choose a date in the future.</p>
                 </div>
-                <div class="form-group row" ng-class="{'has-error': $ctrl.chosenFrom.getHours() > $ctrl.chosenTo.getHours()}">
+                <div class="form-group row" ng-class="{'has-error': $ctrl.chosenFrom.getTime() >= $ctrl.chosenTo.getTime()}">
                     <div id="column-from" class="col-md-6">
                         <label for="from-input">From: </label>
                         <input class="form-control" type="time" ng-value="$ctrl.defaultFrom" id="from-input" ng-model="$ctrl.chosenFrom">
@@ -32,8 +32,9 @@
                         <label for="to-input">To: </label>
                         <input class="form-control" type="time" ng-value="$ctrl.defaultTo" id="to-input" ng-model="$ctrl.chosenTo">
                     </div>
-                    <p ng-show="$ctrl.chosenFrom.getHours() > $ctrl.chosenTo.getHours()" class="help-block">
-                        Start time should be earlier than end time.</p>
+                    <p ng-show="$ctrl.chosenFrom.getTime() >= $ctrl.chosenTo.getTime()" class="help-block">
+                        Start time should be earlier than end time.
+                    </p>
                 </div>
                 <div class="form-group row">
                     <label for="location">Choose the location of your venue: </label>

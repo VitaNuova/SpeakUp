@@ -49,8 +49,8 @@ class ViewCreateOfferComponentController {
         this.offer.numOfPeople = 1;
         this.chosenDate = new Date();
         this.currentDate = new Date();
-        this.chosenFrom = new Date();
-        this.chosenTo = new Date();
+        this.chosenFrom = new Date(this.currentDate.getYear(), this.currentDate.getMonth(), this.currentDate.getDate(), 18);
+        this.chosenTo = new Date(this.currentDate.getYear(), this.currentDate.getMonth(), this.currentDate.getDate(), 20);
     }
 
     getDefaultDate() {
@@ -70,6 +70,7 @@ class ViewCreateOfferComponentController {
         }
         return date;
     }
+
 
     static get $inject() {
         return ['$state', UserService.name, LocationService.name, RestaurantService.name, OfferService.name];
