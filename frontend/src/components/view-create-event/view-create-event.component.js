@@ -72,7 +72,7 @@ class ViewCreateEventComponentController {
         console.log(postedModel);
 
         this.EventsService.create(postedModel).then(data => {
-            this.toastr.success('You have successfully created an event.');
+            this.toastr.success('You have successfully created a new event.');
             this.$state.go('event', { eventId: data._id});
         });
 

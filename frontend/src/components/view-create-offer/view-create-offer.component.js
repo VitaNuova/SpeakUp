@@ -22,12 +22,13 @@ class ViewCreateOfferComponent {
 
 class ViewCreateOfferComponentController {
 
-    constructor($state, UserService, LocationService, RestaurantService, OfferService) {
+    constructor($state, UserService, LocationService, RestaurantService, OfferService, toastr) {
         this.$state = $state;
         this.UserService = UserService;
         this.LocationService = LocationService;
         this.RestaurantService = RestaurantService;
         this.OfferService = OfferService;
+        this.toastr = toastr;
 
         //on page access, check if logged in user is admin or not (only admin can access)
         this.UserService.get(this.UserService.getCurrentUser()._id).then((user) => {
@@ -73,7 +74,7 @@ class ViewCreateOfferComponentController {
 
 
     static get $inject() {
-        return ['$state', UserService.name, LocationService.name, RestaurantService.name, OfferService.name];
+        return ['$state', UserService.name, LocationService.name, RestaurantService.name, OfferService.name, 'toastr'];
     }
 
     createOffer() {
@@ -97,6 +98,7 @@ class ViewCreateOfferComponentController {
                                 this.OfferService.create(this.offer).then(
                                     (data) => {
                                         this.$onInit();
+                                        this.toastr.success('You have successfully created a new offer.');
                                         this.isDisabledButton = false;
                                     }
                                 );
