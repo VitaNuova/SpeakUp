@@ -36,7 +36,7 @@ class ViewCreateEventComponentController {
     }
 
     static get $inject() {
-        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name];
+        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name, 'toastr'];
     }
 
     getLanguages() {

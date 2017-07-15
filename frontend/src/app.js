@@ -17,6 +17,7 @@ import Routes from "./config/routes";
 import Middleware from "./config/middlewares";
 
 import ngmap from "ngmap";
+import toastr from "angular-toastr";
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -31,6 +32,7 @@ import ViewProfile from "./components/view-profile/view-profile";
 let app = angular.module('app', [
     uiRouter,
     ngmap,
+    toastr,
     UserService.name,
     EventsService.name,
     TopicsService.name,
