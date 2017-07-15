@@ -618,7 +618,8 @@ var user2 = new User({
     email: "miki@bla.com",
     isAdmin: true,
     location: location11,
-    languages: [userLanguage4, userLanguage7, userLanguage2]
+    languages: [userLanguage4, userLanguage7, userLanguage2],
+    imagePath: config.app.apiUrl + "assets/pictures/users/user-2.jpg"
 });
 
 user2.save(function(err) { if (err) return console.error(err); });
@@ -629,7 +630,8 @@ var user3 = new User({
     email: "janedoe@bla.com",
     isAdmin: false,
     location: location12,
-    languages: [userLanguage3, userLanguage12, userLanguage15]
+    languages: [userLanguage3, userLanguage12, userLanguage15],
+    imagePath: config.app.apiUrl + "assets/pictures/users/user-3.jpg"
 });
 
 user3.save(function(err) { if (err) return console.error(err); });
@@ -640,7 +642,8 @@ var user4 = new User({
     email: "anndoe@bla.com",
     isAdmin: false,
     location: location13,
-    languages: [userLanguage6, userLanguage11]
+    languages: [userLanguage6, userLanguage11],
+    imagePath: config.app.apiUrl + "assets/pictures/users/user-4.jpg"
 });
 
 user4.save(function(err) { if (err) return console.error(err); });
@@ -651,7 +654,8 @@ var user5 = new User({
     email: "marydoe@bla.com",
     isAdmin: false,
     location: location14,
-    languages: [userLanguage5, userLanguage8, userLanguage2, userLanguage11]
+    languages: [userLanguage5, userLanguage8, userLanguage2, userLanguage11],
+    imagePath: config.app.apiUrl + "assets/pictures/users/user-5.jpg"
 });
 
 user5.save(function(err) { if (err) return console.error(err); });
@@ -662,7 +666,8 @@ var user6 = new User({
     email: "chenchang@bla.com",
     isAdmin: false,
     location: location15,
-    languages: [userLanguage5, userLanguage13]
+    languages: [userLanguage5, userLanguage13],
+    imagePath: config.app.apiUrl + "assets/pictures/users/user-6.jpg"
 });
 
 user6.save(function(err) { if (err) return console.error(err); });
@@ -673,7 +678,8 @@ var user7 = new User({
     email: "mustafa@bla.com",
     isAdmin: false,
     location: location16,
-    languages: [userLanguage7, userLanguage14]
+    languages: [userLanguage7, userLanguage14],
+    imagePath: config.app.apiUrl + "assets/pictures/users/user-7.jpg"
 });
 
 user7.save(function(err) { if (err) return console.error(err); });
@@ -684,7 +690,8 @@ var user8 = new User({
     email: "patrick@bla.com",
     isAdmin: false,
     location: location17,
-    languages: [userLanguage10, userLanguage13, userLanguage2]
+    languages: [userLanguage10, userLanguage13, userLanguage2],
+    imagePath: config.app.apiUrl + "assets/pictures/users/user-8.jpg"
 });
 
 user8.save(function(err) { if (err) return console.error(err); });
