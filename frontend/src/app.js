@@ -51,7 +51,7 @@ let app = angular.module('app', [
     ViewProfile.name
 ]);
 
-app.constant('API_URL', 'http://localhost:3000/api');
+app.constant('API_URL', 'http://speakup.westeurope.cloudapp.azure.com:3000/api');
 app.config(Routes);
 app.config(Middleware);
 
