@@ -52,6 +52,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
-    "start": "http-server -a localhost -p 8000 -c-1 ./dist"
+    "start": "cd dist && superstatic --config ../superstatic.json --port 8080 --host 0.0.0.0"
   }
 }
