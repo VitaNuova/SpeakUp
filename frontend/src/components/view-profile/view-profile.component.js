@@ -35,52 +35,57 @@ class ViewProfileComponentController {
     this.LanguagesService = LanguagesService;
     this.LanguageLevelsService = LanguageLevelsService;
 
-    this.getLanguages();
-    this.getTopics();
-    this.getLevels();
+    // this.getLanguages();
+    // this.getTopics();
+    // this.getLevels();
 
-    this.getLoggedInUser();
+    this.initUser();
   }
 
   $onInit() {
-      this.user = {};
+    this.user = {};
   }
 
-  getLoggedInUser() {
-      let ctrl = this;
-      this.UserService.getLoggedInUser().then(function (success) {
-          ctrl.user = success;
-          console.log(success);
-      });
-  }
-
-  getCurrentUser() {
-      return this.UserService.getCurrentUser();
-  }
-
-  getUserLanguages() {
-    return this.UserService.getCurrentUser().languages;
-  }
-
-  getLanguages() {
-    this.LanguagesService.list().then(response => {
-      this.languages = response;
+  initUser() {
+    let ctrl = this;
+    this.UserService.getLoggedInUser().then(function (success) {
+      ctrl.user = success;
     });
   }
 
-  getLevels() {
-    this.LanguageLevelsService.list().then(response => {
-      this.levels = response;
-    });
+  getLanguage(userLanguageID, index) {
+    console.log(userLanguageID);
+    console.log(index);
+    // let ctrl = this;
+    // this.LanguagesService.get(_id).then(function (success) {
+    //   console.log(success);
+    //   return success;
+    // });
   }
 
-  getTopics() {
-    if (!this.topics) {
-      this.TopicsService.list().then(response => {
-        this.topics = response;
-      });
-    }
-  }
+  // getCurrentUser() {
+  //   return this.UserService.getCurrentUser();
+  // }
+
+  // getLanguages() {
+  //   this.LanguagesService.list().then(response => {
+  //     this.languages = response;
+  //   });
+  // }
+  //
+  // getLevels() {
+  //   this.LanguageLevelsService.list().then(response => {
+  //     this.levels = response;
+  //   });
+  // }
+  //
+  // getTopics() {
+  //   if (!this.topics) {
+  //     this.TopicsService.list().then(response => {
+  //       this.topics = response;
+  //     });
+  //   }
+  // }
 
   addNewLanguage() {
 
