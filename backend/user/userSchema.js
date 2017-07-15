@@ -24,11 +24,11 @@ var userSchema = mongoose.Schema({
         ref: 'Location',
         required: true
     },
-    languages: {
+    languages: [{
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'UserLanguage',
         required: true
-    }
+    }]
 });
 
 userSchema.pre('save', function(next) {
