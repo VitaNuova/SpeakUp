@@ -54,8 +54,10 @@
                         <div id="eventPlace" class="row" ng-repeat="offer in $ctrl.offers">
                             <div class="row vertical-align" ng-class="{selected: offer.selected}">
                                 <div class="col-lg-4 col-md-1 col-xs-4 pull-left">
-                                    <img ng-src="{{offer.imagePath}}" alt="Offer Logo"
-                                        class="img-responsive">
+                                    <div class="padded-image">
+                                        <img ng-src="{{offer.imagePath}}" alt="Offer Logo"
+                                            class="img-responsive">
+                                    </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="checkbox">

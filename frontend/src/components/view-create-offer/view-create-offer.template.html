@@ -5,3 +5,66 @@
         </div>
     </div>
 </aside>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form name="CreateOfferForm" novalidate>
+                <div class="form-group row"
+                     ng-class="{'has-error': CreateOfferForm.name.$invalid && !CreateOfferForm.name.$pristine }">
+                    <label for="name-input">Venue name:</label>
+                    <input ng-model="$ctrl.restaurant.name" type="text" name="name" class="form-control" id="name-input"
+                           placeholder="Enter the name of the place" required>
+                    <p ng-show="CreateOfferForm.name.$invalid && !CreateOfferForm.name.$pristine" class="help-block">
+                        Venue name is required.</p>
+                </div>
+                <div class="form-group row" ng-class="{'has-error': $ctrl.chosenDate < $ctrl.currentDate}">
+                    <label for="date-input">Choose the date:</label>
+                    <input class="form-control" type="date" ng-value="$ctrl.defaultDate" id="date-input" ng-model="$ctrl.chosenDate">
+                    <p ng-show="$ctrl.chosenDate < $ctrl.currentDate" class="help-block">
+                        Please choose a date in the future.</p>
+                </div>
+                <div class="form-group row" ng-class="{'has-error': $ctrl.chosenFrom.getTime() >= $ctrl.chosenTo.getTime()}">
+                    <div id="column-from" class="col-md-6">
+                        <label for="from-input">From: </label>
+                        <input class="form-control" type="time" ng-value="$ctrl.defaultFrom" id="from-input" ng-model="$ctrl.chosenFrom">
+                    </div>
+                    <div id="column-to" class="col-md-6">
+                        <label for="to-input">To: </label>
+                        <input class="form-control" type="time" ng-value="$ctrl.defaultTo" id="to-input" ng-model="$ctrl.chosenTo">
+                    </div>
+                    <p ng-show="$ctrl.chosenFrom.getTime() >= $ctrl.chosenTo.getTime()" class="help-block">
+                        Start time should be earlier than end time.
+                    </p>
+                </div>
+                <div class="form-group row">
+                    <label for="location">Choose the location of your venue: </label>
+                    <input type="text" id="location" class="form-control"
+                           ng-model="$ctrl.venueLocation"/>
+                </div>
+                <div class="form-group row">
+                    <label for="discount">Discount (%): </label>
+                    <input type="number" id="discount" class="form-control" ng-model="$ctrl.offer.discount" min="1" max="100"/>
+                </div>
+                <div class="form-group row">
+                    <label for="numberOfPeople">Minimum number of people to get discount: </label>
+                    <input type="number" id="numberOfPeople" class="form-control" min="1" ng-model="$ctrl.offer.numOfPeople"/>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="row" id="map">
+                <map center="{{$ctrl.venueLocation}}">
+                    <marker position="{{$ctrl.venueLocation}}"></marker>
+                </map>
+            </div>
+            <div class="row text-center">
+                <h4>Venue location</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <button type="button" class="btn btn-primary btn-xl submit" ng-disabled="!CreateOfferForm.$valid || $ctrl.isDisabledButton" ng-click="$ctrl.createOffer();">
+            Create offer
+        </button>
+    </div>
+</div>

@@ -21,10 +21,11 @@ class ViewLoginComponent {
 
 class ViewLoginComponentController {
 
-    constructor(UserService, $window, $state) {
+    constructor(UserService, $window, $state, toastr) {
         this.UserService = UserService;
         this.$window = $window;
         this.$state = $state;
+        this.toastr = toastr;
     }
 
     $onInit() {
@@ -41,27 +42,19 @@ class ViewLoginComponentController {
 
         this.UserService.login(username, password).then((success) => {
             this.$window.localStorage.setItem('jwtToken', success.data.token);
-
-            this.UserService.get(this.UserService.getCurrentUser()._id).then((user) => {
-                    if (user.isAdmin) {
-                        this.$state.go('offerAdd', {});
-                    } else {
-                        this.$state.go('events', {});
-                    }
-                }, (error) => {
-                    this.$state.go('home', {});
-                }
-            );
-
+            this.UserService.storeLoggedInUSer();
+            this.$state.go('events', {});
         }, (error) => {
-            this.loginFailed = true;
-            console.log("unauthorized");
+            if (error.status == 401) {
+                this.loginFailed = true;
+                this.toastr.error('Invalid email or password.');
+            }
         })
     }
 
 
     static get $inject() {
-        return [UserService.name, '$window', '$state'];
+        return [UserService.name, '$window', '$state', 'toastr'];
     }
 
 }

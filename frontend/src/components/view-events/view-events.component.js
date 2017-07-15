@@ -28,6 +28,7 @@ class ViewEventsComponentController {
         this.EventsService = EventsService;
         this.UserService = UserService;
         this.RestaurantService = RestaurantService;
+
         this.showMap = false;
     }
 

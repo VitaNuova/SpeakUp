@@ -17,6 +17,8 @@ import Routes from "./config/routes";
 import Middleware from "./config/middlewares";
 
 import ngmap from "ngmap";
+import toastr from "angular-toastr";
+import toastrConfig from "angular-toastr";
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -31,6 +33,8 @@ import ViewProfile from "./components/view-profile/view-profile";
 let app = angular.module('app', [
     uiRouter,
     ngmap,
+    toastr,
+    toastrConfig,
     UserService.name,
     EventsService.name,
     TopicsService.name,
@@ -54,6 +58,16 @@ let app = angular.module('app', [
 app.constant('API_URL', 'http://speakup.westeurope.cloudapp.azure.com:3000/api');
 app.config(Routes);
 app.config(Middleware);
+app.config(['toastrConfig', function(toastrConfig) {
+    angular.extend(toastrConfig, {
+        closeButton: true,
+        closeHtml: '<button>&times;</button>',
+        extendedTimeOut: 2000,
+        tapToDismiss: true,
+        timeOut: 7000,
+        positionClass: 'toast-top-center'
+    });
+}]);
 
 angular.element(document).ready(function () {
     return angular.bootstrap(document.body, [app.name], {
