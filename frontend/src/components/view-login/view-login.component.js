@@ -21,10 +21,11 @@ class ViewLoginComponent {
 
 class ViewLoginComponentController {
 
-    constructor(UserService, $window, $state) {
+    constructor(UserService, $window, $state, toastr) {
         this.UserService = UserService;
         this.$window = $window;
         this.$state = $state;
+        this.toastr = toastr;
     }
 
     $onInit() {
@@ -54,14 +55,16 @@ class ViewLoginComponentController {
             );
 
         }, (error) => {
-            this.loginFailed = true;
-            console.log("unauthorized");
+            if(error.status == 401) {
+                this.loginFailed = true;
+                this.toastr.error('Invalid email or password.');
+            }
         })
     }
 
 
     static get $inject() {
-        return [UserService.name, '$window', '$state'];
+        return [UserService.name, '$window', '$state', 'toastr'];
     }
 
 }

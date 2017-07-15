@@ -24,19 +24,20 @@ class ViewCreateEventComponent {
 }
 
 class ViewCreateEventComponentController {
-    constructor($state, EventsService, UserService, TopicsService, LanguagesService) {
+    constructor($state, EventsService, UserService, TopicsService, LanguagesService, toastr) {
         this.$state = $state;
         this.EventsService = EventsService;
         this.UserService = UserService;
         this.TopicsService = TopicsService;
         this.LanguagesService = LanguagesService;
+        this.toastr = toastr;
 
         this.getLanguages();
         this.getTopics();
     }
 
     static get $inject() {
-        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name];
+        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name, 'toastr'];
     }
 
     getLanguages() {
@@ -66,18 +67,13 @@ class ViewCreateEventComponentController {
             language: this.model.language._id,
             topics: this.model.topics,
             offer: this.model.offer._id,
-            users: []
+            users: [this.UserService.getCurrentUser()._id]
         }
         console.log(postedModel);
 
         this.EventsService.create(postedModel).then(data => {
-            this.$mdToast.show(
-                this.$mdToast.simple()
-                    .textContent('The event has been successfully created!')
-                    .hideDelay(3000)
-            );
-
-            this.$state.go('events');
+            this.toastr.success('You have successfully created a new event.');
+            this.$state.go('event', { eventId: data._id});
         });
 
     };
