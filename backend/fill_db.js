@@ -602,6 +602,7 @@ var user1 = new User({
     username: "johndoe",
     password: "password",
     email: "john@doe.com",
+    isAdmin: false,
     age: 23,
     gender: "male",
     location: location10,
@@ -615,6 +616,7 @@ var user2 = new User({
     username: "miki",
     password: "password",
     email: "miki@bla.com",
+    isAdmin: true,
     location: location11,
     languages: [userLanguage4, userLanguage7, userLanguage2]
 });
@@ -625,6 +627,7 @@ var user3 = new User({
     username: "janedoe",
     password: "password",
     email: "janedoe@bla.com",
+    isAdmin: false,
     location: location12,
     languages: [userLanguage3, userLanguage12, userLanguage15]
 });
@@ -635,6 +638,7 @@ var user4 = new User({
     username: "ann",
     password: "password",
     email: "anndoe@bla.com",
+    isAdmin: false,
     location: location13,
     languages: [userLanguage6, userLanguage11]
 });
@@ -645,6 +649,7 @@ var user5 = new User({
     username: "mary",
     password: "password",
     email: "marydoe@bla.com",
+    isAdmin: false,
     location: location14,
     languages: [userLanguage5, userLanguage8, userLanguage2, userLanguage11]
 });
@@ -655,6 +660,7 @@ var user6 = new User({
     username: "chenchang",
     password: "password",
     email: "chenchang@bla.com",
+    isAdmin: false,
     location: location15,
     languages: [userLanguage5, userLanguage13]
 });
@@ -665,6 +671,7 @@ var user7 = new User({
     username: "mustafa",
     password: "password",
     email: "mustafa@bla.com",
+    isAdmin: false,
     location: location16,
     languages: [userLanguage7, userLanguage14]
 });
@@ -675,6 +682,7 @@ var user8 = new User({
     username: "patrick",
     password: "password",
     email: "patrick@bla.com",
+    isAdmin: false,
     location: location17,
     languages: [userLanguage10, userLanguage13, userLanguage2]
 });

@@ -41,7 +41,18 @@ class ViewLoginComponentController {
 
         this.UserService.login(username, password).then((success) => {
             this.$window.localStorage.setItem('jwtToken', success.data.token);
-            this.$state.go('events', {});
+
+            this.UserService.get(this.UserService.getCurrentUser()._id).then((user) => {
+                    if (user.isAdmin) {
+                        this.$state.go('offerAdd', {});
+                    } else {
+                        this.$state.go('events', {});
+                    }
+                }, (error) => {
+                    this.$state.go('home', {});
+                }
+            );
+
         }, (error) => {
             this.loginFailed = true;
             console.log("unauthorized");

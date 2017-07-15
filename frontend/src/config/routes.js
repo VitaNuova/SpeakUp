@@ -3,6 +3,7 @@
 import EventsComponent from "./../components/view-events/view-events.component";
 import ViewHomeComponent from "../components/view-home/view-home.component";
 import ViewCreateEventComponent from "./../components/view-create-event/view-create-event.component";
+import ViewCreateOfferComponent from "./../components/view-create-offer/view-create-offer.component";
 import ProfileComponent from "./../components/view-profile/view-profile.component";
 import ViewSingleEventComponent from "./../components/view-single-event/view-single-event.component";
 
@@ -51,6 +52,10 @@ export default function config($stateProvider, $urlRouterProvider, $locationProv
                 offers: resolveOffers
             }
         })
+        .state('offerAdd', {
+            url: '/new-offer',
+            component: ViewCreateOfferComponent.name
+        })
         .state('event', {
             url: '/events/:eventId',
             component: ViewSingleEventComponent.name,
@@ -58,13 +63,6 @@ export default function config($stateProvider, $urlRouterProvider, $locationProv
                 singleEvent: resolveEvent
             }
         })
-        // .state('eventEdit', {
-        //     url: '/events/:eventId/edit',
-        //     component: EventEditComponent.name,
-        //     resolve: {
-        //         event: resolveEvent
-        //     }
-        // })
         .state('home', {
             url: '/',
             component: ViewHomeComponent.name
