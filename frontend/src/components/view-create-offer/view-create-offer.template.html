@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="row text-center">
-        <button type="button" class="btn btn-primary btn-xl submit" ng-disabled="!CreateOfferForm.$valid || !$ctrl.offer" ng-click="$ctrl.createOffer()">
+        <button type="button" class="btn btn-primary btn-xl submit" ng-disabled="!CreateOfferForm.$valid || $ctrl.isDisabledButton" ng-click="$ctrl.createOffer()">
             Create offer
         </button>
     </div>

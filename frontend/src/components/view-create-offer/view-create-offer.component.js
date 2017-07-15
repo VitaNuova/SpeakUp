@@ -72,6 +72,8 @@ class ViewCreateOfferComponentController {
     }
 
     createOffer() {
+        this.isDisabledButton = true;
+
         if(this.chosenDate === undefined) {
             this.chosenDate = new Date();
         }
@@ -98,17 +100,15 @@ class ViewCreateOfferComponentController {
 
                 this.LocationService.create(location).then(
                     (data) => {
-                        console.log("location posted " + JSON.stringify(data));
                         this.restaurant.location = data._id;
                         this.RestaurantService.create(this.restaurant).then(
                             (data) => {
-                                console.log("restaurant posted " + JSON.stringify(data));
                                 this.offer.restaurant = data._id;
                                 this.offer.from = fullFrom;
                                 this.offer.to = fullTo;
                                 this.OfferService.create(this.offer).then(
                                     (data) => {
-                                        console.log("offer posted " + JSON.stringify(data));
+                                        this.$state.go('offerAdd');
                                     }
                                 );
                             }

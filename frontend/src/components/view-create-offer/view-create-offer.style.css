@@ -17,3 +17,10 @@
     padding-left: 55px;
     padding-right: 55px;
 }
+
+/*.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,*/
+.btn-primary:active:hover {
+    background-color: #ee4b28;
+}
