@@ -69,12 +69,12 @@ exports.getUser = function (req, res) {
             res.status(500).send(err);
             return;
         }
-    }).populate('languages').populate('location').exec(function (err, events) {
+    }).populate('languages').populate('location').exec(function (err, user) {
         if (err) {
             res.status(500).send(err);
             return;
         }
-        res.json(events);
+        res.json(user);
     });
 };
 
