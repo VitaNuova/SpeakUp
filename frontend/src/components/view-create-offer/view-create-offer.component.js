@@ -47,6 +47,8 @@ class ViewCreateOfferComponentController {
         this.defaultTo = "20:00:00";
         this.offer.discount = 0;
         this.offer.numOfPeople = 1;
+        this.chosenDate = new Date();
+        this.currentDate = new Date();
     }
 
     getDefaultDate() {
