@@ -38,10 +38,24 @@ class ViewProfileComponentController {
     this.getLanguages();
     this.getTopics();
     this.getLevels();
+
+    this.getLoggedInUser();
   }
 
-  getCurrentUser(){
-    return this.UserService.getCurrentUser();
+  $onInit() {
+      this.user = {};
+  }
+
+  getLoggedInUser() {
+      let ctrl = this;
+      this.UserService.getLoggedInUser().then(function (success) {
+          ctrl.user = success;
+          console.log(success);
+      });
+  }
+
+  getCurrentUser() {
+      return this.UserService.getCurrentUser();
   }
 
   getUserLanguages() {
