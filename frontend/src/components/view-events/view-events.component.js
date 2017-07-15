@@ -31,7 +31,8 @@ class ViewEventsComponentController {
         this.toastr = toastr;
         this.showMap = false;
 
-        this.toastr.success('Hello world!', 'Toastr fun!');
+        var toast = this.toastr.success('Hello world!', 'Toastr fun!');
+        this.toastr.refreshTimer(toast, 45000);
     }
 
     details(event) {

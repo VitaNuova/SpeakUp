@@ -18,6 +18,7 @@ import Middleware from "./config/middlewares";
 
 import ngmap from "ngmap";
 import toastr from "angular-toastr";
+import toastrConfig from "angular-toastr";
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -33,6 +34,7 @@ let app = angular.module('app', [
     uiRouter,
     ngmap,
     toastr,
+    toastrConfig,
     UserService.name,
     EventsService.name,
     TopicsService.name,
@@ -56,6 +58,15 @@ let app = angular.module('app', [
 app.constant('API_URL', 'http://localhost:3000/api');
 app.config(Routes);
 app.config(Middleware);
+app.config(['toastrConfig', function(toastrConfig) {
+    angular.extend(toastrConfig, {
+        closeButton: true,
+        closeHtml: '<button>&times;</button>',
+        extendedTimeOut: 2000,
+        tapToDismiss: true,
+        timeOut: 7000,
+    });
+}]);
 
 angular.element(document).ready(function () {
     return angular.bootstrap(document.body, [app.name], {
