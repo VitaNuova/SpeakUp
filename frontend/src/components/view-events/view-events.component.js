@@ -22,17 +22,14 @@ class ViewEventsComponent {
 }
 
 class ViewEventsComponentController {
-    constructor($state, $scope, EventsService, UserService, RestaurantService, toastr) {
+    constructor($state, $scope, EventsService, UserService, RestaurantService) {
         this.$state = $state;
         this.$scope = $scope;
         this.EventsService = EventsService;
         this.UserService = UserService;
         this.RestaurantService = RestaurantService;
-        this.toastr = toastr;
-        this.showMap = false;
 
-        var toast = this.toastr.success('Hello world!', 'Toastr fun!');
-        this.toastr.refreshTimer(toast, 45000);
+        this.showMap = false;
     }
 
     details(event) {
@@ -126,7 +123,7 @@ class ViewEventsComponentController {
 
 
     static get $inject() {
-        return ['$state', '$scope', EventsService.name, UserService.name, RestaurantService.name, 'toastr'];
+        return ['$state', '$scope', EventsService.name, UserService.name, RestaurantService.name];
     }
 
 }

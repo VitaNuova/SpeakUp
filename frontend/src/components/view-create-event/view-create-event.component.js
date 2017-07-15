@@ -67,14 +67,13 @@ class ViewCreateEventComponentController {
             language: this.model.language._id,
             topics: this.model.topics,
             offer: this.model.offer._id,
-            users: []
+            users: [this.UserService.getCurrentUser()._id]
         }
         console.log(postedModel);
 
         this.EventsService.create(postedModel).then(data => {
-            this.toastr.success('Hello world!', 'Toastr fun!');
-
-            this.$state.go('events');
+            this.toastr.success('You have successfully created an event.');
+            this.$state.go('event', { eventId: data._id});
         });
 
     };

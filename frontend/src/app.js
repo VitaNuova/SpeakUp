@@ -65,6 +65,7 @@ app.config(['toastrConfig', function(toastrConfig) {
         extendedTimeOut: 2000,
         tapToDismiss: true,
         timeOut: 7000,
+        positionClass: 'toast-top-center'
     });
 }]);
 
