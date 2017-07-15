@@ -501,8 +501,8 @@ userLanguage16.save(function(err) { if (err) return console.error(err); });
 
 var offer1 = new Offer({
     restaurant: restaurant1,
-    from: new Date("2017-07-15T07:00:00.123Z"),
-    to: new Date("2017-07-23T07:00:00.123Z"),
+    from: new Date("2017-07-15T10:00:00.123Z"),
+    to: new Date("2017-07-23T12:00:00.123Z"),
     numOfPeople: 5,
     discount: 25,
     imagePath: config.app.apiUrl + "assets/pictures/events/event1.jpg"
@@ -512,8 +512,8 @@ offer1.save(function(err) { if (err) return console.error(err); });
 
 var offer2 = new Offer({
     restaurant: restaurant2,
-    from: new Date("2017-07-17T07:00:00.123Z"),
-    to: new Date("2017-07-21T07:00:00.123Z"),
+    from: new Date("2017-07-17T14:00:00.123Z"),
+    to: new Date("2017-07-21T16:00:00.123Z"),
     numOfPeople: 5,
     discount: 20,
     imagePath: config.app.apiUrl + "assets/pictures/events/event2.jpg"
@@ -523,8 +523,8 @@ offer2.save(function(err) { if (err) return console.error(err); });
 
 var offer3 = new Offer({
     restaurant: restaurant3,
-    from: new Date("2017-07-17T07:00:00.123Z"),
-    to: new Date("2017-07-25T07:00:00.123Z"),
+    from: new Date("2017-07-17T15:00:00.123Z"),
+    to: new Date("2017-07-25T17:00:00.123Z"),
     numOfPeople: 3,
     discount: 10,
     imagePath: config.app.apiUrl + "assets/pictures/events/event3.jpg"
@@ -534,8 +534,8 @@ offer3.save(function(err) { if (err) return console.error(err); });
 
 var offer4 = new Offer({
     restaurant: restaurant4,
-    from: new Date("2017-07-17T07:00:00.123Z"),
-    to: new Date("2017-07-25T07:00:00.123Z"),
+    from: new Date("2017-07-17T08:00:00.123Z"),
+    to: new Date("2017-07-25T10:00:00.123Z"),
     numOfPeople: 7,
     discount: 15,
     imagePath: config.app.apiUrl + "assets/pictures/events/event4.jpg"
@@ -545,8 +545,8 @@ offer4.save(function(err) { if (err) return console.error(err); });
 
 var offer5 = new Offer({
     restaurant: restaurant5,
-    from: new Date("2017-07-20T07:00:00.123Z"),
-    to: new Date("2017-07-28T07:00:00.123Z"),
+    from: new Date("2017-07-20T11:00:00.123Z"),
+    to: new Date("2017-07-28T13:00:00.123Z"),
     numOfPeople: 5,
     discount: 25,
     imagePath: config.app.apiUrl + "assets/pictures/events/event5.jpg"
@@ -556,8 +556,8 @@ offer5.save(function(err) { if (err) return console.error(err); });
 
 var offer6 = new Offer({
     restaurant: restaurant6,
-    from: new Date("2017-08-01T07:00:00.123Z"),
-    to: new Date("2017-08-10T07:00:00.123Z"),
+    from: new Date("2017-08-01T17:00:00.123Z"),
+    to: new Date("2017-08-10T19:00:00.123Z"),
     numOfPeople: 6,
     discount: 20,
     imagePath: config.app.apiUrl + "assets/pictures/events/event6.jpg"
@@ -567,8 +567,8 @@ offer6.save(function(err) { if (err) return console.error(err); });
 
 var offer7 = new Offer({
     restaurant: restaurant7,
-    from: new Date("2017-08-03T07:00:00.123Z"),
-    to: new Date("2017-08-26T07:00:00.123Z"),
+    from: new Date("2017-08-03T15:00:00.123Z"),
+    to: new Date("2017-08-26T17:00:00.123Z"),
     numOfPeople: 8,
     discount: 30,
     imagePath: config.app.apiUrl + "assets/pictures/events/event7.jpg"
@@ -578,8 +578,8 @@ offer7.save(function(err) { if (err) return console.error(err); });
 
 var offer8 = new Offer({
     restaurant: restaurant8,
-    from: new Date("2017-07-15T07:00:00.123Z"),
-    to: new Date("2017-07-30T07:00:00.123Z"),
+    from: new Date("2017-07-15T19:00:00.123Z"),
+    to: new Date("2017-07-30T21:00:00.123Z"),
     numOfPeople: 2,
     discount: 10,
     imagePath: config.app.apiUrl + "assets/pictures/events/event8.jpg"
@@ -589,8 +589,8 @@ offer8.save(function(err) { if (err) return console.error(err); });
 
 var offer9 = new Offer({
     restaurant: restaurant9,
-    from: new Date("2017-07-20T07:00:00.123Z"),
-    to: new Date("2017-07-29T07:00:00.123Z"),
+    from: new Date("2017-07-20T18:00:00.123Z"),
+    to: new Date("2017-07-29T20:00:00.123Z"),
     numOfPeople: 6,
     discount: 25,
     imagePath: config.app.apiUrl + "assets/pictures/events/event9.jpg"

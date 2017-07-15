@@ -61,7 +61,10 @@ class ViewSingleEventComponentController {
 
     getProgress(singleEvent) {
         var progress = 100 * singleEvent.users.length / singleEvent.offer.numOfPeople;
-        return Math.round(progress * 100) / 100;
+        if(progress > 100) {
+            return 100;
+        }
+        return Math.round(progress);
     };
 
     // getRestaurantLogo(event) {
