@@ -5,3 +5,62 @@
         </div>
     </div>
 </aside>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form name="CreateOfferForm" novalidate>
+                <div class="form-group row"
+                     ng-class="{'has-error': CreateOfferForm.name.$invalid && !CreateOfferForm.name.$pristine }">
+                    <label for="name-input">Venue name:</label>
+                    <input ng-model="$ctrl.restaurant.name" type="text" name="name" class="form-control" id="name-input"
+                           placeholder="Enter the name of the place" required>
+                    <p ng-show="CreateOfferForm.name.$invalid && !CreateOfferForm.name.$pristine" class="help-block">
+                        Venue name is required.</p>
+                </div>
+                <div class="form-group row">
+                    <label for="date-input" class="col-2 col-form-label">Choose the date:</label>
+                    <div class="col-10">
+                        <input class="form-control" type="date" ng-value="$ctrl.defaultDate" id="date-input" ng-model="$ctrl.chosenDate">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="from-input" class="col-2 col-form-label">From: </label>
+                        <div class="col-10">
+                            <input class="form-control" type="time" ng-value="$ctrl.defaultFrom" id="from-input" ng-model="$ctrl.chosenFrom">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="to-input" class="col-2 col-form-label">To: </label>
+                        <div class="col-10">
+                            <input class="form-control" type="time" ng-value="$ctrl.defaultTo" id="to-input" ng-model="$ctrl.chosenTo">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="location">Choose the location of your venue: </label>
+                    <input type="text" id="location" class="form-control"
+                           ng-model="$ctrl.venueLocation"/>
+                </div>
+                <div class="form-group row">
+                    <label for="discount">Discount (%): </label>
+                    <input type="number" id="discount" class="form-control" ng-model="$ctrl.offer.discount" min="0"/>
+                </div>
+                <div class="form-group row">
+                    <label for="numberOfPeople">Minimum number of people to get discount: </label>
+                    <input type="number" id="numberOfPeople" class="form-control" min="1" ng-model="$ctrl.offer.numOfPeople"/>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <map center="{{$ctrl.venueLocation}}">
+                <marker position="{{$ctrl.venueLocation}}"></marker>
+            </map>
+        </div>
+    </div>
+    <div class="row text-center">
+        <button type="button" class="btn btn-primary btn-xl submit" ng-disabled="!CreateOfferForm.$valid || !$ctrl.offer" ng-click="$ctrl.createOffer()">
+            Create offer
+        </button>
+    </div>
+</div>
