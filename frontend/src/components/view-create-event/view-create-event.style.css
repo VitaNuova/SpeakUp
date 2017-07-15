@@ -12,3 +12,9 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+.padded-image {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
