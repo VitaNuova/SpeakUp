@@ -26,7 +26,8 @@ class ViewRegistrationComponent {
 
 class ViewRegistrationComponentController {
 
-    constructor(UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
+    constructor($state, UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
+        this.$state = $state;
         this.UserService = UserService;
         this.LanguagesService = LanguagesService;
         this.LanguageLevelsService = LanguageLevelsService;
@@ -155,6 +156,7 @@ class ViewRegistrationComponentController {
                 this.error = false;
                 this.success = true;
                 this.message = ' Registration successful! You can login now.';
+                this.$state.go('profile', {userId: this.UserService.getCurrentUser()._id});
             }, err => {
                 this.success = false;
                 this.error = true;
@@ -170,7 +172,7 @@ class ViewRegistrationComponentController {
     }
 
     static get $inject() {
-        return [UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
+        return ['$state', UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
     }
 
 }
