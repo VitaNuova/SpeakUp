@@ -1,0 +1,19 @@
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#column-from {
+    padding-left: 0;
+}
+
+#column-to {
+    padding-right: 0;
+}
+
+#map {
+    padding-top: 75px;
+    padding-bottom: 0px;
+    padding-left: 55px;
+    padding-right: 55px;
+}

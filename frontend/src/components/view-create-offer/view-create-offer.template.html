@@ -24,17 +24,13 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-6">
-                        <label for="from-input" class="col-2 col-form-label">From: </label>
-                        <div class="col-10">
-                            <input class="form-control" type="time" ng-value="$ctrl.defaultFrom" id="from-input" ng-model="$ctrl.chosenFrom">
-                        </div>
+                    <div id="column-from" class="col-md-6">
+                        <label for="from-input">From: </label>
+                        <input class="form-control" type="time" ng-value="$ctrl.defaultFrom" id="from-input" ng-model="$ctrl.chosenFrom">
                     </div>
-                    <div class="col-md-6">
-                        <label for="to-input" class="col-2 col-form-label">To: </label>
-                        <div class="col-10">
-                            <input class="form-control" type="time" ng-value="$ctrl.defaultTo" id="to-input" ng-model="$ctrl.chosenTo">
-                        </div>
+                    <div id="column-to" class="col-md-6">
+                        <label for="to-input">To: </label>
+                        <input class="form-control" type="time" ng-value="$ctrl.defaultTo" id="to-input" ng-model="$ctrl.chosenTo">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -53,9 +49,14 @@
             </form>
         </div>
         <div class="col-md-6">
-            <map center="{{$ctrl.venueLocation}}">
-                <marker position="{{$ctrl.venueLocation}}"></marker>
-            </map>
+            <div class="row" id="map">
+                <map center="{{$ctrl.venueLocation}}">
+                    <marker position="{{$ctrl.venueLocation}}"></marker>
+                </map>
+            </div>
+            <div class="row text-center">
+                <h4>Venue location</h4>
+            </div>
         </div>
     </div>
     <div class="row text-center">
