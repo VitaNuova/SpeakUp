@@ -3,20 +3,25 @@
         <div class="call-to-action">
             <h2>Available events</h2>
             <div class="row">
-                <form class="form-inline">
-                    <div class="col-lg-8 col-md-8 col-xs-8 pull-left" ng-show="!$ctrl.showMap">
-                        <div class="form-group-lg form-group-md form-group-xs">
-                            <label for="query" class="text-faded hidden-xs">Search events: </label>
-                            <input class="form-control" id="query" type="text" ng-model="query">
+                <div class="col-lg-12 col-xs-12">
+                    <form class="form-inline">
+                        <div class="col-lg-12 col-xs-12 pull-left" ng-show="!$ctrl.showMap">
+                            <div class="input-group col-lg-12 col-xs-12 inline-search">
+                                <span id="search-icon" class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                                <input type="text" class="form-control" ng-model="query" placeholder="Search events" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-3 pull-right">
-                        <a class="btn btn-primary btn-xl btn-md btn-xs pull-right" ng-click="$ctrl.myMap()">
-                            <span ng-if="$ctrl.showMap">List</span>
-                            <span ng-if="!$ctrl.showMap">Map</span>
-                            View</a>
-                    </div>
-                </form>
+                    </form>
+                </div>
+            </div>
+            <div class="center-block padding-top">
+                <a class="btn btn-primary btn-xl btn-md btn-xs" ng-click="$ctrl.myMap()">
+                    Switch to
+                    <span ng-if="$ctrl.showMap">List</span>
+                    <span ng-if="!$ctrl.showMap">Map</span>
+                    View</a>
             </div>
         </div>
     </div>
