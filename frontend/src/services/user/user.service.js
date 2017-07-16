@@ -4,13 +4,15 @@
 export default class UserService {
 
     static get $inject() {
-        return ['$http', '$window', 'API_URL'];
+        return ['$http', '$rootScope', '$window', 'API_URL'];
     }
 
-    constructor($http, $window, API_URL) {
+    constructor($http, $rootScope, $window, API_URL) {
         this.$http = $http;
+        this.$rootScope = $rootScope;
         this.$window = $window;
         this.API_URL = API_URL;
+        this.user = {};
     }
 
     static get name() {
@@ -49,9 +51,15 @@ export default class UserService {
         return JSON.parse(this.$window.atob(base64)).user;
     }
 
-    getLoggedInUser() {
+    storeLoggedInUSer() {
+
+        let ctrl = this;
+
         if (this.isAuthenticated()) {
-            return this.get(this.getCurrentUser()._id);
+            this.get(this.getCurrentUser()._id).then(success => {
+                ctrl.user = success.data;
+                this.$rootScope.$broadcast('user-change', ctrl.user);
+            })
         } else {
             return {};
         }
@@ -59,12 +67,17 @@ export default class UserService {
 
     isAuthenticated() {
         return !!this.$window.localStorage['jwtToken'];
-        // return true;
     }
 
     get(id) {
         let url = `${ this.API_URL }/user/${ id }`;
-        return this.$http.get(url).then(response => {
+        return this.$http.get(url);
+    }
+
+    uploadImage(image) {
+        let userId = this.getCurrentUser()._id;
+        let url = `${ this.API_URL }/user/${ userId }/image`;
+        return this.$http.post(url, image).then(response => {
 
             return new Promise((resolve, reject) => {
                 resolve(response.data);

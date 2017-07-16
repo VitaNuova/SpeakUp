@@ -37,10 +37,8 @@ app.use(morgan('combined'));
 
 app.use(cors());
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
 app.use(passport.initialize());
 jwtConfig(passport);
