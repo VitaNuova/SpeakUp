@@ -43,7 +43,6 @@ class ViewProfileComponentController {
         let ctrl = this;
         this.$onChanges = (changesObj) => {
             if (changesObj.user) {
-                console.log(changesObj.user);
                 let currentUser = changesObj.user.currentValue.data;
                 ctrl.user = currentUser;
                 ctrl.location = [currentUser.location.x, currentUser.location.y];
@@ -60,17 +59,9 @@ class ViewProfileComponentController {
                 EventsService.getEventsByUser(this.user._id).then((data) => {
                     ctrl.upcomingEvents = data;
 
-                    this.restaurantLocations = {};
                     ctrl.upcomingEvents.forEach((event) => {
                         RestaurantsService.get(event.offer.restaurant).then((restaurant) => {
                             event.offer.restaurant = restaurant;
-                            var geocoder = new google.maps.Geocoder;
-                            geocoder.geocode({'location':{'lat':restaurant.location.x, 'lng':restaurant.location.y}}, (results, status) => {
-                                if (status === 'OK') {
-                                    this.restaurantLocations[restaurant._id] = results[0].formatted_address;
-                                    console.log("restaurantLocations "+JSON.stringify(this.restaurantLocations));
-                                }
-                            });
                         });
                     });
                 });
@@ -129,6 +120,7 @@ class ViewProfileComponentController {
                 ctrl.UserService.uploadImage({"image": base64Image.substr(base64Image.indexOf(',')+1)}).then( function(user) {
                         ctrl.toastr.success('You have successfully changed your profile picture.');
                         ctrl.user.imagePath = user.imagePath + "?" + new Date().getTime();
+                        ctrl.image = null;
                     }
                 );
             }

@@ -65,7 +65,6 @@ module.exports.unregister = function (req, res) {
 };
 
 module.exports.uploadImage = function (req, res) {
-    // console.log(req.body.image);
     if (req.user._id == req.params.user_id) {
         addToAssets(req.user._id, req.body.image);
         User.findById(req.user._id, function(err, user) {
@@ -99,7 +98,6 @@ function addToAssets(userId, base64Image) {
     var bitmap = new Buffer(base64Image, 'base64');
     // write buffer to file
     fs.writeFileSync('public/assets/pictures/users/' + userId + '.jpg', bitmap);
-    console.log('******** User profile image created from base64 encoded string ********');
 }
 
 exports.getUser = function (req, res) {
