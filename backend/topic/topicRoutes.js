@@ -10,7 +10,7 @@ function topicRoutes(passport) {
     mw.unless = unless;
 
     //middleware
-    router.use(mw.unless({method: ['OPTIONS']}));
+    router.use(mw.unless({method: ['GET', 'OPTIONS']}));
 
     router.route('/')
         .post(topicController.postTopic)
