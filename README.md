@@ -1,15 +1,55 @@
-SpeakUp application for SEBA Master course
+# SpeakUp application for SEBA Master course
 
-npm install - install all dependencies
+## Prerequisites
 
+[Mongo DB](https://www.mongodb.com/download-center#community)
 
-npm run build - run webpack
+[Node.js](https://nodejs.org/de/download/)
 
+## Quickstart
 
-npm start - runs 'Hello world!' on localhost:3000.
+Clone the repository:
+```
+git clone https://github.com/VitaNuova/SpeakUp.git
+```
 
+### Server application
 
+start mongod service on your local machine:
 
-Install mongodb before running 'npm start', start it, create speakupdb database,
-create admin user and add config.db.user and config.db.pass properties into your config.js
-(rename config.dev_local.js to config.js).
+* linux - ```sudo service mongod start```
+* windows -  usually ```C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe```
+
+Copy ```backend/config/config.dev_local.js``` into same folder and name it ```config.js```.
+Adjust the parameters for the database in newly created ```config.js```, if necessary. 
+
+```
+cd SpeakUp/backend
+npm install
+node fill_db.js
+npm start
+```
+
+### Client application
+
+```
+cd SpeakUp/frontend
+npm install
+npm run build
+npm start
+```
+
+## Notes
+
+If you have problems starting the server for the client application, please run:
+
+```npm install -g superstatic```
+
+There are reported problems that somethimes it wont install from ```package.json``` file.
+
+## Devevlopers
+
+* Branislav Vidojevic - branislav.vidojevic@tum.de - @Branislav1993
+* Marija Jovanovic - marija.jovanovic@tum.de - @JovanovicMarija
+* Naum Gjorgjeski - naum.gjorgjeski@tum.de - @NaumGj
+* Viktoriia Bakalova - viktoriia.bakalova@tum.de - @VitaNuova
