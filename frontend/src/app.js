@@ -9,7 +9,7 @@ import TopicsService from "./services/topics/topics";
 import LanguagesService from "./services/languages/languages";
 import LanguageLevelsService from "./services/language-levels/language-levels";
 import LocationService from "./services/location/location";
-import UserLanguageService from "./services/user-languages/user-languages";
+import UserLanguagesService from "./services/user-languages/user-languages";
 import OffersService from "./services/offers/offers";
 import RestaurantsService from "./services/restaurants/restaurants";
 
@@ -43,7 +43,7 @@ let app = angular.module('app', [
     LanguagesService.name,
     LanguageLevelsService.name,
     LocationService.name,
-    UserLanguageService.name,
+    UserLanguagesService.name,
     OffersService.name,
     RestaurantsService.name,
     AppContent.name,

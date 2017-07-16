@@ -25,5 +25,8 @@ function eventRoutes(passport) {
     router.route('/:event_id/user')
         .get(eventController.joinEvent);
 
+    router.route('/user/:user_id')
+        .get(eventController.getEventsByUser);
+
     return router;
 }

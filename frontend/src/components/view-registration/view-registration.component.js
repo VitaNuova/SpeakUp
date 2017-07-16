@@ -122,6 +122,7 @@ class ViewRegistrationComponentController {
     }
 
     addLocationAndReg() {
+
         this.isDisabledRegButton = true;
         this.user.location = {};
 
@@ -147,6 +148,7 @@ class ViewRegistrationComponentController {
             username: this.user.name,
             password: this.user.password,
             email: this.user.email,
+            age: this.user.age,
             imagePath: this.user.image,
             location: this.user.location,
             languages: this.user.languages

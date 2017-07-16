@@ -1,0 +1,61 @@
+section {
+  padding-top: 30px;
+  padding-bottom: 0px;
+}
+
+.scrollable-list {
+  height: 75vh;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.img-language {
+    display: block;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+}
+
+.div-language {
+  display: block;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+}
+
+.btn {
+  margin: 20px;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.description {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.div-border {
+  border-color: #ee4b28;
+  border-width: medium;
+  border: solid;
+  border-radius: 3px;
+}
+
+.div-padding {
+  padding: 10px;
+}
+hr.small {
+  border-width:2px;
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .text-xs-center {
+    text-align: center;
+  }
+}
