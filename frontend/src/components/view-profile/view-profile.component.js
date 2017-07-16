@@ -29,7 +29,7 @@ class ViewProfileComponent {
 
 class ViewProfileComponentController {
 
-    constructor($state, EventsService, UserService, TopicsService, LanguagesService, LanguageLevelsService, RestaurantsService, Upload) {
+    constructor($state, EventsService, UserService, TopicsService, LanguagesService, LanguageLevelsService, RestaurantsService, Upload, toastr) {
         this.$state = $state;
         this.EventsService = EventsService;
         this.UserService = UserService;
@@ -38,6 +38,7 @@ class ViewProfileComponentController {
         this.LanguageLevelsService = LanguageLevelsService;
         this.RestaurantsService = RestaurantsService;
         this.Upload = Upload;
+        this.toastr = toastr;
 
         let ctrl = this;
         this.$onChanges = (changesObj) => {
@@ -120,20 +121,22 @@ class ViewProfileComponentController {
 
     uploadImage() {
         if (this.image) {
-            console.log("FORM AND IMAGE VALID");
             let ctrl = this;
             let reader = new FileReader();
             reader.readAsDataURL(this.image);
             reader.onloadend = function() {
                 let base64Image = reader.result;
-                // console.log(base64Image);
-                ctrl.UserService.uploadImage({"image": base64Image.substr(base64Image.indexOf(',')+1)});
+                ctrl.UserService.uploadImage({"image": base64Image.substr(base64Image.indexOf(',')+1)}).then( function(user) {
+                        ctrl.toastr.success('You have successfully changed your profile picture.');
+                        ctrl.user.imagePath = user.imagePath + "?" + new Date().getTime();
+                    }
+                );
             }
         }
     }
 
     static get $inject() {
-        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name, LanguageLevelsService.name, RestaurantsService.name, 'Upload'];
+        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name, LanguageLevelsService.name, RestaurantsService.name, 'Upload', 'toastr'];
     }
 }
 

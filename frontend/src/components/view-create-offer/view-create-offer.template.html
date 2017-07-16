@@ -60,12 +60,9 @@
                     </div>
 
                     <div class="form-group">
-                        <form name="form">
-                            <button class="btn btn-success" ngf-select ng-model="$ctrl.image" name="file" ngf-pattern="'image/*'"
-                                    ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">Browse</button>
-                            <span ng-show="$ctrl.image">{{$ctrl.image ? $ctrl.image.name : ""}}</span>
-                            <span ng-show="!$ctrl.image">If you want your offer to have an image, please choose one.</span>
-                        </form>
+                        <button class="btn btn-success" ngf-select ng-model="$ctrl.image" name="file" ngf-pattern="'image/*'"
+                                ngf-accept="'image/*'" ngf-max-size="10MB" ngf-min-height="100">Browse images</button>
+                        <span>{{$ctrl.image ? $ctrl.image.name : "You can optionally choose an image."}}</span>
                     </div>
 
                 </form>
