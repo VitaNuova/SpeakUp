@@ -45,6 +45,9 @@ section {
 .div-padding {
   padding: 10px;
 }
+hr.small {
+  border-width:2px;
+}
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {

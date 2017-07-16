@@ -26,9 +26,6 @@
     <div class="title">Age:</div>
     <div class="description">{{$ctrl.user.age}}</div>
     <br>
-    <div class="title">Gender:</div>
-    <div class="description">{{$ctrl.user.gender}}</div>
-    <br>
   </div>
 </div>
 <div class="row">
@@ -49,58 +46,59 @@
     </div>
   </div>
 
-  <div class="col-lg-10 col-lg-offset-1 scrollable-list">
-    <div class="form-group">
-      <div class="row" ng-repeat="upcomingEvent in $ctrl.upcomingEvents">
-        <div class="row vertical-align">
-          <div class="col-lg-4 col-md-1 col-xs-4 pull-left">
-            <a class="portfolio-box">
-              <img ng-src="{{upcomingEvent.offer.imagePath}}" class="img-responsive img-language" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Language
-                  </div>
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 scrollable-list">
+      <div class="form-group">
+        <div class="row" ng-repeat="upcomingEvent in $ctrl.upcomingEvents">
+          <div class="row vertical-align">
+            <div class="col-lg-4 col-md-1 col-xs-4 pull-left">
+              <a class="portfolio-box">
+                <img ng-src="{{upcomingEvent.offer.imagePath}}" class="img-responsive img-language" alt="">
+                <div class="portfolio-box-caption">
+                  <div class="portfolio-box-caption-content">
+                    <div class="project-category text-faded">
+                      Language
+                    </div>
 
-                  <div class="project-name">
-                    {{upcomingEvent.language.name}}
-                  </div>
+                    <div class="project-name">
+                      {{upcomingEvent.language.name}}
+                    </div>
 
+                  </div>
                 </div>
+              </a>
+            </div>
+            <div class="col-lg-8">
+              <div>
+                {{upcomingEvent.offer.restaurant.name}}, -{{upcomingEvent.offer.discount}}%
               </div>
-            </a>
-          </div>
-          <div class="col-lg-8">
-            <div>
-              {{upcomingEvent.offer.restaurant.name}}, -{{upcomingEvent.offer.discount}}%
-            </div>
 
-            <div>
-              Place:{{$ctrl.restaurantLocations}} <!--[upcomingEvent.offer.restaurant._id]-->
-            </div>
+              <div>
+                Place:{{$ctrl.restaurantLocations}} <!--[upcomingEvent.offer.restaurant._id]-->
+              </div>
 
-            <div>
-              <span class="glyphicon glyphicon-calendar"></span>
-              <span>{{$ctrl.getFullDate(upcomingEvent.offer)}}</span>
-            </div>
-            <div>
-              <span class="glyphicon glyphicon-time"></span>
-              <span>{{$ctrl.getTime(upcomingEvent.offer.from)}} - {{$ctrl.getTime(upcomingEvent.offer.to)}}</span>
-            </div>
-            <div>
-              <span class="glyphicon glyphicon-info-sign"></span>
-              <span>discount valid for a group of {{upcomingEvent.offer.numOfPeople}}</span>
+              <div>
+                <span class="glyphicon glyphicon-calendar"></span>
+                <span>{{$ctrl.getFullDate(upcomingEvent.offer)}}</span>
+              </div>
+              <div>
+                <span class="glyphicon glyphicon-time"></span>
+                <span>{{$ctrl.getTime(upcomingEvent.offer.from)}} - {{$ctrl.getTime(upcomingEvent.offer.to)}}</span>
+              </div>
+              <div>
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span>discount valid for a group of {{upcomingEvent.offer.numOfPeople}}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <hr ng-if="!$last">
+          <div class="row">
+            <hr ng-if="!$last">
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 
 <section id="languages">
@@ -143,8 +141,8 @@
       <div ng-repeat="(languageId, topics) in $ctrl.topics">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h3 class="section-heading">{{$ctrl.languages[languageId].name}}</h3>
-            <hr class="primary">
+            <h4 class="section-heading">{{$ctrl.languages[languageId].name}}</h4>
+            <hr class="primary small">
           </div>
         </div>
 
