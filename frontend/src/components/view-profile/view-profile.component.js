@@ -39,14 +39,16 @@ class ViewProfileComponentController {
         this.RestaurantsService = RestaurantsService;
         this.Upload = Upload;
 
+        let ctrl = this;
         this.$onChanges = (changesObj) => {
             if (changesObj.user) {
-
-                this.location = [this.user.location.x, this.user.location.y];
+                console.log(changesObj.user);
+                let currentUser = changesObj.user.currentValue.data;
+                ctrl.user = currentUser;
+                ctrl.location = [currentUser.location.x, currentUser.location.y];
 
                 // Get user's location
                 var geocoder = new google.maps.Geocoder;
-                var ctrl = this;
                 geocoder.geocode({'location':{'lat':this.location[0], 'lng':this.location[1]}}, function(results, status) {
                     if (status === 'OK') {
                         ctrl.formatted_address = results[0].formatted_address;
@@ -54,7 +56,6 @@ class ViewProfileComponentController {
                 });
 
                 // Get user's upcoming events
-                var ctrl = this;
                 EventsService.getEventsByUser(this.user._id).then((data) => {
                     ctrl.upcomingEvents = data;
 
@@ -73,19 +74,16 @@ class ViewProfileComponentController {
                     });
                 });
 
-
-
-
-                this.getLanguages();
-                this.getTopics();
+                this.getLanguages(currentUser);
+                this.getTopics(currentUser);
             }
         };
     }
 
-    getLanguages() {
+    getLanguages(user) {
         let ctrl = this;
         this.languages = {};
-        this.user.languages.forEach(function(language) {
+        user.languages.forEach(function(language) {
             ctrl.LanguagesService.get(language.language).then(function(userLanguage) {
                 ctrl.languages[language._id] = userLanguage;
             });
@@ -107,10 +105,10 @@ class ViewProfileComponentController {
         return hours + ":" + minutes;
     }
 
-    getTopics() {
+    getTopics(user) {
         let ctrl = this;
         this.topics = {};
-        this.user.languages.forEach(function(language) {
+        user.languages.forEach(function(language) {
             ctrl.topics[language._id] = [];
             language.topics.forEach(function(topic) {
                 ctrl.TopicsService.get(topic).then(function (fullTopic) {
