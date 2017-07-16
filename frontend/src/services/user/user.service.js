@@ -24,6 +24,7 @@ export default class UserService {
             username: postedModel.username,
             password: postedModel.password,
             email: postedModel.email,
+            age: postedModel.age,
             imagePath: postedModel.image,
             location: postedModel.location,
             languages: postedModel.languages
@@ -71,6 +72,18 @@ export default class UserService {
     get(id) {
         let url = `${ this.API_URL }/user/${ id }`;
         return this.$http.get(url);
+    }
+
+    uploadImage(image) {
+        let userId = this.getCurrentUser()._id;
+        let url = `${ this.API_URL }/user/${ userId }/image`;
+        return this.$http.post(url, image).then(response => {
+
+            return new Promise((resolve, reject) => {
+                resolve(response.data);
+            });
+
+        })
     }
 
 

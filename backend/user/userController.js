@@ -1,6 +1,7 @@
 var Config = require('../config/config.js');
 var User = require('./userSchema');
 var jwt = require('jwt-simple');
+var fs = require('fs');
 
 module.exports.login = function (req, res) {
 
@@ -62,6 +63,42 @@ module.exports.unregister = function (req, res) {
         res.status(500).send(err);
     });
 };
+
+module.exports.uploadImage = function (req, res) {
+    if (req.user._id == req.params.user_id) {
+        addToAssets(req.user._id, req.body.image);
+        User.findById(req.user._id, function(err, user) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            let apiImagePath = Config.app.apiUrl + 'assets/pictures/users/' + user._id + '.jpg';
+            user.imagePath = apiImagePath;
+            User.findByIdAndUpdate(
+                user._id,
+                user,
+                {
+                    new: true,
+                    runValidators: true
+                }, function (err, user) {
+                    if (err) {
+                        res.status(500).send(err);
+                        return;
+                    }
+                    res.status(201).json(user);
+                });
+        })
+    } else {
+        res.status(401).send('unauthorized to post image for another user');
+    }
+};
+
+function addToAssets(userId, base64Image) {
+    // create buffer object from base64 encoded string, it is important to tell the constructor that the string is base64 encoded
+    var bitmap = new Buffer(base64Image, 'base64');
+    // write buffer to file
+    fs.writeFileSync('public/assets/pictures/users/' + userId + '.jpg', bitmap);
+}
 
 exports.getUser = function (req, res) {
     User.findById(req.params.user_id, function(err, user) {

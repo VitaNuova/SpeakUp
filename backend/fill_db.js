@@ -158,7 +158,7 @@ location18.save(function(err) { if (err) return console.error(err); });
 
 var language1 = new Language({
     name: "English",
-    imagePath: config.app.apiUrl + "assets/pictures/languages/english.png"
+    imagePath: config.app.apiUrl + "assets/pictures/languages/english.jpg"
 });
 language1.save(function(err) { if (err) return console.error(err); });
 
@@ -604,7 +604,6 @@ var user1 = new User({
     email: "john@doe.com",
     isAdmin: false,
     age: 23,
-    gender: "male",
     location: location10,
     languages: [userLanguage1, userLanguage9, userLanguage16],
     imagePath: config.app.apiUrl + "assets/pictures/users/user-1.jpg"
@@ -617,6 +616,7 @@ var user2 = new User({
     password: "password",
     email: "miki@bla.com",
     isAdmin: true,
+    age: 23,
     location: location11,
     languages: [userLanguage4, userLanguage7, userLanguage2],
     imagePath: config.app.apiUrl + "assets/pictures/users/user-2.jpg"
@@ -629,6 +629,7 @@ var user3 = new User({
     password: "password",
     email: "janedoe@bla.com",
     isAdmin: false,
+    age: 23,
     location: location12,
     languages: [userLanguage3, userLanguage12, userLanguage15],
     imagePath: config.app.apiUrl + "assets/pictures/users/user-3.jpg"
@@ -641,6 +642,7 @@ var user4 = new User({
     password: "password",
     email: "anndoe@bla.com",
     isAdmin: false,
+    age: 23,
     location: location13,
     languages: [userLanguage6, userLanguage11],
     imagePath: config.app.apiUrl + "assets/pictures/users/user-4.jpg"
@@ -653,6 +655,7 @@ var user5 = new User({
     password: "password",
     email: "marydoe@bla.com",
     isAdmin: false,
+    age: 23,
     location: location14,
     languages: [userLanguage5, userLanguage8, userLanguage2, userLanguage11],
     imagePath: config.app.apiUrl + "assets/pictures/users/user-5.jpg"
@@ -665,6 +668,7 @@ var user6 = new User({
     password: "password",
     email: "chenchang@bla.com",
     isAdmin: false,
+    age: 23,
     location: location15,
     languages: [userLanguage5, userLanguage13],
     imagePath: config.app.apiUrl + "assets/pictures/users/user-6.jpg"
@@ -677,6 +681,7 @@ var user7 = new User({
     password: "password",
     email: "mustafa@bla.com",
     isAdmin: false,
+    age: 23,
     location: location16,
     languages: [userLanguage7, userLanguage14],
     imagePath: config.app.apiUrl + "assets/pictures/users/user-7.jpg"
@@ -689,6 +694,7 @@ var user8 = new User({
     password: "password",
     email: "patrick@bla.com",
     isAdmin: false,
+    age: 23,
     location: location17,
     languages: [userLanguage10, userLanguage13, userLanguage2],
     imagePath: config.app.apiUrl + "assets/pictures/users/user-8.jpg"
