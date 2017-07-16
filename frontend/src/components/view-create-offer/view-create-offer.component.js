@@ -53,6 +53,7 @@ class ViewCreateOfferComponentController {
         this.currentDate = new Date();
         this.chosenFrom = new Date(this.currentDate.getYear(), this.currentDate.getMonth(), this.currentDate.getDate(), 18);
         this.chosenTo = new Date(this.currentDate.getYear(), this.currentDate.getMonth(), this.currentDate.getDate(), 20);
+        this.image = undefined;
     }
 
     getDefaultDate() {
@@ -116,7 +117,6 @@ class ViewCreateOfferComponentController {
 
     uploadImage(offer) {
         if (this.image) {
-            console.log("Image valid");
             let ctrl = this;
             let reader = new FileReader();
             reader.readAsDataURL(this.image);

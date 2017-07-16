@@ -65,12 +65,32 @@ module.exports.unregister = function (req, res) {
 };
 
 module.exports.uploadImage = function (req, res) {
-    // console.log(req.body.image);
     if (req.user._id == req.params.user_id) {
         addToAssets(req.user._id, req.body.image);
-        res.status(200).send('ok');
+        User.findById(req.user._id, function(err, user) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            let apiImagePath = Config.app.apiUrl + 'assets/pictures/users/' + user._id + '.jpg';
+            user.imagePath = apiImagePath;
+            User.findByIdAndUpdate(
+                user._id,
+                user,
+                {
+                    new: true,
+                    runValidators: true
+                }, function (err, user) {
+                    if (err) {
+                        res.status(500).send(err);
+                        return;
+                    }
+                    res.status(201).json(user);
+                });
+        })
+    } else {
+        res.status(401).send('unauthorized to post image for another user');
     }
-    res.status(401).send('unauthorized to post image for another user');
 };
 
 function addToAssets(userId, base64Image) {
@@ -78,7 +98,6 @@ function addToAssets(userId, base64Image) {
     var bitmap = new Buffer(base64Image, 'base64');
     // write buffer to file
     fs.writeFileSync('public/assets/pictures/users/' + userId + '.jpg', bitmap);
-    console.log('******** Image created from base64 encoded string ********');
 }
 
 exports.getUser = function (req, res) {
