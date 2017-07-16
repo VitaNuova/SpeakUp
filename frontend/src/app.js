@@ -20,6 +20,7 @@ import ngmap from "ngmap";
 import toastr from "angular-toastr";
 import toastrConfig from "angular-toastr";
 import Upload from "ng-file-upload";
+import angluarLoadingBar from "angular-loading-bar";
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -37,6 +38,7 @@ let app = angular.module('app', [
     toastr,
     toastrConfig,
     Upload,
+    angluarLoadingBar,
     UserService.name,
     EventsService.name,
     TopicsService.name,

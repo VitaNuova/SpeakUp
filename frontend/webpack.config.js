@@ -16,6 +16,8 @@ module.exports = {
             'bootstrap/dist/css/bootstrap.min.css',
             'angular',
             '@uirouter/angularjs',
+            'angular-loading-bar',
+            'angular-loading-bar/build/loading-bar.css',
             'font-awesome/css/font-awesome.css',
             'magnific-popup',
             './theme-files/css/creative.css',
