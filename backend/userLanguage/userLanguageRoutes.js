@@ -1,9 +1,16 @@
 module.exports = userLanguageRoutes;
 
-function userLanguageRoutes() {
+function userLanguageRoutes(passport) {
 
     var userLanguageController = require('./userLanguageController');
     var router = require('express').Router();
+    var unless = require('express-unless');
+
+    var mw = passport.authenticate('jwt', {session: false});
+    mw.unless = unless;
+
+    //middleware
+    router.use(mw.unless({method: ['OPTIONS']}));
 
     router.route('/')
         .post(userLanguageController.postUserLanguage)
