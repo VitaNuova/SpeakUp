@@ -73,5 +73,17 @@ export default class UserService {
         return this.$http.get(url);
     }
 
+    uploadImage(image) {
+        let userId = this.getCurrentUser()._id;
+        let url = `${ this.API_URL }/user/${ userId }/image`;
+        return this.$http.post(url, image).then(response => {
+
+            return new Promise((resolve, reject) => {
+                resolve(response.data);
+            });
+
+        })
+    }
+
 
 }
