@@ -49,7 +49,6 @@ class ViewSingleEventComponentController {
         } else {
             this.$state.go('home', {});
         }
-
     };
 
     getProgress(singleEvent) {
