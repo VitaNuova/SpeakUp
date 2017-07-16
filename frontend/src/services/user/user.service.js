@@ -22,6 +22,7 @@ export default class UserService {
             username: postedModel.username,
             password: postedModel.password,
             email: postedModel.email,
+            age: postedModel.age,
             imagePath: postedModel.image,
             location: postedModel.location,
             languages: postedModel.languages
