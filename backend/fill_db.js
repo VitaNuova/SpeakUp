@@ -158,7 +158,7 @@ location18.save(function(err) { if (err) return console.error(err); });
 
 var language1 = new Language({
     name: "English",
-    imagePath: config.app.apiUrl + "assets/pictures/languages/english.png"
+    imagePath: config.app.apiUrl + "assets/pictures/languages/english.jpg"
 });
 language1.save(function(err) { if (err) return console.error(err); });
 
