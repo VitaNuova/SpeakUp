@@ -36,6 +36,7 @@ class AppHeaderComponentController {
 
         this.$scope.$on('user-change', function (event, data) {
             ctrl.user = data;
+            ctrl.user.imagePath += "?" + new Date().getTime();
         });
     }
 

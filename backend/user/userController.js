@@ -46,6 +46,7 @@ module.exports.signup = function (req, res) {
     }
 
     var user = new User(req.body);
+    user.imagePath = Config.app.apiUrl + 'assets/pictures/users/placeholder.jpg';
     user.save(function (err) {
         if (err) {
             res.status(500).send(err);
