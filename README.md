@@ -52,7 +52,7 @@ If you have problems starting the server for the client application, please run:
 
 There are reported problems that somethimes it wont install from ```package.json``` file.
 
-## Devevlopers
+## Developers
 
 * Branislav Vidojevic - branislav.vidojevic@tum.de - @Branislav1993
 * Marija Jovanovic - marija.jovanovic@tum.de - @JovanovicMarija
