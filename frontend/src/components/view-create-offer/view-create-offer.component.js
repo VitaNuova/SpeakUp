@@ -31,8 +31,8 @@ class ViewCreateOfferComponentController {
         this.toastr = toastr;
 
         //on page access, check if logged in user is admin or not (only admin can access)
-        this.UserService.get(this.UserService.getCurrentUser()._id).then((user) => {
-            if (!user.isAdmin) {
+        this.UserService.get(this.UserService.getCurrentUser()._id).then(success => {
+            if (!success.data.isAdmin) {
                 this.$state.go('home', {});
             }
         });
