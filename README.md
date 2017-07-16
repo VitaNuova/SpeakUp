@@ -50,7 +50,7 @@ If you have problems starting the server for the client application, please run:
 
 ```npm install -g superstatic```
 
-There are reported problems that somethimes it wont install from ```package.json``` file.
+There are reported problems that somethimes it won't install from ```package.json``` file.
 
 ## Developers
 
