@@ -138,3 +138,7 @@ section#register hr {
     display: inline-block;
     float: none;
 }
+
+.custom-width {
+    width: 150px;
+}
