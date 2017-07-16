@@ -72,7 +72,7 @@ module.exports.uploadImage = function (req, res) {
                 res.status(500).send(err);
                 return;
             }
-            let apiImagePath = Config.app.apiUrl + 'assets/pictures/users/' + user._id + '.jpg';
+            var apiImagePath = Config.app.apiUrl + 'assets/pictures/users/' + user._id + '.jpg';
             user.imagePath = apiImagePath;
             User.findByIdAndUpdate(
                 user._id,
