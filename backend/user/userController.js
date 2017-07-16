@@ -64,8 +64,8 @@ module.exports.unregister = function (req, res) {
     });
 };
 
-module.exports.addImage = function (req, res) {
-    console.log(req.body.image);
+module.exports.uploadImage = function (req, res) {
+    // console.log(req.body.image);
     if (req.user._id == req.params.user_id) {
         addToAssets(req.user._id, req.body.image);
         res.status(200).send('ok');

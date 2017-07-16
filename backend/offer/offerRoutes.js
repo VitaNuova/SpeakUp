@@ -21,5 +21,8 @@ function offerRoutes(passport) {
         .put(offerController.putOffer)
         .delete(offerController.deleteOffer);
 
+    router.route('/:offer_id/image')
+        .post(offerController.uploadImage);
+
     return router;
 }
