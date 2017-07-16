@@ -1,9 +1,16 @@
 module.exports = eventRoutes;
 
-function eventRoutes() {
+function eventRoutes(passport) {
 
     var eventController = require('./eventController');
     var router = require('express').Router();
+    var unless = require('express-unless');
+
+    var mw = passport.authenticate('jwt', {session: false});
+    mw.unless = unless;
+
+    //middleware
+    router.use(mw.unless({method: ['OPTIONS']}));
 
     router.route('/')
         .post(eventController.postEvent)
@@ -16,7 +23,7 @@ function eventRoutes() {
         .delete(eventController.deleteEvent);
 
     router.route('/:event_id/user')
-        .get(eventController.joinEvent)
+        .get(eventController.joinEvent);
 
     return router;
 }
