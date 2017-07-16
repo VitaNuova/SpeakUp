@@ -21,6 +21,7 @@ start mongod service on your local machine:
 * windows -  usually ```C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe```
 
 Copy ```backend/config/config.dev_local.js``` into same folder and name it ```config.js```.
+
 Adjust the parameters for the database in newly created ```config.js```, if necessary. 
 
 ```
