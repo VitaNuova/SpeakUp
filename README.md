@@ -1,5 +1,9 @@
 # SpeakUp application for SEBA Master course
 
+##Live Demo
+
+[SpeakUp](http://speakup.westeurope.cloudapp.azure.com:8000/)
+
 ## Prerequisites
 
 [Mongo DB](https://www.mongodb.com/download-center#community)
