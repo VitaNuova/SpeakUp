@@ -1,6 +1,6 @@
 # SpeakUp application for SEBA Master course
 
-##Live Demo
+## Live Demo
 
 [SpeakUp](http://speakup.westeurope.cloudapp.azure.com:8000/)
 
