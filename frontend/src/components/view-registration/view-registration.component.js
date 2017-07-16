@@ -26,8 +26,9 @@ class ViewRegistrationComponent {
 
 class ViewRegistrationComponentController {
 
-    constructor($state, UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
+    constructor($state, $window, UserService, LanguagesService, LanguageLevelsService, TopicsService, LocationService, UserLanguageService) {
         this.$state = $state;
+        this.$window =$window;
         this.UserService = UserService;
         this.LanguagesService = LanguagesService;
         this.LanguageLevelsService = LanguageLevelsService;
@@ -154,16 +155,20 @@ class ViewRegistrationComponentController {
             languages: this.user.languages
         };
 
-        this.UserService.register(postedModel).then(data => {
+        this.UserService.register(postedModel).then(success => {
                 this.error = false;
                 this.success = true;
                 this.message = ' Registration successful! You can login now.';
+
+                this.$window.localStorage.setItem('jwtToken', success.data.token);
                 this.UserService.storeLoggedInUSer();
+
                 this.$state.go('profile', {userId: this.UserService.getCurrentUser()._id});
             }, err => {
                 this.success = false;
                 this.error = true;
                 this.message = ' Registration failed!';
+
                 if (err.data.code === 11000) {
                     this.message += ' Username exists already!';
                 }
@@ -175,7 +180,7 @@ class ViewRegistrationComponentController {
     }
 
     static get $inject() {
-        return ['$state', UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
+        return ['$state', '$window', UserService.name, LanguagesService.name, LanguageLevelsService.name, TopicsService.name, LocationService.name, UserLanguageService.name];
     }
 
 }
