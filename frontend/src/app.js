@@ -19,6 +19,7 @@ import Middleware from "./config/middlewares";
 import ngmap from "ngmap";
 import toastr from "angular-toastr";
 import toastrConfig from "angular-toastr";
+import Upload from "ng-file-upload";
 
 import AppContent from "./components/app-content/app-content";
 import ViewEvents from "./components/view-events/view-events";
@@ -35,6 +36,7 @@ let app = angular.module('app', [
     ngmap,
     toastr,
     toastrConfig,
+    Upload,
     UserService.name,
     EventsService.name,
     TopicsService.name,

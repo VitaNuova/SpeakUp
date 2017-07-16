@@ -80,5 +80,16 @@ export default class OffersService {
         })
     }
 
+    uploadImage(offer, image) {
+        let url = `${ this.resourceUrl }${ offer['_id'] }/image`;
+        return this.$http.post(url, image).then(response => {
+
+            return new Promise((resolve, reject) => {
+                resolve(response.data);
+            });
+
+        })
+    }
+
 
 }

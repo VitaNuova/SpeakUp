@@ -22,15 +22,30 @@ class ViewProfileComponent {
 }
 
 class ViewProfileComponentController {
-    constructor($state, EventsService, UserService) {
+    constructor($state, EventsService, UserService, Upload) {
         this.$state = $state;
         this.EventsService = EventsService;
         this.UserService = UserService;
-
+        this.Upload = Upload;
+        this.file = {};
     }
 
     static get $inject() {
-        return ['$state', EventsService.name, UserService.name];
+        return ['$state', EventsService.name, UserService.name, 'Upload'];
+    }
+
+    uploadImage() {
+        if (this.image) {
+            console.log("FORM AND IMAGE VALID");
+            let ctrl = this;
+            let reader = new FileReader();
+            reader.readAsDataURL(this.image);
+            reader.onloadend = function() {
+                let base64Image = reader.result;
+                // console.log(base64Image);
+                ctrl.UserService.uploadImage({"image": base64Image.substr(base64Image.indexOf(',')+1)});
+            }
+        }
     }
 
 }
