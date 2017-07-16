@@ -13,51 +13,51 @@
       col-md-4 col-md-offset-0
       col-sm-4 col-sm-offset-0
       col-xs-6 col-xs-offset-3">
-        <img ng-src="{{$ctrl.user.imagePath}}" class="img-responsive img-circle" alt="">
-      </div>
-      <div class="col-lg-7
+      <img ng-src="{{$ctrl.user.imagePath}}" class="img-responsive img-circle" alt="">
+    </div>
+    <div class="col-lg-7
     col-md-8
     col-sm-8
     col-xs-12
     text-xs-center">
-        <div class="title">Username:</div>
-        <div class="description">{{$ctrl.user.username}}</div>
-        <br>
-        <div class="title">Age:</div>
-        <div class="description">{{$ctrl.user.age}}</div>
-        <br>
-        <div class="title">Gender:</div>
-        <div class="description">{{$ctrl.user.gender}}</div>
-        <br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="text-center">
-        <a data-target="#upcomingEvents" class="btn btn-primary btn-xl page-scroll">Upcoming Events</a>
-        <a data-target="#languages" class="btn btn-primary btn-xl page-scroll">Languages</a>
-        <a data-target="#topics" class="btn btn-primary btn-xl page-scroll">Topics</a>
-        <a data-target="#location" class="btn btn-primary btn-xl page-scroll">Location</a>
-      </div>
-    </div>
+    <div class="title">Username:</div>
+    <div class="description">{{$ctrl.user.username}}</div>
+    <br>
+    <div class="title">Age:</div>
+    <div class="description">{{$ctrl.user.age}}</div>
+    <br>
+    <div class="title">Gender:</div>
+    <div class="description">{{$ctrl.user.gender}}</div>
+    <br>
   </div>
+</div>
+<div class="row">
+  <div class="text-center">
+    <a data-target="#upcomingEvents" class="btn btn-primary btn-xl page-scroll">Upcoming Events</a>
+    <a data-target="#languages" class="btn btn-primary btn-xl page-scroll">Languages</a>
+    <a data-target="#topics" class="btn btn-primary btn-xl page-scroll">Topics</a>
+    <a data-target="#location" class="btn btn-primary btn-xl page-scroll">Location</a>
+  </div>
+</div>
+</div>
 </section>
 
-<li ng-repeat="(name, age) in items">{{name}}: {{age}}</li>
+<!-- <li ng-repeat="(name, age) in items">{{name}}: {{age}}</li>
 <div ng-repeat="(languageId, language) in $ctrl.languages">
-    <!--<div>{{languageId}}</div>-->
-    <div>{{language.name}}</div>
-</div>
+  <div>{{languageId}}</div>
+  <div>{{language.name}}</div>
+</div> -->
 
-<br>
+<!-- <br>
 
 <div ng-repeat="(languageId, topicsList) in $ctrl.topics">
-    <div>{{$ctrl.languages[languageId].name}}</div>
-    <div ng-repeat="topic in topicsList">
-        <div>{{topic.name}}</div>
-    </div>
-</div>
+  <div>{{$ctrl.languages[languageId].name}}</div>
+  <div ng-repeat="topic in topicsList">
+    <div>{{topic.name}}</div>
+  </div>
+</div> -->
 
-<!-- <section id="upcomingEvents">
+<section id="upcomingEvents">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
@@ -69,31 +69,49 @@
 
   <div class="col-lg-10 col-lg-offset-1 scrollable-list">
     <div class="form-group">
-      <label for="eventPlace">Event place</label>
-      <div id="eventPlace" class="row" ng-repeat="upcomingEvent in $ctrl.upcomingEvents">
+      <div class="row" ng-repeat="upcomingEvent in $ctrl.upcomingEvents">
         <div class="row vertical-align">
           <div class="col-lg-4 col-md-1 col-xs-4 pull-left">
-            <img ng-src="{{upcomingEvent.imagePath}}" alt="Upcoming Event Logo"
-            class="img-responsive">
+            <a class="portfolio-box">
+              <img ng-src="{{upcomingEvent.offer.imagePath}}" class="img-responsive img-language" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Language
+                  </div>
+
+                  <div class="project-name">
+                    {{upcomingEvent.language.name}}
+                  </div>
+
+                </div>
+              </div>
+            </a>
           </div>
           <div class="col-lg-8">
             <div>
-              {{upcomingEvent.restaurant.name}}, -{{upcomingEvent.discount}}%
+              {{upcomingEvent.offer.restaurant.name}}, -{{upcomingEvent.offer.discount}}%
             </div>
+
+            <div>
+              Place:{{$ctrl.restaurantLocations}} <!--[upcomingEvent.offer.restaurant._id]-->
+            </div>
+
             <div>
               <span class="glyphicon glyphicon-calendar"></span>
-              <span>{{$ctrl.getFullDate(upcomingEvent)}}</span>
+              <span>{{$ctrl.getFullDate(upcomingEvent.offer)}}</span>
             </div>
             <div>
               <span class="glyphicon glyphicon-time"></span>
-              <span>{{$ctrl.getTime(upcomingEvent.from)}} - {{$ctrl.getTime(upcomingEvent.to)}}</span>
+              <span>{{$ctrl.getTime(upcomingEvent.offer.from)}} - {{$ctrl.getTime(upcomingEvent.offer.to)}}</span>
             </div>
             <div>
               <span class="glyphicon glyphicon-info-sign"></span>
-              <span>discount valid for a group of {{upcomingEvent.numOfPeople}}</span>
+              <span>discount valid for a group of {{upcomingEvent.offer.numOfPeople}}</span>
             </div>
           </div>
         </div>
+        
         <div class="row">
           <hr ng-if="!$last">
         </div>
@@ -101,7 +119,7 @@
     </div>
   </div>
 
-</section> -->
+</section>
 
 <section id="languages">
   <div class="container">
@@ -114,18 +132,18 @@
   </div>
   <div class="container-fluid">
     <div class="row no-gutter popup-gallery">
-      <div class="col-lg-4 col-sm-6 div-padding" ng-repeat="userLanguageID in $ctrl.user.languages">
+      <div class="col-lg-4 col-sm-6 div-padding" ng-repeat="language in $ctrl.languages">
         <a class="portfolio-box">
-          <img ng-src="{{$ctrl.getLanguage(userLanguageID, $index)}}" class="img-responsive img-language" alt="">
+          <img ng-src="{{language.imagePath}}" class="img-responsive img-language" alt="">
           <div class="portfolio-box-caption">
             <div class="portfolio-box-caption-content">
               <div class="project-category text-faded">
                 Language
               </div>
 
-              <!-- <div class="project-name">
-                {{userLanguage.language.name}}
-              </div> -->
+              <div class="project-name">
+                {{language.name}}
+              </div>
 
             </div>
           </div>
@@ -134,30 +152,30 @@
 
       <!-- <div class="col-lg-4 col-sm-6 text-center div-border div-language">
 
-        <div class="form-group">
-          <label for="newLanguage">Choose a Language</label>
-          <select id="newLanguage" ng-model="$ctrl.model.language" class="form-control"
-          ng-options="language.name for language in $ctrl.languages" required="">
-          <option style="display:none" value="">Select a language</option>
-        </select>
-      </div>
-
       <div class="form-group">
-        <label for="newLevel">Choose a Level</label>
-        <select id="newLevel" ng-model="$ctrl.model.levels" class="form-control"
-        ng-options="level.name for level in $ctrl.levels" required="">
-        <option style="display:none" value="">Select a level</option>
-      </select>
-    </div>
-
-    <a class="btn btn-primary btn-xl" ng-click="$ctrl.addNewLanguage()">Add New Language</a>
-  </div> -->
-
-    </div>
+      <label for="newLanguage">Choose a Language</label>
+      <select id="newLanguage" ng-model="$ctrl.model.language" class="form-control"
+      ng-options="language.name for language in $ctrl.languages" required="">
+      <option style="display:none" value="">Select a language</option>
+    </select>
   </div>
+
+  <div class="form-group">
+  <label for="newLevel">Choose a Level</label>
+  <select id="newLevel" ng-model="$ctrl.model.levels" class="form-control"
+  ng-options="level.name for level in $ctrl.levels" required="">
+  <option style="display:none" value="">Select a level</option>
+</select>
+</div>
+
+<a class="btn btn-primary btn-xl" ng-click="$ctrl.addNewLanguage()">Add New Language</a>
+</div> -->
+
+</div>
+</div>
 </section>
 
-<!-- <section id="topics">
+<section id="topics">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
@@ -168,15 +186,15 @@
   </div>
   <div class="container-fluid">
     <div class="row no-gutter popup-gallery">
-      <div ng-repeat="userLanguage in $ctrl.user.languages">
+      <div ng-repeat="(languageId, topics) in $ctrl.topics">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h3 class="section-heading">{{$ctrl.getLanguage(userLanguage._id)}}</h3>
+            <h3 class="section-heading">{{$ctrl.languages[languageId].name}}</h3>
             <hr class="primary">
           </div>
         </div>
 
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 div-padding" ng-repeat="topic in userLanguage.topics">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 div-padding" ng-repeat="topic in topics">
           <a class="portfolio-box">
             <img ng-src="{{topic.imagePath}}" class="img-responsive" alt="">
             <div class="portfolio-box-caption">
@@ -194,23 +212,23 @@
           </a>
         </div>
 
-        <div class="col-lg-3 text-center div-border">
+        <!-- <div class="col-lg-3 text-center div-border">
 
-          <div class="form-group">
-            <label for="newTopic">Choose a topic</label>
-            <select id="newTopic" ng-model="$ctrl.topic" class="form-control"
-            ng-options="topic.name for topic in $ctrl.topics" required="">
-            <option style="display:none" value="">Select a topic</option>
-          </select>
-        </div>
-
-        <a class="btn btn-primary btn-xl" ng-click="$ctrl.addNewTopic()">Add New Topic</a>
-      </div>
-
+        <div class="form-group">
+        <label for="newTopic">Choose a topic</label>
+        <select id="newTopic" ng-model="$ctrl.topic" class="form-control"
+        ng-options="topic.name for topic in $ctrl.topics" required="">
+        <option style="display:none" value="">Select a topic</option>
+      </select>
     </div>
-  </div>
+
+    <a class="btn btn-primary btn-xl" ng-click="$ctrl.addNewTopic()">Add New Topic</a>
+  </div> -->
+
 </div>
-</section> -->
+</div>
+</div>
+</section>
 
 <section id="location">
   <div class="container">
@@ -224,7 +242,12 @@
 
   <div class="container">
     <div class="row">
-      Location
+      {{$ctrl.formatted_address}}
+    </div>
+    <div class="row">
+      <map center="{{$ctrl.location}}">
+        <marker position="{{$ctrl.location}}"></marker>
+      </map>
     </div>
   </div>
 </section>
