@@ -44,6 +44,26 @@ hr.small {
   padding-top: 25px;
 }
 
+/* unvisited link */
+.a-no-event:link {
+    color: #F05F40;
+}
+
+/* visited link */
+.a-no-event:visited {
+    color: #F05F40;
+}
+
+/* mouse over link */
+.a-no-event:hover {
+    color: #F05F40;
+}
+
+/* selected link */
+.a-no-event:active {
+    color: #F05F40;
+}
+
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
   .text-xs-center {
