@@ -42,7 +42,14 @@ class ViewProfileComponentController {
 
         this.location = [this.user.location.x, this.user.location.y];
 
-        this.getUsersFormattedAddress();
+        // Get user's location
+        var geocoder = new google.maps.Geocoder;
+        var ctrl = this;
+        geocoder.geocode({'location':{'lat':this.location[0], 'lng':this.location[1]}}, function(results, status) {
+          if (status === 'OK') {
+            ctrl.formatted_address = results[0].formatted_address;
+          }
+        });
 
         // Get user's upcoming events
         var ctrl = this;
@@ -71,16 +78,6 @@ class ViewProfileComponentController {
         this.getTopics();
       }
     };
-  }
-
-  getUsersFormattedAddress() {
-    var geocoder = new google.maps.Geocoder;
-    var ctrl = this;
-    geocoder.geocode({'location':{'lat':this.location[0], 'lng':this.location[1]}}, function(results, status) {
-      if (status === 'OK') {
-        ctrl.formatted_address = results[0].formatted_address;
-      }
-    });
   }
 
   getLanguages() {

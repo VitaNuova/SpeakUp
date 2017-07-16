@@ -6,8 +6,8 @@
   </div>
 </aside>
 
-<section>
-  <div class="container">
+<div class="container">
+  <section>
     <div class="row">
       <div class="col-lg-3 col-lg-offset-1
       col-md-4 col-md-offset-0
@@ -39,31 +39,13 @@
     <a data-target="#location" class="btn btn-primary btn-xl page-scroll">Location</a>
   </div>
 </div>
-</div>
 </section>
 
-<!-- <li ng-repeat="(name, age) in items">{{name}}: {{age}}</li>
-<div ng-repeat="(languageId, language) in $ctrl.languages">
-  <div>{{languageId}}</div>
-  <div>{{language.name}}</div>
-</div> -->
-
-<!-- <br>
-
-<div ng-repeat="(languageId, topicsList) in $ctrl.topics">
-  <div>{{$ctrl.languages[languageId].name}}</div>
-  <div ng-repeat="topic in topicsList">
-    <div>{{topic.name}}</div>
-  </div>
-</div> -->
-
 <section id="upcomingEvents">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Upcoming Events</h2>
-        <hr class="primary">
-      </div>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading">Upcoming Events</h2>
+      <hr class="primary">
     </div>
   </div>
 
@@ -111,7 +93,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="row">
           <hr ng-if="!$last">
         </div>
@@ -122,66 +104,38 @@
 </section>
 
 <section id="languages">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Languages</h2>
-        <hr class="primary">
-      </div>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading">Languages</h2>
+      <hr class="primary">
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="row no-gutter popup-gallery">
-      <div class="col-lg-4 col-sm-6 div-padding" ng-repeat="language in $ctrl.languages">
-        <a class="portfolio-box">
-          <img ng-src="{{language.imagePath}}" class="img-responsive img-language" alt="">
-          <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-              <div class="project-category text-faded">
-                Language
-              </div>
-
-              <div class="project-name">
-                {{language.name}}
-              </div>
-
+  <div class="row no-gutter popup-gallery">
+    <div class="col-lg-4 col-sm-6 div-padding" ng-repeat="language in $ctrl.languages">
+      <a class="portfolio-box">
+        <img ng-src="{{language.imagePath}}" class="img-responsive img-language" alt="">
+        <div class="portfolio-box-caption">
+          <div class="portfolio-box-caption-content">
+            <div class="project-category text-faded">
+              Language
             </div>
+
+            <div class="project-name">
+              {{language.name}}
+            </div>
+
           </div>
-        </a>
-      </div>
-
-      <!-- <div class="col-lg-4 col-sm-6 text-center div-border div-language">
-
-      <div class="form-group">
-      <label for="newLanguage">Choose a Language</label>
-      <select id="newLanguage" ng-model="$ctrl.model.language" class="form-control"
-      ng-options="language.name for language in $ctrl.languages" required="">
-      <option style="display:none" value="">Select a language</option>
-    </select>
+        </div>
+      </a>
+    </div>
   </div>
-
-  <div class="form-group">
-  <label for="newLevel">Choose a Level</label>
-  <select id="newLevel" ng-model="$ctrl.model.levels" class="form-control"
-  ng-options="level.name for level in $ctrl.levels" required="">
-  <option style="display:none" value="">Select a level</option>
-</select>
-</div>
-
-<a class="btn btn-primary btn-xl" ng-click="$ctrl.addNewLanguage()">Add New Language</a>
-</div> -->
-
-</div>
-</div>
 </section>
 
 <section id="topics">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Topics</h2>
-        <hr class="primary">
-      </div>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading">Topics</h2>
+      <hr class="primary">
     </div>
   </div>
   <div class="container-fluid">
@@ -211,43 +165,26 @@
             </div>
           </a>
         </div>
-
-        <!-- <div class="col-lg-3 text-center div-border">
-
-        <div class="form-group">
-        <label for="newTopic">Choose a topic</label>
-        <select id="newTopic" ng-model="$ctrl.topic" class="form-control"
-        ng-options="topic.name for topic in $ctrl.topics" required="">
-        <option style="display:none" value="">Select a topic</option>
-      </select>
-    </div>
-
-    <a class="btn btn-primary btn-xl" ng-click="$ctrl.addNewTopic()">Add New Topic</a>
-  </div> -->
-
-</div>
-</div>
-</div>
-</section>
-
-<section id="location">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Location</h2>
-        <hr class="primary">
       </div>
     </div>
   </div>
+</section>
 
-  <div class="container">
-    <div class="row">
-      {{$ctrl.formatted_address}}
-    </div>
-    <div class="row">
-      <map center="{{$ctrl.location}}">
-        <marker position="{{$ctrl.location}}"></marker>
-      </map>
+<section id="location">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading">Location</h2>
+      <hr class="primary">
     </div>
   </div>
+
+  <div class="row text-center div-padding">
+    My desired location: {{$ctrl.formatted_address}}
+  </div>
+  <div class="row">
+    <map center="{{$ctrl.location}}">
+      <marker position="{{$ctrl.location}}"></marker>
+    </map>
+  </div>
 </section>
+</div>
