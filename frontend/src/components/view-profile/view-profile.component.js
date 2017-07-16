@@ -10,94 +10,97 @@ import LanguageLevelsService from './../../services/language-levels/language-lev
 import './view-profile.style.css';
 
 class ViewProfileComponent {
-  constructor() {
-    this.controller = ViewProfileComponentController;
-    this.template = template;
-    this.bindings = {
-      user: '<',
+    constructor() {
+        this.controller = ViewProfileComponentController;
+        this.template = template;
+        this.bindings = {
+            user: '<',
+        }
+
     }
 
-  }
-
-  static get name() {
-    return 'viewProfile';
-  }
+    static get name() {
+        return 'viewProfile';
+    }
 
 
 }
 
 class ViewProfileComponentController {
-  constructor($state, EventsService, UserService, TopicsService, LanguagesService, LanguageLevelsService) {
-    this.$state = $state;
-    this.EventsService = EventsService;
-    this.UserService = UserService;
-    this.TopicsService = TopicsService;
-    this.LanguagesService = LanguagesService;
-    this.LanguageLevelsService = LanguageLevelsService;
+    constructor($state, EventsService, UserService, TopicsService, LanguagesService, LanguageLevelsService) {
+        this.$state = $state;
+        this.EventsService = EventsService;
+        this.UserService = UserService;
+        this.TopicsService = TopicsService;
+        this.LanguagesService = LanguagesService;
+        this.LanguageLevelsService = LanguageLevelsService;
 
-    // this.getLanguages();
-    // this.getTopics();
-    // this.getLevels();
+        this.$onChanges = function (changesObj) {
+            if (changesObj.user) {
+                console.log(changesObj.user);
+                this.getLanguages();
+                this.getTopics();
+                // this.getLevels();
+                // var setUser = (function(restaurant) {
+                //     this.restaurant = restaurant.name
+                // }).bind(this);
+                // this.RestaurantsService.get(this.singleEvent.offer.restaurant).then(setUser);
+            }
+        };
+    }
 
-    this.initUser();
-  }
+    // getLanguage(userLanguageID, index) {
+    //     console.log(userLanguageID);
+    //     console.log(index);
+        // let ctrl = this;
+        // this.LanguagesService.get(_id).then(function (success) {
+        //   console.log(success);
+        //   return success;
+        // });
+    // }
 
-  $onInit() {
-    this.user = {};
-  }
+    getLanguages() {
+        let ctrl = this;
+        this.languages = {};
+        this.user.languages.forEach(function(language) {
+            ctrl.LanguagesService.get(language.language).then(function(userLanguage) {
+                // console.log(userLanguage);
+                ctrl.languages[language._id] = userLanguage;
+            });
+        });
+    }
 
-  initUser() {
-    let ctrl = this;
-    this.UserService.getLoggedInUser().then(function (success) {
-      ctrl.user = success;
-    });
-  }
+    getLevels() {
+      this.LanguageLevelsService.list().then(response => {
+        this.levels = response;
+      });
+    }
 
-  getLanguage(userLanguageID, index) {
-    console.log(userLanguageID);
-    console.log(index);
-    // let ctrl = this;
-    // this.LanguagesService.get(_id).then(function (success) {
-    //   console.log(success);
-    //   return success;
-    // });
-  }
+    getTopics() {
+        let ctrl = this;
+        this.topics = {};
+        this.user.languages.forEach(function(language) {
+            ctrl.topics[language._id] = [];
+            language.topics.forEach(function(topic) {
+                console.log(topic);
+                ctrl.TopicsService.get(topic).then(function (fullTopic) {
+                    ctrl.topics[language._id].push(fullTopic);
+                });
+            });
+        });
+    }
 
-  // getCurrentUser() {
-  //   return this.UserService.getCurrentUser();
-  // }
+    addNewLanguage() {
 
-  // getLanguages() {
-  //   this.LanguagesService.list().then(response => {
-  //     this.languages = response;
-  //   });
-  // }
-  //
-  // getLevels() {
-  //   this.LanguageLevelsService.list().then(response => {
-  //     this.levels = response;
-  //   });
-  // }
-  //
-  // getTopics() {
-  //   if (!this.topics) {
-  //     this.TopicsService.list().then(response => {
-  //       this.topics = response;
-  //     });
-  //   }
-  // }
+    }
 
-  addNewLanguage() {
+    addNewTopic() {
 
-  }
+    }
 
-  addNewTopic() {
-
-  }
-
-  static get $inject() {
-    return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name, LanguageLevelsService.name];
-  }
+    static get $inject() {
+        return ['$state', EventsService.name, UserService.name, TopicsService.name, LanguagesService.name, LanguageLevelsService.name];
+    }
 
 }
 

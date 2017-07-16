@@ -13,34 +13,49 @@
       col-md-4 col-md-offset-0
       col-sm-4 col-sm-offset-0
       col-xs-6 col-xs-offset-3">
-      <img ng-src="{{$ctrl.user.imagePath}}" class="img-responsive img-circle" alt="">
-    </div>
-    <div class="col-lg-7
+        <img ng-src="{{$ctrl.user.imagePath}}" class="img-responsive img-circle" alt="">
+      </div>
+      <div class="col-lg-7
     col-md-8
     col-sm-8
     col-xs-12
     text-xs-center">
-    <div class="title">Username:</div>
-    <div class="description">{{$ctrl.user.username}}</div>
-    <br>
-    <div class="title">Age:</div>
-    <div class="description">{{$ctrl.user.age}}</div>
-    <br>
-    <div class="title">Gender:</div>
-    <div class="description">{{$ctrl.user.gender}}</div>
-    <br>
+        <div class="title">Username:</div>
+        <div class="description">{{$ctrl.user.username}}</div>
+        <br>
+        <div class="title">Age:</div>
+        <div class="description">{{$ctrl.user.age}}</div>
+        <br>
+        <div class="title">Gender:</div>
+        <div class="description">{{$ctrl.user.gender}}</div>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-center">
+        <a data-target="#upcomingEvents" class="btn btn-primary btn-xl page-scroll">Upcoming Events</a>
+        <a data-target="#languages" class="btn btn-primary btn-xl page-scroll">Languages</a>
+        <a data-target="#topics" class="btn btn-primary btn-xl page-scroll">Topics</a>
+        <a data-target="#location" class="btn btn-primary btn-xl page-scroll">Location</a>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="text-center">
-    <a data-target="#upcomingEvents" class="btn btn-primary btn-xl page-scroll">Upcoming Events</a>
-    <a data-target="#languages" class="btn btn-primary btn-xl page-scroll">Languages</a>
-    <a data-target="#topics" class="btn btn-primary btn-xl page-scroll">Topics</a>
-    <a data-target="#location" class="btn btn-primary btn-xl page-scroll">Location</a>
-  </div>
-</div>
-</div>
 </section>
+
+<li ng-repeat="(name, age) in items">{{name}}: {{age}}</li>
+<div ng-repeat="(languageId, language) in $ctrl.languages">
+    <!--<div>{{languageId}}</div>-->
+    <div>{{language.name}}</div>
+</div>
+
+<br>
+
+<div ng-repeat="(languageId, topicsList) in $ctrl.topics">
+    <div>{{$ctrl.languages[languageId].name}}</div>
+    <div ng-repeat="topic in topicsList">
+        <div>{{topic.name}}</div>
+    </div>
+</div>
 
 <!-- <section id="upcomingEvents">
   <div class="container">
@@ -138,8 +153,8 @@
     <a class="btn btn-primary btn-xl" ng-click="$ctrl.addNewLanguage()">Add New Language</a>
   </div> -->
 
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
 <!-- <section id="topics">
