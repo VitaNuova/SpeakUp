@@ -3,6 +3,10 @@ section {
   padding-bottom: 0px;
 }
 
+.scrollable-list {
+  height: 75vh;
+}
+
 .img-circle {
   border-radius: 50%;
 }

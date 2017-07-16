@@ -59,17 +59,9 @@ class ViewProfileComponentController {
                 EventsService.getEventsByUser(this.user._id).then((data) => {
                     ctrl.upcomingEvents = data;
 
-                    this.restaurantLocations = {};
                     ctrl.upcomingEvents.forEach((event) => {
                         RestaurantsService.get(event.offer.restaurant).then((restaurant) => {
                             event.offer.restaurant = restaurant;
-                            var geocoder = new google.maps.Geocoder;
-                            geocoder.geocode({'location':{'lat':restaurant.location.x, 'lng':restaurant.location.y}}, (results, status) => {
-                                if (status === 'OK') {
-                                    this.restaurantLocations[restaurant._id] = results[0].formatted_address;
-                                    console.log("restaurantLocations "+JSON.stringify(this.restaurantLocations));
-                                }
-                            });
                         });
                     });
                 });
