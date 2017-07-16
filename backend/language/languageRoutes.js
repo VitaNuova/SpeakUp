@@ -10,7 +10,7 @@ function languageRoutes(passport) {
     mw.unless = unless;
 
     //middleware
-    router.use(mw.unless({method: ['OPTIONS']}));
+    router.use(mw.unless({method: ['GET', 'POST', 'PUT', 'OPTIONS']}));
 
     router.route('/')
         .post(languageController.postLanguage)
