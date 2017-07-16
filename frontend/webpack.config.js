@@ -20,7 +20,10 @@ module.exports = {
             'magnific-popup',
             './theme-files/css/creative.css',
             'scrollreveal/dist/scrollreveal.min.js',
-            './theme-files/js/creative.js'
+            './theme-files/js/creative.js',
+            'angular-toastr/dist/angular-toastr.js',
+            'angular-toastr/dist/angular-toastr.css',
+            'ng-file-upload/dist/ng-file-upload.js'
         ],
         'app': path.resolve(__dirname, 'src/app.js')
     },

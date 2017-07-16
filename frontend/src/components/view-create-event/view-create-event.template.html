@@ -7,13 +7,14 @@
 </aside>
 
 <section id="create-event">
-    <div class="create-event-section">
-        <div class="container">
+    <div class="container">
+        <div class="row">
             <form name="EventForm">
                 <div class="col-lg-5 form-group">
                     <div class="form-group">
                         <label for="eventName">Name</label>
-                        <input ng-model="$ctrl.model.name" type="text" class="form-control" id="eventName" placeholder="Enter Name" required>
+                        <input ng-model="$ctrl.model.name" type="text" class="form-control" id="eventName"
+                               placeholder="Enter Name" required>
                     </div>
 
                     <div class="form-group">
@@ -56,14 +57,15 @@
                                 <div class="col-lg-4 col-md-1 col-xs-4 pull-left">
                                     <div class="padded-image">
                                         <img ng-src="{{offer.imagePath}}" alt="Offer Logo"
-                                            class="img-responsive">
+                                             class="img-responsive">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="checkbox">
                                         <label><input ng-model="offer.selected" type="checkbox"
                                                       ng-click="$ctrl.uncheckOthers($index); $ctrl.model.offer=offer"
-                                                      value="">{{offer.restaurant.name}}, -{{offer.discount}}%</label>
+                                                      value="">{{offer.restaurant.name}},
+                                            -{{offer.discount}}%</label>
                                     </div>
                                     <div>
                                         <span class="glyphicon glyphicon-calendar"></span>
@@ -86,11 +88,15 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <section>
             <div class="text-center">
-                <button type="button" class="btn btn-primary btn-xl submit" ng-disabled="!EventForm.$valid || !$ctrl.model.offer" ng-click="$ctrl.createEvent()"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                <button type="button" class="btn btn-primary btn-xl submit"
+                        ng-disabled="!EventForm.$valid || !$ctrl.model.offer" ng-click="$ctrl.createEvent()">
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                     Create event
                 </button>
             </div>
-        </div>
+        </section>
     </div>
 </section>

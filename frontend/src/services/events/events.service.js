@@ -88,5 +88,14 @@ export default class EventsService {
         })
     }
 
+    getEventsByUser(userId) {
+      let url = `${ this.resourceUrl }/user/${ userId }`;
+      return this.$http.get(url).then(response => {
 
+          return new Promise((resolve, reject) => {
+              resolve(response.data);
+          });
+
+      })
+    }
 }

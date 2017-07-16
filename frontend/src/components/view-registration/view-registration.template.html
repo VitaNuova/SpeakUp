@@ -18,14 +18,16 @@
     <div class="container" ng-if="$ctrl.registrationStep == 1">
         <div class="row ">
             <h2 class="text-center">Create your account at SpeakUp!</h2>
+            <h3 class="text-center">(Step {{$ctrl.registrationStep}} / 4)</h3>
             <hr class="primary"/>
+
         </div>
         <div class="row offset">
             <form name="BasicInfoForm" novalidate>
                 <div class="col-md-6">
                     <div class="form-group"
                          ng-class="{'has-error': BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine }">
-                        <label for="nameInput">Name:</label>
+                        <label for="nameInput">Username:</label>
                         <input ng-model="$ctrl.user.name" type="text" name="name" class="form-control" id="nameInput"
                                placeholder="Enter your name" required>
                         <p ng-show="BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine" class="help-block">
@@ -71,6 +73,7 @@
     <div class="container" ng-if="$ctrl.registrationStep == 2">
         <div class="row ">
             <h2 class="text-center">Which languages would you like to improve?</h2>
+            <h3 class="text-center">(Step {{$ctrl.registrationStep}} / 4)</h3>
             <hr class="primary"/>
         </div>
         <form name="LanguageForm" novalidate>
@@ -92,20 +95,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 form-group">
-                    <a href="javascript:;" ng-click="$ctrl.moreLanguages()">More languages...</a>
-                </div>
-                <div class="col-md-6 form-group">
-                    <a href="javascript:;" ng-click="$ctrl.lessLanguages()">Less languages...</a>
+                <div class="col-lg-12 text-center">
+                    <i class="fa fa-2x fa-plus-circle" aria-hidden="true" ng-click="$ctrl.moreLanguages()"></i>
+                    <i class="fa fa-2x fa-minus-circle" aria-hidden="true" ng-click="$ctrl.lessLanguages()"></i>
                 </div>
             </div>
             <div class="row offset">
-                <div class="col-md-2 col-md-offset-4 form-group">
-                    <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 1;">Back
+                <div class="col-md-6 col-xs-6 form-group">
+                    <button type="submit" class="btn btn-info btn-xl custom-width"
+                            ng-click="$ctrl.registrationStep = 1;">Back
                     </button>
                 </div>
-                <div class="col-md-2 form-group">
-                    <button type="submit" class="btn btn-info btn-xl" ng-disabled="LanguageForm.$invalid"
+                <div class="col-md-6 col-xs-6 form-group text-right">
+                    <button type="submit" class="btn btn-info btn-xl custom-width" ng-disabled="LanguageForm.$invalid"
                             ng-click="$ctrl.registrationStep = 3; $ctrl.fetchTopics();">Continue
                     </button>
                 </div>
@@ -115,6 +117,7 @@
     <div class="container" ng-if="$ctrl.registrationStep == 3">
         <div class="row ">
             <h2 class="text-center">Which topics would you like to talk about?</h2>
+            <h3 class="text-center">(Step {{$ctrl.registrationStep}} / 4)</h3>
             <hr class="primary"/>
         </div>
         <div class="row bar">
@@ -137,11 +140,13 @@
             </div>
         </div>
         <div class="row offset">
-            <div class="col-md-2 col-md-offset-4 col-xs-3 form-group">
-                <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 2;">Back</button>
+            <div class="col-md-6 col-xs-6 form-group">
+                <button type="submit" class="btn btn-info btn-xl custom-width" ng-click="$ctrl.registrationStep = 2;">
+                    Back
+                </button>
             </div>
-            <div class="col-md-2 col-xs-3 form-group">
-                <button type="submit" class="btn btn-info btn-xl"
+            <div class="col-md-6 col-xs-6 form-group text-right">
+                <button type="submit" class="btn btn-info btn-xl custom-width"
                         ng-click="$ctrl.registrationStep = 4; $ctrl.addLangsAndTopics(); $ctrl.initLocation()">Continue
                 </button>
             </div>
@@ -150,6 +155,7 @@
     <div class="container" ng-if="$ctrl.registrationStep == 4">
         <div class="row ">
             <h2 class="text-center">Where would you like to meet others?</h2>
+            <h3 class="text-center">(Step {{$ctrl.registrationStep}} / 4)</h3>
             <hr class="primary"/>
         </div>
         <div class="row bar">
@@ -166,13 +172,14 @@
                 </map>
             </div>
         </div>
-        <div class="row">
-            <p height="2px"></p>
-            <div class="col-md-2 col-md-offset-4 form-group">
-                <button type="submit" class="btn btn-info btn-xl" ng-click="$ctrl.registrationStep = 3;">Back</button>
+        <div class="row offset">
+            <div class="col-md-6 col-xs-6 form-group">
+                <button type="submit" class="btn btn-info btn-xl custom-width" ng-click="$ctrl.registrationStep = 3;">
+                    Back
+                </button>
             </div>
-            <div class="col-md-2 form-group">
-                <button type="submit" class="btn btn-info btn-xl" ng-disabled="$ctrl.isDisabledRegButton"
+            <div class="col-md-6 col-xs-6 form-group text-right">
+                <button type="submit" class="btn btn-info btn-xl custom-width" ng-disabled="$ctrl.isDisabledRegButton"
                         ng-click="$ctrl.addLocationAndReg(); ">Finish
                 </button>
             </div>

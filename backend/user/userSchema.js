@@ -18,7 +18,6 @@ var userSchema = mongoose.Schema({
     },
     imagePath: String,
     age: Number,
-    gender: String,
     location: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Location',

@@ -122,6 +122,7 @@ class ViewRegistrationComponentController {
     }
 
     addLocationAndReg() {
+
         this.isDisabledRegButton = true;
         this.user.location = {};
 
@@ -147,6 +148,7 @@ class ViewRegistrationComponentController {
             username: this.user.name,
             password: this.user.password,
             email: this.user.email,
+            age: this.user.age,
             imagePath: this.user.image,
             location: this.user.location,
             languages: this.user.languages
@@ -156,6 +158,7 @@ class ViewRegistrationComponentController {
                 this.error = false;
                 this.success = true;
                 this.message = ' Registration successful! You can login now.';
+                this.UserService.storeLoggedInUSer();
                 this.$state.go('profile', {userId: this.UserService.getCurrentUser()._id});
             }, err => {
                 this.success = false;

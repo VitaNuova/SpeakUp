@@ -40,14 +40,7 @@ class ViewSingleEventComponentController {
     }
 
     join() {
-        console.log(this.singleEvent);
-        console.log(this.UserService.getCurrentUser());
-        // this.singleEvent.users.push();
         if (this.UserService.isAuthenticated()) {
-            // add toast instead of redirecting
-
-            // let _id = this.singleEvent['_id'];
-            // this.$state.go('eventJoin', { eventId: _id });
 
             var appendUser = (function(user) {
                 this.singleEvent.users.push(user);
@@ -66,12 +59,6 @@ class ViewSingleEventComponentController {
         }
         return Math.round(progress);
     };
-
-    // getRestaurantLogo(event) {
-    //     console.log(this.singleEvent.image.data);
-    //     let restaurantLogoURL = 'http://www.almanac.com/sites/default/files/users/Almanac%20Staff/violet-292367_1920_0_full_width.jpg';
-    //     return restaurantLogoURL;
-    // }
 
     static get $inject() {
         return ['$state', EventsService.name, UserService.name, RestaurantsService.name];
@@ -92,16 +79,18 @@ class ViewSingleEventComponentController {
         return hours + ":" + minutes;
     }
 
-    hasUserAlreadyJoined() {
+    hasUserAlreadyJoined(event) {
+        let ctrl = this;
+        ctrl.hasJoined = false;
         var user = this.UserService.getCurrentUser();
-        console.log(this.singleEvent.users);
-        for (var i = 0; this.singleEvent.users.length; i++) {
-            var eventUser = this.singleEvent.users[i];
-            if (eventUser._id == user._id) {
-                return true;
+        event.users.forEach(function (eventUser) {
+            if (eventUser != undefined) {
+                if (eventUser._id == user._id) {
+                    ctrl.hasJoined = true;
+                }
             }
-        }
-        return false;
+        });
+        return ctrl.hasJoined;
     }
 
 }

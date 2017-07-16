@@ -84,12 +84,12 @@
                          aria-valuenow="$ctrl.getProgress()"
                          aria-valuemin="0" aria-valuemax="100"
                          ng-style="{width : ( $ctrl.getProgress($ctrl.singleEvent) + '%' ) }">
-                        {{$ctrl.getProgress($ctrl.singleEvent)}}% COMPLETE UNTIL DISCOUNT
+                        {{$ctrl.getProgress($ctrl.singleEvent)}}%
                     </div>
                 </div>
 
                 <div>
-                    <button class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()" ng-disabled="$ctrl.hasUserAlreadyJoined()">Join Event</button>
+                    <button class="btn btn-primary btn-xl page-scroll" ng-click="$ctrl.join()" ng-disabled="$ctrl.hasUserAlreadyJoined($ctrl.singleEvent)">Join Event</button>
                 </div>
             </div>
         </div>

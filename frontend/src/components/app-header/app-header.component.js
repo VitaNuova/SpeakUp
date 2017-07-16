@@ -19,42 +19,33 @@ class AppHeaderComponent {
 }
 
 class AppHeaderComponentController {
-    constructor($state, UserService) {
-        this.$state = $state;
-        this.UserService = UserService;
-    }
+    constructor($state, $scope, UserService) {
 
-    $onInit() {
+        let ctrl = this;
+
+        this.$state = $state;
+        this.$scope = $scope;
+        this.UserService = UserService;
         this.user = {};
+
+        if (this.isAuthenticated()) {
+            this.UserService.get(this.UserService.getCurrentUser()._id).then(success => {
+                ctrl.user = success.data;
+            })
+        }
+
+        this.$scope.$on('user-change', function (event, data) {
+            ctrl.user = data;
+        });
     }
 
     isAuthenticated() {
         return this.UserService.isAuthenticated();
     }
 
-    getLoggedInUser() {
-        let ctrl = this;
-        this.UserService.getLoggedInUser().then(function (success) {
-            ctrl.user = success;
-        });
-    }
-
-    getCurrentUser() {
-        return this.UserService.getCurrentUser();
-    }
-
-    goHome() {
-        this.$state.go('home', {});
-    }
-
     profile() {
-        let _id = this.getCurrentUser()._id;
-        this.$state.go('profile', {userId: _id});
+        this.$state.go('profile', {userId: this.user._id});
     };
-
-    login() {
-        this.$state.go('home', {});
-    }
 
     logout() {
         this.UserService.logout();
@@ -62,7 +53,7 @@ class AppHeaderComponentController {
     }
 
     static get $inject() {
-        return ['$state', UserService.name];
+        return ['$state', '$scope', UserService.name];
     }
 
 }
