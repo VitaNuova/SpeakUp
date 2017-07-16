@@ -29,7 +29,7 @@
                          ng-class="{'has-error': BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine }">
                         <label for="nameInput">Username:</label>
                         <input ng-model="$ctrl.user.name" type="text" name="name" class="form-control" id="nameInput"
-                               placeholder="Enter your name" required>
+                               placeholder="Enter your username" required>
                         <p ng-show="BasicInfoForm.name.$invalid && !BasicInfoForm.name.$pristine" class="help-block">
                             Your name is required.</p>
                     </div>
