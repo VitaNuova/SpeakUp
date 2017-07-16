@@ -42,20 +42,10 @@ class ViewLoginComponentController {
 
         this.UserService.login(username, password).then((success) => {
             this.$window.localStorage.setItem('jwtToken', success.data.token);
-
-            this.UserService.get(this.UserService.getCurrentUser()._id).then((user) => {
-                    if (user.isAdmin) {
-                        this.$state.go('offerAdd', {});
-                    } else {
-                        this.$state.go('events', {});
-                    }
-                }, (error) => {
-                    this.$state.go('home', {});
-                }
-            );
-
+            this.UserService.storeLoggedInUSer();
+            this.$state.go('events', {});
         }, (error) => {
-            if(error.status == 401) {
+            if (error.status == 401) {
                 this.loginFailed = true;
                 this.toastr.error('Invalid email or password.');
             }

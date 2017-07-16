@@ -92,16 +92,20 @@ class ViewSingleEventComponentController {
         return hours + ":" + minutes;
     }
 
-    hasUserAlreadyJoined() {
+    hasUserAlreadyJoined(event) {
+        let ctrl = this;
+        ctrl.hasJoined = false;
         var user = this.UserService.getCurrentUser();
-        console.log(this.singleEvent.users);
-        for (var i = 0; this.singleEvent.users.length; i++) {
-            var eventUser = this.singleEvent.users[i];
-            if (eventUser._id == user._id) {
-                return true;
+        // console.log(event.users);
+        event.users.forEach(function (eventUser) {
+            // console.log(eventUser);
+            if (eventUser != undefined) {
+                if (eventUser._id == user._id) {
+                    ctrl.hasJoined = true;
+                }
             }
-        }
-        return false;
+        });
+        return ctrl.hasJoined;
     }
 
 }

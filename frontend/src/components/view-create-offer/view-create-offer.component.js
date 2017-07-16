@@ -22,17 +22,18 @@ class ViewCreateOfferComponent {
 
 class ViewCreateOfferComponentController {
 
-    constructor($state, UserService, LocationService, RestaurantService, OfferService, toastr) {
+    constructor($state, UserService, LocationService, RestaurantService, OfferService, toastr, Upload) {
         this.$state = $state;
         this.UserService = UserService;
         this.LocationService = LocationService;
         this.RestaurantService = RestaurantService;
         this.OfferService = OfferService;
         this.toastr = toastr;
+        this.Upload = Upload;
 
         //on page access, check if logged in user is admin or not (only admin can access)
-        this.UserService.get(this.UserService.getCurrentUser()._id).then((user) => {
-            if (!user.isAdmin) {
+        this.UserService.get(this.UserService.getCurrentUser()._id).then(success => {
+            if (!success.data.isAdmin) {
                 this.$state.go('home', {});
             }
         });
@@ -74,7 +75,7 @@ class ViewCreateOfferComponentController {
 
 
     static get $inject() {
-        return ['$state', UserService.name, LocationService.name, RestaurantService.name, OfferService.name, 'toastr'];
+        return ['$state', UserService.name, LocationService.name, RestaurantService.name, OfferService.name, 'toastr', 'Upload'];
     }
 
     createOffer() {
@@ -97,6 +98,9 @@ class ViewCreateOfferComponentController {
                                 this.offer.to = new Date(this.chosenDate.getFullYear(), this.chosenDate.getMonth(), this.chosenDate.getDate(), this.chosenTo.getHours());
                                 this.OfferService.create(this.offer).then(
                                     (data) => {
+                                        if (this.image) {
+                                            this.uploadImage(data);
+                                        }
                                         this.$onInit();
                                         this.toastr.success('You have successfully created a new offer.');
                                         this.isDisabledButton = false;
@@ -110,6 +114,18 @@ class ViewCreateOfferComponentController {
         });
     }
 
+    uploadImage(offer) {
+        if (this.image) {
+            console.log("Image valid");
+            let ctrl = this;
+            let reader = new FileReader();
+            reader.readAsDataURL(this.image);
+            reader.onloadend = function() {
+                let base64Image = reader.result;
+                ctrl.OfferService.uploadImage(offer, {"image": base64Image.substr(base64Image.indexOf(',')+1)});
+            }
+        }
+    }
 }
 
 

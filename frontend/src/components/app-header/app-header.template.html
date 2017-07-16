@@ -21,6 +21,9 @@
                 <li ng-if="$ctrl.isAuthenticated()">
                     <a ui-sref="eventAdd">New Event</a>
                 </li>
+                <li ng-if="$ctrl.isAuthenticated() && $ctrl.user.isAdmin">
+                    <a ui-sref="offerAdd">New Offer</a>
+                </li>
                 <li ng-if="!$ctrl.isAuthenticated()">
                     <a class="page-scroll" data-target="#page-top" href="">Home</a>
                 </li>
@@ -33,10 +36,10 @@
                 <li ng-if="!$ctrl.isAuthenticated()">
                     <a class="page-scroll" data-target="#services" href="">Services</a>
                 </li>
-                <li class="dropdown" ng-if="$ctrl.isAuthenticated()" ng-click="$ctrl.getLoggedInUser()">
+                <li class="dropdown" ng-if="$ctrl.isAuthenticated()">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
-                        <strong>{{$ctrl.getCurrentUser().username}}</strong>
+                        <strong>{{$ctrl.user.username}}</strong>
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </a>
                     <ul class="dropdown-menu">

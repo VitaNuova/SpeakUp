@@ -100,7 +100,7 @@ exports.putEvent = function(req, res) {
 
   exports.joinEvent = function(req, res) {
     var userId = req.query.register;
-    console.log(userId);
+    // console.log(userId);
     User.findById(userId, function(err, user) {
       if (err) {
         res.status(500).send(err);

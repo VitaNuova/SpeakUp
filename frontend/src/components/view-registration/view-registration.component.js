@@ -156,6 +156,7 @@ class ViewRegistrationComponentController {
                 this.error = false;
                 this.success = true;
                 this.message = ' Registration successful! You can login now.';
+                this.UserService.storeLoggedInUSer();
                 this.$state.go('profile', {userId: this.UserService.getCurrentUser()._id});
             }, err => {
                 this.success = false;

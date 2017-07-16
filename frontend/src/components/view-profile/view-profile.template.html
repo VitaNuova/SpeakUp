@@ -187,4 +187,15 @@
     </map>
   </div>
 </section>
+</aside>
+
+<div class="col-lg-12 col-xs-12">
+    <form name="form">
+        <div class="col-lg-1 col-xs-6">
+            <img ngf-thumbnail="$ctrl.image" class="img-responsive">
+        </div>
+        <button class="btn btn-primary" ngf-select ng-model="$ctrl.image" name="file" ngf-pattern="'image/*'"
+             ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Browse</button>
+        <button class="btn btn-primary" ng-click="$ctrl.uploadImage()" ng-disabled="!$ctrl.file">Upload</button>
+    </form>
 </div>
