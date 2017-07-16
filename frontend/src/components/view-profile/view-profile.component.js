@@ -42,7 +42,6 @@ class ViewProfileComponentController {
         let ctrl = this;
         this.$onChanges = (changesObj) => {
             if (changesObj.user) {
-                console.log(changesObj.user);
                 let currentUser = changesObj.user.currentValue.data;
                 ctrl.user = currentUser;
                 ctrl.location = [currentUser.location.x, currentUser.location.y];
