@@ -98,7 +98,7 @@ class ViewSingleEventComponentController {
         var user = this.UserService.getCurrentUser();
         // console.log(event.users);
         event.users.forEach(function (eventUser) {
-            console.log(eventUser);
+            // console.log(eventUser);
             if (eventUser != undefined) {
                 if (eventUser._id == user._id) {
                     ctrl.hasJoined = true;
