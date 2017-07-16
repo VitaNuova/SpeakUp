@@ -72,14 +72,14 @@ exports.deleteOffer = function(req, res) {
 
 
 exports.uploadImage = function (req, res) {
-    let imagePath = 'public/assets/pictures/events/' + req.params.offer_id + '.jpg';
+    var imagePath = 'public/assets/pictures/events/' + req.params.offer_id + '.jpg';
     addToAssets(imagePath, req.body.image);
     Offer.findById(req.params.offer_id, function(err, offer) {
         if (err) {
             res.status(500).send(err);
             return;
         }
-        let apiImagePath = config.app.apiUrl + 'assets/pictures/events/' + req.params.offer_id + '.jpg';
+        var apiImagePath = config.app.apiUrl + 'assets/pictures/events/' + req.params.offer_id + '.jpg';
         offer.imagePath = apiImagePath;
         Offer.findByIdAndUpdate(
             req.params.offer_id,
